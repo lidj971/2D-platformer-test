@@ -1,0 +1,107 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class InputHandler : MonoBehaviour
+{
+    public Vector2 RawMovementInput { get; private set; }
+    public int NormInputX;
+    public int NormInputY;
+    public bool JumpInput { get; private set; }
+    public bool JumpInputStop { get; private set; }
+    
+    public bool RunInput { get; private set; }
+
+    public bool GrabInput { get; private set; }
+
+    [SerializeField]
+    private float inputHoldTime = 0.2f;
+
+    private float jumpInputStartTime;
+
+    private void Update()
+    {
+        CheckJumpInputHoldTime();
+    }
+
+
+    public void OnMoveInput(InputAction.CallbackContext context)
+    {
+        RawMovementInput = context.ReadValue<Vector2>();
+
+        if (Mathf.Abs(RawMovementInput.x) > 0.5f)
+        {
+            NormInputX = (int)(RawMovementInput * Vector2.right).normalized.x;
+            
+        }
+        else
+        {
+            NormInputX = 0;
+        }
+
+        if (Mathf.Abs(RawMovementInput.y) > 0.5f)
+        {
+            NormInputY = (int)(RawMovementInput * Vector2.up).normalized.y;
+            
+        }
+        else
+        {
+            NormInputY = 0;
+        }
+
+    }
+
+    public void OnJumpInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            JumpInput = true;
+            jumpInputStartTime = Time.time;
+            JumpInputStop = false;
+            Debug.Log("Jump");
+        }
+
+        if (context.canceled)
+        {
+            JumpInputStop = true;
+        }
+    }
+
+    public void OnRunInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            RunInput = true;
+        }
+
+        if (context.canceled)
+        {
+            RunInput = false;
+        }
+    }
+
+    public void OnGrabInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            GrabInput = true;
+        }
+
+        if (context.canceled)
+        {
+            GrabInput = false;
+        }
+    }
+
+    public void UseJumpInput() => JumpInput = false;
+
+    private void CheckJumpInputHoldTime()
+    {
+        if (Time.time >= jumpInputStartTime + inputHoldTime)
+        {
+            JumpInput = false;
+        }
+    }
+}
