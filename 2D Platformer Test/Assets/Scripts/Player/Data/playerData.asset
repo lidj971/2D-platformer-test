@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2701e4aaef9601148931e739a70432c3, type: 3}
   m_Name: playerData
   m_EditorClassIdentifier: 
-  movementVelovity: 17
+  movementVelocity: 10
   runningVelocity: 12
   inAirMovementVelocityMultiplier: 0
-  horizontalDamping: 0.9
-  runningDamping: 0.65
+  horizontalDamping: 0.773
+  runningDamping: 0.106
+  x: 10
   jumpVelocity: 15
   amountOfJumps: 2
   wallJumpVelocity: 20

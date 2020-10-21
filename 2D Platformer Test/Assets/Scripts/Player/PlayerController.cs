@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     public float amountOfJumpsleft;
     
-    float horizontalVelocity;
+    public float horizontalVelocity;
 
     public PlayerData playerData;
     private InputHandler inputHandler;
@@ -49,15 +49,15 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyMovement()
     {
-        horizontalVelocity = rb.velocity.x;
+        horizontalVelocity = rb.velocity.x + inputHandler.NormInputX * playerData.movementVelocity;
         if (inputHandler.RunInput)
         {
-            horizontalVelocity += inputHandler.NormInputX * playerData.runningVelocity;
+            horizontalVelocity += inputHandler.NormInputX;
             horizontalVelocity *= Mathf.Pow(1f - playerData.runningDamping, Time.deltaTime * 10f);
         }
         else
         {
-            horizontalVelocity += inputHandler.NormInputX * playerData.movementVelovity;
+            horizontalVelocity += inputHandler.NormInputX;
             horizontalVelocity *= Mathf.Pow(1f - playerData.horizontalDamping, Time.deltaTime * 10f);
         }
         

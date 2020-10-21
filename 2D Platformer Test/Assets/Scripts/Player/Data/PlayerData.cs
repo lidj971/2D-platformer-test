@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     [Header("Move")]
-    public float movementVelovity = 10f;
+    public float movementVelocity = 10f;
     public float runningVelocity = 13f;
     [Range(0, 1)]
     public float inAirMovementVelocityMultiplier;
@@ -14,6 +14,8 @@ public class PlayerData : ScriptableObject
     public float horizontalDamping = 0.5f;
     [Range(0, 1)]
     public float runningDamping = 0.65f;
+
+    public float x;
 
 
     [Header("Jump")]
