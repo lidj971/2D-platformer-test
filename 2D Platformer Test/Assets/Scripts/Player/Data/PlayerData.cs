@@ -15,8 +15,6 @@ public class PlayerData : ScriptableObject
     [Range(0, 1)]
     public float runningDamping = 0.65f;
 
-    public float x;
-
 
     [Header("Jump")]
     public float jumpVelocity = 15f;

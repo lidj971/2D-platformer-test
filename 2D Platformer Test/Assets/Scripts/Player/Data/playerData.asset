@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: playerData
   m_EditorClassIdentifier: 
   movementVelocity: 10
-  runningVelocity: 12
+  runningVelocity: 20
   inAirMovementVelocityMultiplier: 0
   horizontalDamping: 0.773
   runningDamping: 0.106
-  x: 10
   jumpVelocity: 15
   amountOfJumps: 2
   wallJumpVelocity: 20

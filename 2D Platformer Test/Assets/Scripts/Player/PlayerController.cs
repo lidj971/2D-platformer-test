@@ -49,17 +49,17 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyMovement()
     {
-        horizontalVelocity = rb.velocity.x + inputHandler.NormInputX * playerData.movementVelocity;
-        if (inputHandler.RunInput)
+        if(inputHandler.RunInput && isGrounded)
         {
-            horizontalVelocity += inputHandler.NormInputX;
-            horizontalVelocity *= Mathf.Pow(1f - playerData.runningDamping, Time.deltaTime * 10f);
-        }
-        else
+          horizontalVelocity = rb.velocity.x + inputHandler.NormInputX * playerData.runningVelocity;
+        }else
         {
-            horizontalVelocity += inputHandler.NormInputX;
-            horizontalVelocity *= Mathf.Pow(1f - playerData.horizontalDamping, Time.deltaTime * 10f);
+          horizontalVelocity = rb.velocity.x + inputHandler.NormInputX * playerData.movementVelocity;
         }
+        
+        horizontalVelocity += inputHandler.NormInputX;
+        horizontalVelocity *= Mathf.Pow(1f - playerData.horizontalDamping, Time.deltaTime * 10f);
+        
         
         
         rb.velocity = new Vector2(horizontalVelocity, rb.velocity.y);
