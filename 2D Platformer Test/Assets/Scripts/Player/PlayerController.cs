@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private bool isRunning;
 
     public float amountOfJumpsleft;
+    public float GroundedRemember;
     
     public float horizontalVelocity;
 
@@ -52,7 +53,8 @@ public class PlayerController : MonoBehaviour
         if(inputHandler.RunInput && isGrounded)
         {
           horizontalVelocity = rb.velocity.x + inputHandler.NormInputX * playerData.runningVelocity;
-        }else
+        }
+        else
         {
           horizontalVelocity = rb.velocity.x + inputHandler.NormInputX * playerData.movementVelocity;
         }
@@ -67,12 +69,14 @@ public class PlayerController : MonoBehaviour
 
     private void CheckIfCanJump()
     {
-        if (amountOfJumpsleft <= 0)
+        GroundedRemember -= Time.deltaTime;
+        if (isGrounded)
         {
+            GroundedRemember = playerData.coyoteTime;
             amountOfJumpsleft = playerData.amountOfJumps;
-
         }
-        if (isGrounded && amountOfJumpsleft > 0)
+        
+        if (GroundedRemember > 0 || amountOfJumpsleft > 0)
         {
             canJump = true;
         }
@@ -81,9 +85,11 @@ public class PlayerController : MonoBehaviour
             canJump = false;
         }
         
-        if (inputHandler.JumpInput)
+        if (inputHandler.JumpInput && canJump)
         {
+            GroundedRemember = 0;                               
             Jump();
+                     
         }
     }
 
@@ -104,16 +110,22 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (canJump)
+        
+        rb.velocity = new Vector2(rb.velocity.x, playerData.jumpVelocity);
+        
+        if (inputHandler.JumpInputStop)
         {
-            rb.velocity = new Vector2(rb.velocity.x, playerData.jumpVelocity);
+            amountOfJumpsleft--;
         }
+
         if (inputHandler.JumpInputStop && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, playerData.jumpVelocity * playerData.variableJumpHeightMultiplier);
+           
         }
 
-        amountOfJumpsleft--;
+
+        
     }
 
 }
