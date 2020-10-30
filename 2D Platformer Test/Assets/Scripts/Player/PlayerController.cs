@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool isTouchingGround;
     private bool backIsTouchingGround;
     private bool isRunning;
+    private bool hasJumped;
 
     public float amountOfJumpsleft;
     public float GroundedRemember;
@@ -112,11 +113,10 @@ public class PlayerController : MonoBehaviour
     {
         
         rb.velocity = new Vector2(rb.velocity.x, playerData.jumpVelocity);
-        
-        if (inputHandler.JumpInputStop)
-        {
-            amountOfJumpsleft--;
-        }
+        amountOfJumpsleft--;
+        Debug.Log("lol");
+
+
 
         if (inputHandler.JumpInputStop && isGrounded)
         {
@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
            
         }
 
-
+        
         
     }
 

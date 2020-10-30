@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: playerData
   m_EditorClassIdentifier: 
   movementVelocity: 10
-  runningVelocity: 20
+  runningVelocity: 15
   inAirMovementVelocityMultiplier: 0
   horizontalDamping: 0.773
   runningDamping: 0.106
@@ -22,7 +22,7 @@ MonoBehaviour:
   wallJumpVelocity: 20
   wallJumpTime: 0.4
   wallJumpAngle: {x: 1, y: 2}
-  coyoteTime: 0.2
+  coyoteTime: 0.1
   variableJumpHeightMultiplier: 0.305
   wallSlideVelocity: 3
   wallClimbVelocity: 3
