@@ -114,12 +114,13 @@ public class PlayerController : MonoBehaviour
         
         rb.velocity = new Vector2(rb.velocity.x, playerData.jumpVelocity);
         amountOfJumpsleft--;
-        Debug.Log("lol");
+        
 
 
 
-        if (inputHandler.JumpInputStop && isGrounded)
+        if (inputHandler.JumpInputStop && rb.velocity.y > 0)
         {
+            Debug.Log("lol");
             rb.velocity = new Vector2(rb.velocity.x, playerData.jumpVelocity * playerData.variableJumpHeightMultiplier);
            
         }

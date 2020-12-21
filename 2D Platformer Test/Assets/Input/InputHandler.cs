@@ -59,7 +59,6 @@ public class InputHandler : MonoBehaviour
         {
             JumpInput = true;
             jumpInputStartTime = Time.time;
-            JumpInputStop = false;
             Debug.Log("Jump");
         }
 
