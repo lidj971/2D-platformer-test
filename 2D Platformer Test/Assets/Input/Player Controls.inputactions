@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "WallGrab",
+                    "type": "Button",
+                    "id": "a2df010e-f905-4c4f-b3b2-bed8e0c1fb24",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -223,6 +231,28 @@
                     "processors": "",
                     "groups": "KeyBoard",
                     "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "959031cc-67c1-459b-8e36-f3214e139b55",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyBoard",
+                    "action": "WallGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd0cd53d-9641-4a80-8c6e-ae8ba2a03155",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "WallGrab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿  using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
@@ -58,8 +58,9 @@ public class InputHandler : MonoBehaviour
         if (context.started)
         {
             JumpInput = true;
+            JumpInputStop = false;
             jumpInputStartTime = Time.time;
-            Debug.Log("Jump");
+            
         }
 
         if (context.canceled)
