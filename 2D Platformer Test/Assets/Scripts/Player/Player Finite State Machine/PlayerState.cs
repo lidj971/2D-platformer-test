@@ -14,6 +14,7 @@ public class PlayerState
 
     protected bool isAnimationFinished;
     protected bool isExitingState;
+    
 
 
     public PlayerState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string stateName)

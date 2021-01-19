@@ -16,10 +16,8 @@ public class PlayerController : MonoBehaviour
     private bool backIsTouchingGround;
     private bool isRunning;
     private bool hasJumped;
-
     public float amountOfJumpsleft;
     public float GroundedRemember;
-    
     public float horizontalVelocity;
 
     public PlayerData playerData;
