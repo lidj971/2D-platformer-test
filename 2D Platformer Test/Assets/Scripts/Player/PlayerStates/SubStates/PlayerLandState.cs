@@ -8,10 +8,15 @@ public class PlayerLandState : PlayerGroundedState
     {
     }
 
+    public override void AnimationUpdate()
+    {
+        base.AnimationUpdate();
+        player.SetAnimationState(player.PLAYER_LANDING);
+    }
+
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        player.SetAnimationState(player.PLAYER_LANDING);
 
         player.KillVelocityX();
 

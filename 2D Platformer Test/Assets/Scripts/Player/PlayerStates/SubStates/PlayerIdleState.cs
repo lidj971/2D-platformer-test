@@ -8,6 +8,12 @@ public class PlayerIdleState : PlayerGroundedState
     {
     }
 
+    public override void AnimationUpdate()
+    {
+        base.AnimationUpdate();
+        player.SetAnimationState(player.PLAYER_IDLE);
+    }
+
     public override void DoChecks()
     {
         base.DoChecks();
@@ -17,7 +23,6 @@ public class PlayerIdleState : PlayerGroundedState
     {
         base.Enter();
         player.KillVelocityX();
-        player.SetAnimationState(player.PLAYER_IDLE);
     }
 
     public override void Exit()

@@ -12,23 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2701e4aaef9601148931e739a70432c3, type: 3}
   m_Name: playerData
   m_EditorClassIdentifier: 
-  movementVelocity: 6
-  runningVelocity: 15
+  movementVelocity: 8
+  runningVelocity: 0
   horizontalDamping: 0.8
   runningDamping: 0.106
   jumpVelocity: 15
-  amountOfJumps: 2
+  amountOfJumps: 1
   wallJumpVelocity: 20
-  wallJumpTime: 0.4
+  wallJumpTime: 0.45
   wallJumpAngle: {x: 1.2, y: 1.5}
-  inAirmovementVelocity: 6
+  inAirmovementVelocity: 6.5
   inAirhorizontalDamping: 0.877
   coyoteTime: 0.1
   variableJumpHeightMultiplier: 0.441
   wallSlideVelocity: 3
   wallClimbVelocity: 5
   startOffset: {x: 0.7, y: 1}
-  stopOffset: {x: 0.1, y: 0.2}
+  stopOffset: {x: 0, y: 0}
   groundCheckRadius: 0.3
   wallCheckDistance: 0.5
   whatIsGround:

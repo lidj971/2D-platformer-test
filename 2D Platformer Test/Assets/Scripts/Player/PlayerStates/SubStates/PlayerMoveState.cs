@@ -17,7 +17,6 @@ public class PlayerMoveState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
-        player.SetAnimationState(player.PLAYER_RUNSTART);
     }
 
     public override void Exit()
@@ -32,6 +31,19 @@ public class PlayerMoveState : PlayerGroundedState
 
         if (!isExitingState)
         {
+            if (player.CurrentVelocity.x <= 0.1 && player.CurrentVelocity.x >= -0.1 && !isExitingState && xInput == 0)
+            {
+                stateMachine.ChangeState(player.IdleState);
+            }
+        }
+    }
+
+    public override void AnimationUpdate()
+    {
+        base.AnimationUpdate();
+
+        if (!isExitingState)
+        {
             if (isAnimationFinished)
             {
                 if (xInput != 0)
@@ -43,11 +55,9 @@ public class PlayerMoveState : PlayerGroundedState
                     player.SetAnimationState(player.PLAYER_RUNSTOP);
                 }
             }
-
-
-            if (player.CurrentVelocity.x <= 0.1 && player.CurrentVelocity.x >= -0.1 && !isExitingState && xInput == 0)
+            else
             {
-                stateMachine.ChangeState(player.IdleState);
+                player.SetAnimationState(player.PLAYER_RUNSTART);
             }
         }
     }
@@ -57,6 +67,4 @@ public class PlayerMoveState : PlayerGroundedState
         base.PhysicsUpdate();
         player.SetVelocityX(playerData.movementVelocity,playerData.horizontalDamping);
     }
-
-
 }

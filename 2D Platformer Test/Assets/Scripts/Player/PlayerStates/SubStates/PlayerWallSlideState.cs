@@ -11,7 +11,6 @@ public class PlayerWallSlideState : PlayerTouchingWallState
     public override void Enter()
     {
         base.Enter();
-        player.SetAnimationState(player.PLAYER_WALLSLIDE);
     }
 
     public override void LogicUpdate()
@@ -27,5 +26,11 @@ public class PlayerWallSlideState : PlayerTouchingWallState
             }
         }
        
+    }
+
+    public override void AnimationUpdate()
+    {
+        base.AnimationUpdate();
+        player.SetAnimationState(player.PLAYER_WALLSLIDE);
     }
 }

@@ -42,6 +42,8 @@ public class PlayerState
 
     public virtual void LogicUpdate() { }
 
+    public virtual void AnimationUpdate() { }
+
     public virtual void PhysicsUpdate()
     {
         DoChecks();

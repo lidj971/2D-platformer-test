@@ -13,7 +13,6 @@ public class PlayerWallGrabState : PlayerTouchingWallState
     public override void Enter()
     {
         base.Enter();
-        player.SetAnimationState(player.PLAYER_WALLGRAB);
         holdPosition = player.transform.position;
 
         HoldPosition();
@@ -29,10 +28,11 @@ public class PlayerWallGrabState : PlayerTouchingWallState
     {
         base.LogicUpdate();
 
-        HoldPosition();
 
         if (!isExitingState)
         {
+
+            HoldPosition();
             if (yInput > 0)
             {
                 stateMachine.ChangeState(player.WallClimbState);
@@ -42,6 +42,12 @@ public class PlayerWallGrabState : PlayerTouchingWallState
                 stateMachine.ChangeState(player.WallSlideState);
             }
         }
+    }
+
+    public override void AnimationUpdate()
+    {
+        base.AnimationUpdate();
+        player.SetAnimationState(player.PLAYER_WALLGRAB);
     }
 
     private void HoldPosition()

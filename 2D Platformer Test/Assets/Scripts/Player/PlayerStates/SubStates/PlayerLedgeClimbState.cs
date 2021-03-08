@@ -49,7 +49,6 @@ public class PlayerLedgeClimbState : PlayerState
         stopPos.Set(cornerPos.x + (player.FacingDirection * playerData.stopOffset.x), cornerPos.y + playerData.stopOffset.y);
 
         player.transform.position = startPos;
-        player.SetAnimationState(player.PLAYER_LEDGEHOLD);
     }
 
     public override void Exit()
@@ -89,7 +88,7 @@ public class PlayerLedgeClimbState : PlayerState
             }
             else if (jumpInput)
             {
-                player.WallJumpState.wallJumpDirecition = -player.FacingDirection;
+                player.WallJumpState.DetermineWallJumpDirecton(true);
                 stateMachine.ChangeState(player.WallJumpState);
             }
             else if (yInput == -1 && !isClimbing)
@@ -102,5 +101,20 @@ public class PlayerLedgeClimbState : PlayerState
 
     }
 
+    public override void AnimationUpdate()
+    {
+        base.AnimationUpdate();
+        if (xInput == player.FacingDirection)
+        {
+            player.SetAnimationState(player.PLAYER_LEDGECLIMB);
+        }
+        else
+        {
+            player.SetAnimationState(player.PLAYER_LEDGEHOLD);
+        }
+    }
+
     public void SetDetecetedPositon(Vector2 pos) => detectedPos = pos;
+
+    
 }

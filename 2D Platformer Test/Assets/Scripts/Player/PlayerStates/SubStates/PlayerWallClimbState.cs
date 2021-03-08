@@ -11,7 +11,6 @@ public class PlayerWallClimbState : PlayerTouchingWallState
     public override void Enter()
     {
         base.Enter();
-        player.SetAnimationState(player.PLAYER_WALLCLIMB);
     }
 
     public override void LogicUpdate()
@@ -27,5 +26,11 @@ public class PlayerWallClimbState : PlayerTouchingWallState
                 stateMachine.ChangeState(player.WallGrabState);
             }
         }
+    }
+    
+    public override void AnimationUpdate()
+    {
+        base.AnimationUpdate();
+        player.SetAnimationState(player.PLAYER_WALLCLIMB);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using Mirror;
+using Cinemachine;
 
 public class Player : NetworkBehaviour
 {
@@ -65,53 +66,50 @@ public class Player : NetworkBehaviour
 
     #region Other Variables
     public Vector2 CurrentVelocity { get; private set; }
+    private Vector2 workspace;
     public int FacingDirection { get; private set; }
-    [HideInInspector]
-    public Vector2 workspace;
     public SpriteRenderer ui;
-    public GameObject dot;
+    public Transform cameraPoint;
+
+
     #endregion
 
     #region Unity Callback Functions 
     private void Awake()
     {
-        //if (this.isLocalPlayer)
-        {
-            StateMachine = new PlayerStateMachine();
-
-            IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
-            MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
-            JumpState = new PlayerJumpState(this, StateMachine, playerData, "jump");
-            InAirState = new PlayerInAirState(this, StateMachine, playerData, "inAir");
-            LandState = new PlayerLandState(this, StateMachine, playerData, "land");
-            WallSlideState = new PlayerWallSlideState(this, StateMachine, playerData, "WallSlide");
-            WallGrabState = new PlayerWallGrabState(this, StateMachine, playerData, "WallGrab");
-            WallClimbState = new PlayerWallClimbState(this, StateMachine, playerData, "WallClimb");
-            WallJumpState = new PlayerWallJumpState(this, StateMachine, playerData, "WallJump");
-            LedgeClimbState = new PlayerLedgeClimbState(this, StateMachine, playerData, "LedgeClimb");
-
-            PLAYER_IDLE = "Player_Idle";
-            PLAYER_RUNSTART = "Player_RunStart";
-            PLAYER_RUN = "Player_Run";
-            PLAYER_RUNSTOP = "Player_RunStop";
-            PLAYER_JUMP = "Player_Jump";
-            PLAYER_JUMPTOFALL = "Player_JumpToFall";
-            PLAYER_LANDING = "Player_Landing";
-            PLAYER_WALLSLIDE = "Player_WallSlide";
-            PLAYER_WALLGRAB = "Player_WallGrab";
-            PLAYER_WALLCLIMB = "Player_WallClimb";
-            PLAYER_LEDGEGRAB = "Player_LedgeGrab";
-            PLAYER_LEDGEHOLD = "Player_LedgeHold";
-            PLAYER_LEDGECLIMB = "Player_LedgeClimb";
-
-        }
         
+        StateMachine = new PlayerStateMachine();
+
+        IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
+        MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
+        JumpState = new PlayerJumpState(this, StateMachine, playerData, "jump");
+        InAirState = new PlayerInAirState(this, StateMachine, playerData, "inAir");
+        LandState = new PlayerLandState(this, StateMachine, playerData, "land");
+        WallSlideState = new PlayerWallSlideState(this, StateMachine, playerData, "WallSlide");
+        WallGrabState = new PlayerWallGrabState(this, StateMachine, playerData, "WallGrab");
+        WallClimbState = new PlayerWallClimbState(this, StateMachine, playerData, "WallClimb");
+        WallJumpState = new PlayerWallJumpState(this, StateMachine, playerData, "WallJump");
+        LedgeClimbState = new PlayerLedgeClimbState(this, StateMachine, playerData, "LedgeClimb");
+
+        PLAYER_IDLE = "Player_Idle";
+        PLAYER_RUNSTART = "Player_RunStart";
+        PLAYER_RUN = "Player_Run";
+        PLAYER_RUNSTOP = "Player_RunStop";
+        PLAYER_JUMP = "Player_Jump";
+        PLAYER_JUMPTOFALL = "Player_JumpToFall";
+        PLAYER_LANDING = "Player_Landing";
+        PLAYER_WALLSLIDE = "Player_WallSlide";
+        PLAYER_WALLGRAB = "Player_WallGrab";
+        PLAYER_WALLCLIMB = "Player_WallClimb";
+        PLAYER_LEDGEGRAB = "Player_LedgeGrab";
+        PLAYER_LEDGEHOLD = "Player_LedgeHold";
+        PLAYER_LEDGECLIMB = "Player_LedgeClimb";
     }
 
 
     private void Start()
     {
-        //if (this.isLocalPlayer)
+        //if (hasAuthority)
         {
             FacingDirection = 1;
 
@@ -125,16 +123,16 @@ public class Player : NetworkBehaviour
 
             SR = GetComponent<SpriteRenderer>();
         }
-        
     }
 
     private void Update()
     {
-        //if (this.isLocalPlayer)
+        //if (hasAuthority)
         {
             CurrentVelocity = RB.velocity;
             StateMachine.CurrentState.LogicUpdate();
-            if (this.isLocalPlayer)
+            StateMachine.CurrentState.AnimationUpdate();
+            if (hasAuthority)
             {
                 ui.color = new Color(0, 0, 255);
 
@@ -150,7 +148,7 @@ public class Player : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        //if (this.isLocalPlayer)
+        //if (hasAuthority)
         {
             StateMachine.CurrentState.PhysicsUpdate();
         }
@@ -158,22 +156,40 @@ public class Player : NetworkBehaviour
     #endregion
 
     #region Set Functions 
+
+    //set the velocity so that you walljump at an angle
+
+
+    [Client]
     public void SetVelocity(float velocity, Vector2 angle, int direction)
     {
-        if (this.isLocalPlayer)
+        if (hasAuthority)
         {
-            angle.Normalize();
-            workspace.Set(angle.x * velocity * direction, angle.y * velocity);
-            RB.velocity = workspace;
-            CurrentVelocity = workspace;
+            CmdSetVelocity(velocity, angle, direction);
         }
     }
 
+    [Command]
+    private void CmdSetVelocity(float velocity, Vector2 angle, int direction)
+    {
+        RpcSetVelocity(velocity, angle, direction);
+    }
 
+    [ClientRpc]
+    private void RpcSetVelocity(float velocity, Vector2 angle, int direction)
+    {
+        angle.Normalize();
+        workspace.Set(angle.x * velocity * direction, angle.y * velocity);
+        RB.velocity = workspace;
+        CurrentVelocity = workspace;
+    }
+
+    //[Client]
     public void SetVelocityX(float velocity, float horizontalDamping)
     {
         if (this.isLocalPlayer)
         {
+            //CmdSetVelocityX(velocity, horizontalDamping);
             workspace.Set(RB.velocity.x + velocity * InputHandler.NormInputX, CurrentVelocity.y);
             workspace.x += InputHandler.NormInputX;
             workspace.x *= Mathf.Pow(1f - horizontalDamping, Time.deltaTime * 10f);
@@ -182,25 +198,66 @@ public class Player : NetworkBehaviour
         }
     }
 
+    //[Command]
+    /*private void CmdSetVelocityX(float velocity, float horizontalDamping)
+    {
+        RpcSetVelocityX(velocity, horizontalDamping);
+    }
+
+    //[ClientRpc]
+    private void RpcSetVelocityX(float velocity, float horizontalDamping)
+    {
+        workspace.Set(RB.velocity.x + velocity * InputHandler.NormInputX, CurrentVelocity.y);
+        workspace.x += InputHandler.NormInputX;
+        workspace.x *= Mathf.Pow(1f - horizontalDamping, Time.deltaTime * 10f);
+        RB.velocity = workspace;
+        CurrentVelocity = workspace;
+    }*/
+
+    [Client]
     public void SetVelocityY(float velocity)
     {
         if (this.isLocalPlayer)
         {
-            workspace.Set(CurrentVelocity.x, velocity);
-            RB.velocity = workspace;
-            CurrentVelocity = workspace;
+            CmdSetVelocityY(velocity);
         }
-        
     }
 
-    public void SetAnimationState(string newState) 
+    [Command]
+    private void CmdSetVelocityY(float velocity)
     {
-        if (this.isLocalPlayer)
+        RpcSetVelocityY(velocity);
+    }
+
+    [ClientRpc]
+    private void RpcSetVelocityY(float velocity)
+    {
+        workspace.Set(CurrentVelocity.x, velocity);
+        RB.velocity = workspace;
+        CurrentVelocity = workspace;
+    }
+
+
+    public void SetAnimationState(string newState)
+    {
+        if (hasAuthority)
         {
+            //CmdSetAnimationState(newState);
             Anim.Play(newState);
         }
-
     }
+
+
+    /*private void CmdSetAnimationState(string newState)
+    {
+        RpcSetAnimationState(newState);
+    }
+
+    [ClientRpc]
+    private void RpcSetAnimationState(string newState)
+    {
+        Anim.Play(newState);
+    }*/
     #endregion
 
     #region Check Functions
@@ -253,11 +310,11 @@ public class Player : NetworkBehaviour
     
     public void KillVelocity()
     {
-        
         RB.velocity = Vector2.zero;
         CurrentVelocity = Vector2.zero;
     }
 
+    //determines the position of the corner of the ledge while ledgeholding
     public Vector2 DetermineCornerPosition()
     {
         RaycastHit2D xHit = Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);

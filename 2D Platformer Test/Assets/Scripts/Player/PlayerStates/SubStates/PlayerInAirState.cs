@@ -52,7 +52,6 @@ public class PlayerInAirState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        player.SetAnimationState(player.PLAYER_JUMP);
     }
 
     public override void Exit()
@@ -77,11 +76,6 @@ public class PlayerInAirState : PlayerState
         grabInput = player.InputHandler.GrabInput;
 
         CheckJumpMultiplier();
-        //animaiton change
-        if(player.CurrentVelocity.y < 0.01f) 
-        {
-            player.SetAnimationState(player.PLAYER_JUMPTOFALL);
-        }
         //state change
         if (isGrounded && player.CurrentVelocity.y < 0.01f)
         {
@@ -115,6 +109,19 @@ public class PlayerInAirState : PlayerState
         {
             player.CheckIfShouldFlip(xInput);
             canRun = true;
+        }
+    }
+
+    public override void AnimationUpdate()
+    {
+        base.AnimationUpdate();
+        if (player.CurrentVelocity.y < 0.01f)
+        {
+            player.SetAnimationState(player.PLAYER_JUMPTOFALL);
+        }
+        else
+        {
+            player.SetAnimationState(player.PLAYER_JUMP);
         }
     }
 
@@ -175,5 +182,6 @@ public class PlayerInAirState : PlayerState
 
     public void SetIsJumping() => isJumping = true;
 
+    
 }
 
