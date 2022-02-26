@@ -72,10 +72,11 @@ public class PlayerTouchingWallState : PlayerState
         {
             stateMachine.ChangeState(player.InAirState);
         }
+        /*Transitionde walltouch a ledgeClimb
         else if(isTouchingWall && !isTouchingLedge)
         {
             player.StateMachine.ChangeState(player.LedgeClimbState);
-        }
+        }*/
 
     }
 

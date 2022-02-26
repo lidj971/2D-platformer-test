@@ -7,11 +7,8 @@ public class PlayerData : ScriptableObject
 {
     [Header("Move")]
     public float movementVelocity = 10f;
-    public float runningVelocity = 13f;
     [Range(0, 1)]
     public float horizontalDamping = 0.5f;
-    [Range(0, 1)]
-    public float runningDamping = 0.65f;
 
     [Header("Jump")]
     public float jumpVelocity = 15f;
@@ -23,9 +20,6 @@ public class PlayerData : ScriptableObject
     public Vector2 wallJumpAngle = new Vector2(1, 2);
 
     [Header("In Air")]
-    public float inAirmovementVelocity = 10f;
-    [Range(0, 1)]
-    public float inAirhorizontalDamping = 0.5f;
     public float coyoteTime = 0.2f;
     [Range(0, 1)]
     public float variableJumpHeightMultiplier = 0.5f;

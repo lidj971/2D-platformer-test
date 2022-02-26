@@ -27,7 +27,6 @@ public class PlayerLedgeClimbState : PlayerState
     public override void AnimationFinishTrigger()
     {
         base.AnimationFinishTrigger();
-        
     }
 
     public override void AnimationTrigger()
@@ -84,9 +83,8 @@ public class PlayerLedgeClimbState : PlayerState
             if (xInput == player.FacingDirection && !isClimbing)
             {
                 isClimbing = true;
-                player.SetAnimationState(player.PLAYER_LEDGECLIMB);
             }
-            else if (jumpInput)
+            else if (jumpInput && !isClimbing)
             {
                 player.WallJumpState.DetermineWallJumpDirecton(true);
                 stateMachine.ChangeState(player.WallJumpState);
@@ -108,7 +106,7 @@ public class PlayerLedgeClimbState : PlayerState
         {
             player.SetAnimationState(player.PLAYER_LEDGECLIMB);
         }
-        else
+        else if (player.currentAnimationState != player.PLAYER_LEDGECLIMB && player.currentAnimationState != player.PLAYER_IDLE)
         {
             player.SetAnimationState(player.PLAYER_LEDGEHOLD);
         }

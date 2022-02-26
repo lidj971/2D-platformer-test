@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
-using Mirror;
 using Cinemachine;
 
-public class Player : NetworkBehaviour
+public class Player : MonoBehaviour
 {
     #region StateVariables
     public PlayerStateMachine StateMachine { get; private set; }
@@ -54,6 +52,7 @@ public class Player : NetworkBehaviour
     public string PLAYER_RUNSTOP { get; private set; }
     public string PLAYER_JUMP { get; private set; }
     public string PLAYER_JUMPTOFALL { get; private set; }
+    public string PLAYER_FALL { get; private set; }
     public string PLAYER_LANDING { get; private set; }
     public string PLAYER_WALLSLIDE { get; private set; }
     public string PLAYER_WALLGRAB { get; private set; }
@@ -61,6 +60,7 @@ public class Player : NetworkBehaviour
     public string PLAYER_LEDGECLIMB { get; private set; }
     public string PLAYER_LEDGEGRAB { get; private set; }
     public string PLAYER_LEDGEHOLD { get; private set; }
+    
 
     #endregion
 
@@ -68,8 +68,7 @@ public class Player : NetworkBehaviour
     public Vector2 CurrentVelocity { get; private set; }
     private Vector2 workspace;
     public int FacingDirection { get; private set; }
-    public SpriteRenderer ui;
-    public Transform cameraPoint;
+    public string currentAnimationState;
 
 
     #endregion
@@ -97,6 +96,7 @@ public class Player : NetworkBehaviour
         PLAYER_RUNSTOP = "Player_RunStop";
         PLAYER_JUMP = "Player_Jump";
         PLAYER_JUMPTOFALL = "Player_JumpToFall";
+        PLAYER_FALL = "Player_Fall";
         PLAYER_LANDING = "Player_Landing";
         PLAYER_WALLSLIDE = "Player_WallSlide";
         PLAYER_WALLGRAB = "Player_WallGrab";
@@ -109,49 +109,32 @@ public class Player : NetworkBehaviour
 
     private void Start()
     {
-        //if (hasAuthority)
-        {
-            FacingDirection = 1;
 
-            Anim = GetComponent<Animator>();
+        FacingDirection = 1;
 
-            InputHandler = GetComponent<InputHandler>();
+        Anim = GetComponent<Animator>();
 
-            RB = GetComponent<Rigidbody2D>();
+        InputHandler = GetComponent<InputHandler>();
 
-            StateMachine.Initialize(IdleState);
+        RB = GetComponent<Rigidbody2D>();
 
-            SR = GetComponent<SpriteRenderer>();
-        }
+        StateMachine.Initialize(IdleState);
+
+        SR = GetComponent<SpriteRenderer>();
+
     }
 
     private void Update()
     {
-        //if (hasAuthority)
-        {
-            CurrentVelocity = RB.velocity;
-            StateMachine.CurrentState.LogicUpdate();
-            StateMachine.CurrentState.AnimationUpdate();
-            if (hasAuthority)
-            {
-                ui.color = new Color(0, 0, 255);
-
-            }
-            else
-            {
-                ui.color = new Color(255, 0, 0);
-
-            }
-        }
+        CurrentVelocity = RB.velocity;
+        StateMachine.CurrentState.LogicUpdate();
+        StateMachine.CurrentState.AnimationUpdate();
     }
 
 
     private void FixedUpdate()
     {
-        //if (hasAuthority)
-        {
-            StateMachine.CurrentState.PhysicsUpdate();
-        }
+        StateMachine.CurrentState.PhysicsUpdate();
     }
     #endregion
 
@@ -160,23 +143,7 @@ public class Player : NetworkBehaviour
     //set the velocity so that you walljump at an angle
 
 
-    [Client]
     public void SetVelocity(float velocity, Vector2 angle, int direction)
-    {
-        if (hasAuthority)
-        {
-            CmdSetVelocity(velocity, angle, direction);
-        }
-    }
-
-    [Command]
-    private void CmdSetVelocity(float velocity, Vector2 angle, int direction)
-    {
-        RpcSetVelocity(velocity, angle, direction);
-    }
-
-    [ClientRpc]
-    private void RpcSetVelocity(float velocity, Vector2 angle, int direction)
     {
         angle.Normalize();
         workspace.Set(angle.x * velocity * direction, angle.y * velocity);
@@ -184,80 +151,27 @@ public class Player : NetworkBehaviour
         CurrentVelocity = workspace;
     }
 
-    //[Client]
     public void SetVelocityX(float velocity, float horizontalDamping)
-    {
-        if (this.isLocalPlayer)
-        {
-            //CmdSetVelocityX(velocity, horizontalDamping);
-            workspace.Set(RB.velocity.x + velocity * InputHandler.NormInputX, CurrentVelocity.y);
-            workspace.x += InputHandler.NormInputX;
-            workspace.x *= Mathf.Pow(1f - horizontalDamping, Time.deltaTime * 10f);
-            RB.velocity = workspace;
-            CurrentVelocity = workspace;
-        }
-    }
-
-    //[Command]
-    /*private void CmdSetVelocityX(float velocity, float horizontalDamping)
-    {
-        RpcSetVelocityX(velocity, horizontalDamping);
-    }
-
-    //[ClientRpc]
-    private void RpcSetVelocityX(float velocity, float horizontalDamping)
     {
         workspace.Set(RB.velocity.x + velocity * InputHandler.NormInputX, CurrentVelocity.y);
         workspace.x += InputHandler.NormInputX;
         workspace.x *= Mathf.Pow(1f - horizontalDamping, Time.deltaTime * 10f);
         RB.velocity = workspace;
         CurrentVelocity = workspace;
-    }*/
+    }
 
-    [Client]
     public void SetVelocityY(float velocity)
-    {
-        if (this.isLocalPlayer)
-        {
-            CmdSetVelocityY(velocity);
-        }
-    }
-
-    [Command]
-    private void CmdSetVelocityY(float velocity)
-    {
-        RpcSetVelocityY(velocity);
-    }
-
-    [ClientRpc]
-    private void RpcSetVelocityY(float velocity)
     {
         workspace.Set(CurrentVelocity.x, velocity);
         RB.velocity = workspace;
         CurrentVelocity = workspace;
     }
 
-
     public void SetAnimationState(string newState)
     {
-        if (hasAuthority)
-        {
-            //CmdSetAnimationState(newState);
-            Anim.Play(newState);
-        }
-    }
-
-
-    /*private void CmdSetAnimationState(string newState)
-    {
-        RpcSetAnimationState(newState);
-    }
-
-    [ClientRpc]
-    private void RpcSetAnimationState(string newState)
-    {
         Anim.Play(newState);
-    }*/
+        currentAnimationState = newState;
+    }
     #endregion
 
     #region Check Functions
@@ -325,7 +239,5 @@ public class Player : NetworkBehaviour
         workspace.Set(wallCheck.position.x + (xDist * FacingDirection), ledgeCheck.position.y - yDist);
         return workspace;
     }
-    
-
     #endregion
 }

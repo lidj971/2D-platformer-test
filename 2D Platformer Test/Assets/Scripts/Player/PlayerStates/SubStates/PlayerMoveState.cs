@@ -42,23 +42,13 @@ public class PlayerMoveState : PlayerGroundedState
     {
         base.AnimationUpdate();
 
-        if (!isExitingState)
+        if (xInput != 0)
         {
-            if (isAnimationFinished)
-            {
-                if (xInput != 0)
-                {
-                    player.SetAnimationState(player.PLAYER_RUN);
-                }
-                else
-                {
-                    player.SetAnimationState(player.PLAYER_RUNSTOP);
-                }
-            }
-            else
-            {
-                player.SetAnimationState(player.PLAYER_RUNSTART);
-            }
+            player.SetAnimationState(player.PLAYER_RUN);
+        }
+        else
+        {
+            player.SetAnimationState(player.PLAYER_IDLE);
         }
     }
 
