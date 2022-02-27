@@ -34,14 +34,13 @@ public class PlayerWallJumpState : PlayerAbilityState
     public override void AnimationUpdate()
     {
         base.AnimationUpdate();
-        
-        if (player.CurrentVelocity.y < 0.01f)
+        if (player.CurrentVelocity.y > 0.0001f)
         {
-            player.SetAnimationState(player.PLAYER_JUMPTOFALL);
-        }
-        else
+            player.SetAnimationFrame(player.PLAYER_JUMP, 3, 0);
+        }        
+        else 
         {
-            player.SetAnimationState(player.PLAYER_JUMP);
+            player.SetAnimationFrame(player.PLAYER_JUMP, 3, 2);
         }
     }
 

@@ -129,6 +129,7 @@ public class Player : MonoBehaviour
         CurrentVelocity = RB.velocity;
         StateMachine.CurrentState.LogicUpdate();
         StateMachine.CurrentState.AnimationUpdate();
+        isTouchingLedge = CheckIfTouchingLedge();
     }
 
 
@@ -170,6 +171,12 @@ public class Player : MonoBehaviour
     public void SetAnimationState(string newState)
     {
         Anim.Play(newState);
+        currentAnimationState = newState;
+    }
+
+    public void SetAnimationFrame(string newState,int totalFrames,int frame)
+    {
+        Anim.Play(newState, 0, (1f / totalFrames) * frame);
         currentAnimationState = newState;
     }
     #endregion

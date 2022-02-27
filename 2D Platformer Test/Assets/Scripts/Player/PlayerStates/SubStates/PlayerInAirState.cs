@@ -81,11 +81,11 @@ public class PlayerInAirState : PlayerState
         {
             stateMachine.ChangeState(player.LandState);
         }
-        /*Transistion en du air state au ledgeClimb
         else if(isTouchingWall && !isTouchingLedge)
         {
             stateMachine.ChangeState(player.LedgeClimbState);
-        }*/
+            Debug.Log("Idiot");
+        }
         else if(jumpInput && (isTouchingWall || isTouchingWallBack || wallJumpCoyoteTime))
         {
             StopWallJumpCoyoteTime();
@@ -104,7 +104,6 @@ public class PlayerInAirState : PlayerState
         else if (isTouchingWall && xInput == player.FacingDirection && player.CurrentVelocity.y <= 0)
         {
             stateMachine.ChangeState(player.WallSlideState);
-
         }
         else
         {
@@ -116,13 +115,14 @@ public class PlayerInAirState : PlayerState
     public override void AnimationUpdate()
     {
         base.AnimationUpdate();
-        if (player.CurrentVelocity.y < 0.0001f)
+        
+        if (player.CurrentVelocity.y > 0.0001f)
         {
-            player.SetAnimationState(player.PLAYER_JUMPTOFALL);
+            player.SetAnimationFrame(player.PLAYER_JUMP,2,0);
         }
-        else
+        else 
         {
-            player.SetAnimationState(player.PLAYER_JUMP);
+            player.SetAnimationFrame(player.PLAYER_JUMP,2,1);
         }
     }
 
