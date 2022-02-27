@@ -142,7 +142,6 @@ public class Player : MonoBehaviour
 
     //set the velocity so that you walljump at an angle
 
-
     public void SetVelocity(float velocity, Vector2 angle, int direction)
     {
         angle.Normalize();
