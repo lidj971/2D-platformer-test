@@ -74,6 +74,78 @@ TextureImporter:
   - first:
       213: 4689127311668835269
     second: PrototypeHero_remake_23
+  - first:
+      213: 7191552028800859271
+    second: PrototypeHero_remake_24
+  - first:
+      213: -6726211624955273821
+    second: PrototypeHero_remake_25
+  - first:
+      213: -8052153009208153704
+    second: PrototypeHero_remake_26
+  - first:
+      213: 6328325781399577103
+    second: PrototypeHero_remake_27
+  - first:
+      213: -7877213734834641754
+    second: PrototypeHero_remake_28
+  - first:
+      213: 5402254814907602233
+    second: PrototypeHero_remake_29
+  - first:
+      213: 192743338068657304
+    second: PrototypeHero_remake_30
+  - first:
+      213: 1292338927540783792
+    second: PrototypeHero_remake_31
+  - first:
+      213: 8734439550215121868
+    second: PrototypeHero_remake_32
+  - first:
+      213: 1273312112927982024
+    second: PrototypeHero_remake_33
+  - first:
+      213: 2843764548429788892
+    second: PrototypeHero_remake_34
+  - first:
+      213: -5664192154859528769
+    second: PrototypeHero_remake_35
+  - first:
+      213: 708370653703589329
+    second: PrototypeHero_remake_36
+  - first:
+      213: 3958000393640007535
+    second: PrototypeHero_remake_37
+  - first:
+      213: 1516591789743716981
+    second: PrototypeHero_remake_38
+  - first:
+      213: 1813691851477839268
+    second: PrototypeHero_remake_39
+  - first:
+      213: -8493126963988872998
+    second: PrototypeHero_remake_40
+  - first:
+      213: 6544473146168794651
+    second: PrototypeHero_remake_41
+  - first:
+      213: 9153824056718498113
+    second: PrototypeHero_remake_42
+  - first:
+      213: 5537955765465071409
+    second: PrototypeHero_remake_43
+  - first:
+      213: -1984999933595639474
+    second: PrototypeHero_remake_44
+  - first:
+      213: -307935678059803859
+    second: PrototypeHero_remake_45
+  - first:
+      213: -1477637480664811545
+    second: PrototypeHero_remake_46
+  - first:
+      213: -1509862111011467577
+    second: PrototypeHero_remake_47
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -179,9 +251,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1680
-        width: 1050
-        height: 840
+        y: 2048.3333
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,10 +271,10 @@ TextureImporter:
       name: PrototypeHero_remake_1
       rect:
         serializedVersion: 2
-        x: 1050
-        y: 1680
-        width: 1050
-        height: 840
+        x: 512
+        y: 2048.3333
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,10 +292,10 @@ TextureImporter:
       name: PrototypeHero_remake_2
       rect:
         serializedVersion: 2
-        x: 2100
-        y: 1680
-        width: 1050
-        height: 840
+        x: 1024
+        y: 2048.3333
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,10 +313,10 @@ TextureImporter:
       name: PrototypeHero_remake_3
       rect:
         serializedVersion: 2
-        x: 3150
-        y: 1680
-        width: 1050
-        height: 840
+        x: 1536
+        y: 2048.3333
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,10 +334,10 @@ TextureImporter:
       name: PrototypeHero_remake_4
       rect:
         serializedVersion: 2
-        x: 4200
-        y: 1680
-        width: 1050
-        height: 840
+        x: 2048
+        y: 2048.3333
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,10 +355,10 @@ TextureImporter:
       name: PrototypeHero_remake_5
       rect:
         serializedVersion: 2
-        x: 5250
-        y: 1680
-        width: 1050
-        height: 840
+        x: 2560
+        y: 2048.3333
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -304,10 +376,10 @@ TextureImporter:
       name: PrototypeHero_remake_6
       rect:
         serializedVersion: 2
-        x: 6300
-        y: 1680
-        width: 1050
-        height: 840
+        x: 3072
+        y: 2048.3333
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,10 +397,10 @@ TextureImporter:
       name: PrototypeHero_remake_7
       rect:
         serializedVersion: 2
-        x: 7350
-        y: 1680
-        width: 1050
-        height: 840
+        x: 3584
+        y: 2048.3333
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -347,9 +419,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 840
-        width: 1050
-        height: 840
+        y: 1639.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -367,10 +439,10 @@ TextureImporter:
       name: PrototypeHero_remake_9
       rect:
         serializedVersion: 2
-        x: 1050
-        y: 840
-        width: 1050
-        height: 840
+        x: 512
+        y: 1639.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -388,10 +460,10 @@ TextureImporter:
       name: PrototypeHero_remake_10
       rect:
         serializedVersion: 2
-        x: 2100
-        y: 840
-        width: 1050
-        height: 840
+        x: 1024
+        y: 1639.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -409,10 +481,10 @@ TextureImporter:
       name: PrototypeHero_remake_11
       rect:
         serializedVersion: 2
-        x: 3150
-        y: 840
-        width: 1050
-        height: 840
+        x: 1536
+        y: 1639.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -430,10 +502,10 @@ TextureImporter:
       name: PrototypeHero_remake_12
       rect:
         serializedVersion: 2
-        x: 4200
-        y: 840
-        width: 1050
-        height: 840
+        x: 2048
+        y: 1639.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -451,10 +523,10 @@ TextureImporter:
       name: PrototypeHero_remake_13
       rect:
         serializedVersion: 2
-        x: 5250
-        y: 840
-        width: 1050
-        height: 840
+        x: 2560
+        y: 1639.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -472,10 +544,10 @@ TextureImporter:
       name: PrototypeHero_remake_14
       rect:
         serializedVersion: 2
-        x: 6300
-        y: 840
-        width: 1050
-        height: 840
+        x: 3072
+        y: 1639.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -493,10 +565,10 @@ TextureImporter:
       name: PrototypeHero_remake_15
       rect:
         serializedVersion: 2
-        x: 7350
-        y: 840
-        width: 1050
-        height: 840
+        x: 3584
+        y: 1639.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -515,9 +587,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1050
-        height: 840
+        y: 1230.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -535,10 +607,10 @@ TextureImporter:
       name: PrototypeHero_remake_17
       rect:
         serializedVersion: 2
-        x: 1050
-        y: 0
-        width: 1050
-        height: 840
+        x: 512
+        y: 1230.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -556,10 +628,10 @@ TextureImporter:
       name: PrototypeHero_remake_18
       rect:
         serializedVersion: 2
-        x: 2100
-        y: 0
-        width: 1050
-        height: 840
+        x: 1024
+        y: 1230.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -577,10 +649,10 @@ TextureImporter:
       name: PrototypeHero_remake_19
       rect:
         serializedVersion: 2
-        x: 3150
-        y: 0
-        width: 1050
-        height: 840
+        x: 1536
+        y: 1230.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -598,10 +670,10 @@ TextureImporter:
       name: PrototypeHero_remake_20
       rect:
         serializedVersion: 2
-        x: 4200
-        y: 0
-        width: 1050
-        height: 840
+        x: 2048
+        y: 1230.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -619,10 +691,10 @@ TextureImporter:
       name: PrototypeHero_remake_21
       rect:
         serializedVersion: 2
-        x: 5250
-        y: 0
-        width: 1050
-        height: 840
+        x: 2560
+        y: 1230.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -640,10 +712,10 @@ TextureImporter:
       name: PrototypeHero_remake_22
       rect:
         serializedVersion: 2
-        x: 6300
-        y: 0
-        width: 1050
-        height: 840
+        x: 3072
+        y: 1230.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -661,10 +733,10 @@ TextureImporter:
       name: PrototypeHero_remake_23
       rect:
         serializedVersion: 2
-        x: 7350
-        y: 0
-        width: 1050
-        height: 840
+        x: 3584
+        y: 1230.3334
+        width: 512
+        height: 409.66666
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -674,6 +746,510 @@ TextureImporter:
       bones: []
       spriteID: 5c37a962270231140800000000000000
       internalID: 4689127311668835269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 821.3334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78c3a6cb7768dc360800000000000000
+      internalID: 7191552028800859271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_25
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 821.3334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ad10720a22b7a2a0800000000000000
+      internalID: -6726211624955273821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_26
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 821.3334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8992e011081014090800000000000000
+      internalID: -8052153009208153704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_27
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 821.3334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f02a44fe4cab2d750800000000000000
+      internalID: 6328325781399577103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_28
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 821.3334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a46a5be7d38ea290800000000000000
+      internalID: -7877213734834641754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_29
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 821.3334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93516bcb12aa8fa40800000000000000
+      internalID: 5402254814907602233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_30
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 821.3334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 894c7667b03cca200800000000000000
+      internalID: 192743338068657304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_31
+      rect:
+        serializedVersion: 2
+        x: 3584
+        y: 821.3334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ba4a71586f4fe110800000000000000
+      internalID: 1292338927540783792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccbe1be6e76f63970800000000000000
+      internalID: 8734439550215121868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_33
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c14643de96bba110800000000000000
+      internalID: 1273312112927982024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_34
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd6b1063ac4177720800000000000000
+      internalID: 2843764548429788892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_35
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbd1b0ece3fb461b0800000000000000
+      internalID: -5664192154859528769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_36
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dd405f3b53a4d900800000000000000
+      internalID: 708370653703589329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_37
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f67d4cb3364ade630800000000000000
+      internalID: 3958000393640007535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_38
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57ab2f092340c0510800000000000000
+      internalID: 1516591789743716981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_39
+      rect:
+        serializedVersion: 2
+        x: 3584
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ad6b5b21278b2910800000000000000
+      internalID: 1813691851477839268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3.3333435
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad0c627560a522a80800000000000000
+      internalID: -8493126963988872998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_41
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 3.3333435
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1e597ff6a3a2da50800000000000000
+      internalID: 6544473146168794651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_42
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 3.3333435
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14991250b7ae80f70800000000000000
+      internalID: 9153824056718498113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_43
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 3.3333435
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13f3f566d65cadc40800000000000000
+      internalID: 5537955765465071409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_44
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 3.3333435
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e41abdec31dd374e0800000000000000
+      internalID: -1984999933595639474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_45
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 3.3333435
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2b839fd12ef9bbf0800000000000000
+      internalID: -307935678059803859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_46
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 3.3333435
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e7bb2a4a806e7be0800000000000000
+      internalID: -1477637480664811545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PrototypeHero_remake_47
+      rect:
+        serializedVersion: 2
+        x: 3584
+        y: 3.3333435
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce075dd864eb0be0800000000000000
+      internalID: -1509862111011467577
       vertices: []
       indices: 
       edges: []
