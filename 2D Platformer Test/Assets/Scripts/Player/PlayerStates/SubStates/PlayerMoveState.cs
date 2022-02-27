@@ -44,11 +44,18 @@ public class PlayerMoveState : PlayerGroundedState
 
         if (xInput != 0)
         {
-            player.SetAnimationState(player.PLAYER_RUN);
+            if (!isAnimationFinished)
+            {
+                player.SetAnimationState(player.PLAYER_RUNSTART);
+            }
+            else 
+            {
+                player.SetAnimationState(player.PLAYER_RUN);
+            }
         }
         else
         {
-            player.SetAnimationState(player.PLAYER_IDLE);
+            player.SetAnimationState(player.PLAYER_RUNSTOP);
         }
     }
 

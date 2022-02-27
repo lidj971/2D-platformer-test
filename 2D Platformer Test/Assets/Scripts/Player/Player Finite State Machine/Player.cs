@@ -60,8 +60,6 @@ public class Player : MonoBehaviour
     public string PLAYER_LEDGECLIMB { get; private set; }
     public string PLAYER_LEDGEGRAB { get; private set; }
     public string PLAYER_LEDGEHOLD { get; private set; }
-    
-
     #endregion
 
     #region Other Variables

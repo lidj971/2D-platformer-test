@@ -34,13 +34,16 @@ public class PlayerWallJumpState : PlayerAbilityState
     public override void AnimationUpdate()
     {
         base.AnimationUpdate();
-        if (player.CurrentVelocity.y > 0.0001f)
+        int spaceBetweenFrames;
+        if (player.CurrentVelocity.y < 0)
         {
-            player.SetAnimationFrame(player.PLAYER_JUMP, 3, 0);
-        }        
-        else 
+            spaceBetweenFrames = Mathf.RoundToInt(playerData.jumpVelocity / 2);
+            player.SetAnimationFrame(player.PLAYER_FALL, 2, Mathf.Abs(Mathf.RoundToInt(player.CurrentVelocity.y) / spaceBetweenFrames));
+        }
+        else
         {
-            player.SetAnimationFrame(player.PLAYER_JUMP, 3, 2);
+            spaceBetweenFrames = Mathf.RoundToInt(playerData.jumpVelocity / 3);
+            player.SetAnimationFrame(player.PLAYER_JUMP, 3, Mathf.RoundToInt(player.CurrentVelocity.y) / spaceBetweenFrames);
         }
     }
 

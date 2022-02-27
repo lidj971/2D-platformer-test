@@ -115,7 +115,20 @@ public class PlayerInAirState : PlayerState
     public override void AnimationUpdate()
     {
         base.AnimationUpdate();
-        
+
+        int spaceBetweenFrames;
+
+        if (player.CurrentVelocity.y < 0)
+        {
+            spaceBetweenFrames = Mathf.RoundToInt(playerData.jumpVelocity / 2);
+            player.SetAnimationFrame(player.PLAYER_FALL, 2, Mathf.Abs(Mathf.RoundToInt(player.CurrentVelocity.y) / spaceBetweenFrames));
+        }
+        else
+        {
+            spaceBetweenFrames = Mathf.RoundToInt(playerData.jumpVelocity / 3);
+            player.SetAnimationFrame(player.PLAYER_JUMP, 3, Mathf.RoundToInt(player.CurrentVelocity.y) / spaceBetweenFrames);
+        }
+        /*
         if (player.CurrentVelocity.y > 0.0001f)
         {
             player.SetAnimationFrame(player.PLAYER_JUMP,2,0);
@@ -123,7 +136,7 @@ public class PlayerInAirState : PlayerState
         else 
         {
             player.SetAnimationFrame(player.PLAYER_JUMP,2,1);
-        }
+        }*/
     }
 
     private void CheckJumpMultiplier()

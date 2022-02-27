@@ -15,7 +15,7 @@ MonoBehaviour:
   movementVelocity: 6
   horizontalDamping: 0.8
   jumpVelocity: 18
-  amountOfJumps: 2
+  amountOfJumps: 1
   wallJumpVelocity: 30
   wallJumpTime: 0.53
   wallJumpAngle: {x: 1.2, y: 1.5}
@@ -26,7 +26,7 @@ MonoBehaviour:
   startOffset: {x: 0.3, y: 0}
   stopOffset: {x: 0.7, y: 2.2}
   groundCheckRadius: 0.3
-  wallCheckDistance: 0.7
+  wallCheckDistance: 1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
