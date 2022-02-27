@@ -1,0 +1,696 @@
+fileFormatVersion: 2
+guid: 1f7f9e611e0b7c8429b7556f066956c5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3960259407536092533
+    second: gloves_0
+  - first:
+      213: -1562728951681585175
+    second: gloves_1
+  - first:
+      213: -6279683937131729180
+    second: gloves_2
+  - first:
+      213: -2907762111919433215
+    second: gloves_3
+  - first:
+      213: 6308702167562701474
+    second: gloves_4
+  - first:
+      213: -3060011925067688554
+    second: gloves_5
+  - first:
+      213: -3343675923203304481
+    second: gloves_6
+  - first:
+      213: 7993092379068110941
+    second: gloves_7
+  - first:
+      213: -5639403921179516945
+    second: gloves_8
+  - first:
+      213: -4308965811567803767
+    second: gloves_9
+  - first:
+      213: 7252239898010424001
+    second: gloves_10
+  - first:
+      213: 3377370824305090389
+    second: gloves_11
+  - first:
+      213: 571825103132980192
+    second: gloves_12
+  - first:
+      213: 3304893616479901224
+    second: gloves_13
+  - first:
+      213: 13065244620927860
+    second: gloves_14
+  - first:
+      213: 6077024037916156899
+    second: gloves_15
+  - first:
+      213: -6040455684391866957
+    second: gloves_16
+  - first:
+      213: 8354177528126716829
+    second: gloves_17
+  - first:
+      213: 7065965169196925408
+    second: gloves_18
+  - first:
+      213: 7439583830115886160
+    second: gloves_19
+  - first:
+      213: -7441221302108439112
+    second: gloves_20
+  - first:
+      213: 3139570719285316055
+    second: gloves_21
+  - first:
+      213: 8583415469445583326
+    second: gloves_22
+  - first:
+      213: -4284107018485801697
+    second: gloves_23
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1024
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: gloves_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1638.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8a896b1d055a09c0800000000000000
+      internalID: -3960259407536092533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1638.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9efecc25c42105ae0800000000000000
+      internalID: -1562728951681585175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_2
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 1638.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ee6989fab41ad8a0800000000000000
+      internalID: -6279683937131729180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_3
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 1638.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10ad3b3e3cd85a7d0800000000000000
+      internalID: -2907762111919433215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_4
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 1638.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aacf4b42330d8750800000000000000
+      internalID: 6308702167562701474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_5
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 1638.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69591e5ed57a885d0800000000000000
+      internalID: -3060011925067688554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_6
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 1638.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd3d071a670e891d0800000000000000
+      internalID: -3343675923203304481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_7
+      rect:
+        serializedVersion: 2
+        x: 7168
+        y: 1638.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d589c376b2b2dee60800000000000000
+      internalID: 7993092379068110941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 819.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fef56253300dcb1b0800000000000000
+      internalID: -5639403921179516945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 819.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 982c23c9c6a7334c0800000000000000
+      internalID: -4308965811567803767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_10
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 819.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c293d263c125a460800000000000000
+      internalID: 7252239898010424001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_11
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 819.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55f1971eed4dede20800000000000000
+      internalID: 3377370824305090389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_12
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 819.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e374e1d6e78fe700800000000000000
+      internalID: 571825103132980192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_13
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 819.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8269dbeeb375ddd20800000000000000
+      internalID: 3304893616479901224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_14
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 819.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 473b88055ca6e2000800000000000000
+      internalID: 13065244620927860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_15
+      rect:
+        serializedVersion: 2
+        x: 7168
+        y: 819.6667
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e3a08f3a2de55450800000000000000
+      internalID: 6077024037916156899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.666687
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bd655a0f8dfb2ca0800000000000000
+      internalID: -6040455684391866957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_17
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0.666687
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9b3b82133000f370800000000000000
+      internalID: 8354177528126716829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_18
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0.666687
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e1044162e95f0260800000000000000
+      internalID: 7065965169196925408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_19
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0.666687
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0542ccea316be3760800000000000000
+      internalID: 7439583830115886160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_20
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 0.666687
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bdb1c8a6a87bb890800000000000000
+      internalID: -7441221302108439112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_21
+      rect:
+        serializedVersion: 2
+        x: 5120
+        y: 0.666687
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d9083e5feef19b20800000000000000
+      internalID: 3139570719285316055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_22
+      rect:
+        serializedVersion: 2
+        x: 6144
+        y: 0.666687
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed195ef74ea6e1770800000000000000
+      internalID: 8583415469445583326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_23
+      rect:
+        serializedVersion: 2
+        x: 7168
+        y: 0.666687
+        width: 1024
+        height: 819.3333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1d55676d5bcb84c0800000000000000
+      internalID: -4284107018485801697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
