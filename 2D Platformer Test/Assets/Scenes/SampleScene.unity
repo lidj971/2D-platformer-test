@@ -2632,7 +2632,7 @@ Transform:
   m_LocalScale: {x: 4.316921, y: 4.488728, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1741423808
 GameObject:
@@ -2860,7 +2860,7 @@ Transform:
   - {fileID: 1348357100}
   - {fileID: 1653445316}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5762439561596439573
 SpriteRenderer:
