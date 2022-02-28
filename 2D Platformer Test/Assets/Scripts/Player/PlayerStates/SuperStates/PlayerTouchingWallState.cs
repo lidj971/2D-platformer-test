@@ -6,6 +6,7 @@ public class PlayerTouchingWallState : PlayerState
 {
     protected bool isGrounded;
     protected bool isTouchingWall;
+    protected bool isTouchingLowWall;
     protected bool jumpInput;
     protected bool grabInput;
     protected bool isTouchingLedge;
@@ -33,11 +34,10 @@ public class PlayerTouchingWallState : PlayerState
         isGrounded = player.CheckIfGrounded();
         isTouchingWall = player.CheckIfTouchingWall();
         isTouchingLedge = player.CheckIfTouchingLedge();
+        isTouchingLowWall = player.CheckIfTouchingLowWall();
 
-        if(!isTouchingLedge && isTouchingWall)
-        {
-            player.LedgeClimbState.SetDetecetedPositon(player.transform.position);
-        }
+        if (isTouchingLedge || !isTouchingWall) return;
+        player.LedgeClimbState.SetDetecetedPositon(player.transform.position);
     }
 
     public override void Enter()

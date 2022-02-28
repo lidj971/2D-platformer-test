@@ -29,15 +29,15 @@ public class PlayerMoveState : PlayerGroundedState
         base.LogicUpdate();
         player.CheckIfShouldFlip(xInput);
 
-        if (!isExitingState)
+        if (isExitingState) return;
+
+        if (player.CurrentVelocity.x <= 0.1 && player.CurrentVelocity.x >= -0.1 && !isExitingState && xInput == 0)
         {
-            if (player.CurrentVelocity.x <= 0.1 && player.CurrentVelocity.x >= -0.1 && !isExitingState && xInput == 0)
-            {
-                stateMachine.ChangeState(player.IdleState);
-            }else if (isTouchingWall && !isTouchingLowWall && slideInput && xInput != 0)
-            {
-                stateMachine.ChangeState(player.SlideState);
-            }
+            stateMachine.ChangeState(player.IdleState);
+        }
+        else if (isTouchingWall && !isTouchingLowWall && xInput != 0)
+        {
+            stateMachine.ChangeState(player.SlideState);
         }
     }
 

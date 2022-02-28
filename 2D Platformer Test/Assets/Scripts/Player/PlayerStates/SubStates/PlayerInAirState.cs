@@ -127,59 +127,44 @@ public class PlayerInAirState : PlayerState
         {
             spaceBetweenFrames = Mathf.RoundToInt(playerData.jumpVelocity / 3);
             player.SetAnimationState(player.PLAYER_JUMP, 3, Mathf.RoundToInt(player.CurrentVelocity.y) / spaceBetweenFrames);
-        }
-        /*
-        if (player.CurrentVelocity.y > 0.0001f)
-        {
-            player.SetAnimationFrame(player.PLAYER_JUMP,2,0);
-        }
-        else 
-        {
-            player.SetAnimationFrame(player.PLAYER_JUMP,2,1);
-        }*/
+        }        
     }
 
     private void CheckJumpMultiplier()
     {
-        if (isJumping)
+        if (!isJumping) return;
+        
+        if (jumpInputStop)
         {
-            if (jumpInputStop)
-            {
-                player.SetVelocityY(player.CurrentVelocity.y * playerData.variableJumpHeightMultiplier);
-                isJumping = false;
-            }
-            else if (player.CurrentVelocity.y <= 0f)
-            {
-                isJumping = false;
-            }
+            player.SetVelocityY(player.CurrentVelocity.y * playerData.variableJumpHeightMultiplier);
+            isJumping = false;
+        }
+        else if (player.CurrentVelocity.y <= 0f)
+        {
+            isJumping = false;
         }
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        if (canRun) 
-        {
-            player.SetVelocityX(playerData.movementVelocity,playerData.horizontalDamping);
-        }
+        if (!canRun) return;
+        player.SetVelocityX(playerData.movementVelocity, playerData.horizontalDamping);
     }
 
     private void CheckCoyoteTime()
     {
-        if (coyoteTime == true && Time.time > startTime + playerData.coyoteTime)
-        {
-            coyoteTime = false;
-            player.JumpState.DecreaseAmountOfJumpsLeft();
-        }
+        if (!coyoteTime && Time.time <= startTime + playerData.coyoteTime) return;
+        
+        coyoteTime = false;
+        player.JumpState.DecreaseAmountOfJumpsLeft();
     }
 
     private void CheckWallJumpCoyoteTime()
     {
-        if (wallJumpCoyoteTime == true && Time.time > startWallJumpCoyoteTime + playerData.coyoteTime)
-        {
-            wallJumpCoyoteTime = false;
-            player.JumpState.DecreaseAmountOfJumpsLeft();
-        }
+        if (!wallJumpCoyoteTime && Time.time <= startWallJumpCoyoteTime + playerData.coyoteTime) return;
+        wallJumpCoyoteTime = false;
+        player.JumpState.DecreaseAmountOfJumpsLeft();
     }
 
 

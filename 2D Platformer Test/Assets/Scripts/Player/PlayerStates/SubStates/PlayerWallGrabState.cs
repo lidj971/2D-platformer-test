@@ -29,18 +29,20 @@ public class PlayerWallGrabState : PlayerTouchingWallState
         base.LogicUpdate();
 
 
-        if (!isExitingState)
+        if (isExitingState) return;
+        
+        HoldPosition();
+        if (yInput > 0)
         {
-
-            HoldPosition();
-            if (yInput > 0)
-            {
-                stateMachine.ChangeState(player.WallClimbState);
-            }
-            else if (yInput < 0 || !grabInput)
-            {
-                stateMachine.ChangeState(player.WallSlideState);
-            }
+            stateMachine.ChangeState(player.WallClimbState);
+        }
+        else if (yInput < 0 || !grabInput)
+        {
+            stateMachine.ChangeState(player.WallSlideState);
+        }
+        else if (isTouchingWall && !isTouchingLowWall && xInput != 0)
+        {
+            stateMachine.ChangeState(player.SlideState);
         }
     }
 
@@ -55,6 +57,5 @@ public class PlayerWallGrabState : PlayerTouchingWallState
         player.transform.position = holdPosition;
         player.KillVelocityX();
         player.SetVelocityY(0f);
-
     }
 }

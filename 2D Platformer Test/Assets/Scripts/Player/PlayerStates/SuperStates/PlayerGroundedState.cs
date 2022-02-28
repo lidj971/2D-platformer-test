@@ -10,7 +10,7 @@ public class PlayerGroundedState : PlayerState
     public bool slideInput { get; private set; }
 
     public bool isGrounded { get; private set; }
-    public bool isTouchingWall { get; private set; }
+    public bool isTouchingWall;
     public bool isTouchingLowWall { get; private set; }
 
 
@@ -55,9 +55,17 @@ public class PlayerGroundedState : PlayerState
         {
             player.InAirState.StartCoyoteTime(); 
             stateMachine.ChangeState(player.InAirState);
-        }else if(isTouchingWall && grabInput)
+        }else if(isTouchingWall && grabInput && player.StateMachine.CurrentState != player.SlideState)
         {
-            stateMachine.ChangeState(player.WallGrabState);
+            if (!isTouchingLowWall)
+            {
+                if (xInput != 0) return;
+                stateMachine.ChangeState(player.WallGrabState);
+            }
+            else
+            {
+                stateMachine.ChangeState(player.WallGrabState);
+            }
         }
     }
 

@@ -25,10 +25,9 @@ public class PlayerWallJumpState : PlayerAbilityState
     {
         base.LogicUpdate();
 
-        if (Time.time >= startTime + playerData.wallJumpTime)
-        {
-            isAbilityDone = true;
-        }
+        if (Time.time < startTime + playerData.wallJumpTime) return;
+        
+        isAbilityDone = true;
     }
 
     public override void AnimationUpdate()

@@ -55,11 +55,9 @@ public class PlayerLedgeClimbState : PlayerState
         base.Exit();
         isHanging = false;
 
-        if (isClimbing)
-        {
-            player.transform.position = stopPos;
-            isClimbing = false;
-        }
+        if (!isClimbing) return;
+        player.transform.position = stopPos;
+        isClimbing = false;
     }
 
     public override void LogicUpdate()

@@ -40,7 +40,6 @@ public class Player : MonoBehaviour
     public BoxCollider2D slidingCollider;
 
     public BoxCollider2D[] allColliders { get; private set; }
-
     #endregion
 
     #region Check Transforms
@@ -61,23 +60,27 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Animation Names
-    public string PLAYER_IDLE { get; private set; }
-    public string PLAYER_RUN_START { get; private set; }
-    public string PLAYER_RUN { get; private set; }
-    public string PLAYER_RUN_STOP { get; private set; }
-    public string PLAYER_START_SLIDING { get; private set; }
-    public string PLAYER_SLIDING { get; private set; }
-    public string PLAYER_STOP_SLIDING { get; private set; }
-    public string PLAYER_JUMP { get; private set; }
-    public string PLAYER_JUMPTOFALL { get; private set; }
-    public string PLAYER_FALL { get; private set; }
-    public string PLAYER_LANDING { get; private set; }
-    public string PLAYER_WALL_SLIDE { get; private set; }
-    public string PLAYER_WALL_GRAB { get; private set; }
-    public string PLAYER_WALL_CLIMB { get; private set; }
-    public string PLAYER_LEDGE_CLIMB { get; private set; }
-    public string PLAYER_LEDGE_GRAB { get; private set; }
-    public string PLAYER_LEDGE_HOLD { get; private set; }
+    public string PLAYER_IDLE { get; private set; } = "Player_Idle";
+
+    public string PLAYER_RUN_START { get; private set; } = "Player_RunStart";
+    public string PLAYER_RUN { get; private set; } = "Player_Run";
+    public string PLAYER_RUN_STOP { get; private set; } = "Player_RunStop";
+
+    public string PLAYER_START_SLIDING { get; private set; } = "Player_StartSliding";
+    public string PLAYER_SLIDING { get; private set; } = "Player_Sliding";
+    public string PLAYER_STOP_SLIDING { get; private set; } = "Player_StopSliding";
+
+    public string PLAYER_JUMP { get; private set; } = "Player_Jump";
+    public string PLAYER_FALL { get; private set; } = "Player_Fall";
+    public string PLAYER_LANDING { get; private set; } = "Player_Landing";
+
+    public string PLAYER_WALL_SLIDE { get; private set; } = "Player_WallSlide";
+    public string PLAYER_WALL_GRAB { get; private set; } = "Player_WallGrab";
+    public string PLAYER_WALL_CLIMB { get; private set; } = "Player_WallClimb";
+
+    public string PLAYER_LEDGE_CLIMB { get; private set; } = "Player_LedgeClimb";
+    public string PLAYER_LEDGE_GRAB { get; private set; } = "Player_LedgeGrab";
+    public string PLAYER_LEDGE_HOLD { get; private set; } = "Player_LedgeHold";
     #endregion
 
     #region Other Variables
@@ -85,18 +88,11 @@ public class Player : MonoBehaviour
     private Vector2 workspace;
     public int FacingDirection { get; private set; }
     public string currentAnimationState;
-
-
     #endregion
-
-    public bool isTouchingLowWall;
-    public bool isTouchingWall;
-    public bool isTouchingCeiling;
 
     #region Unity Callback Functions 
     private void Awake()
     {
-        
         StateMachine = new PlayerStateMachine();
 
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
@@ -110,29 +106,10 @@ public class Player : MonoBehaviour
         WallClimbState = new PlayerWallClimbState(this, StateMachine, playerData, "WallClimb");
         WallJumpState = new PlayerWallJumpState(this, StateMachine, playerData, "WallJump");
         LedgeClimbState = new PlayerLedgeClimbState(this, StateMachine, playerData, "LedgeClimb");
-
-        PLAYER_IDLE = "Player_Idle";
-        PLAYER_RUN_START = "Player_RunStart";
-        PLAYER_RUN = "Player_Run";
-        PLAYER_RUN_STOP = "Player_RunStop";
-        PLAYER_START_SLIDING = "Player_StartSliding";
-        PLAYER_SLIDING = "Player_Sliding";
-        PLAYER_STOP_SLIDING = "Player_StopSliding";
-        PLAYER_JUMP = "Player_Jump";
-        PLAYER_FALL = "Player_Fall";
-        PLAYER_LANDING = "Player_Landing";
-        PLAYER_WALL_SLIDE = "Player_WallSlide";
-        PLAYER_WALL_GRAB = "Player_WallGrab";
-        PLAYER_WALL_CLIMB = "Player_WallClimb";
-        PLAYER_LEDGE_GRAB = "Player_LedgeGrab";
-        PLAYER_LEDGE_HOLD = "Player_LedgeHold";
-        PLAYER_LEDGE_CLIMB = "Player_LedgeClimb";
     }
-
 
     private void Start()
     {
-
         FacingDirection = 1;
 
         Anim = GetComponent<Animator>();
@@ -154,11 +131,7 @@ public class Player : MonoBehaviour
         CurrentVelocity = RB.velocity;
         StateMachine.CurrentState.LogicUpdate();
         StateMachine.CurrentState.AnimationUpdate();
-        isTouchingLowWall = CheckIfTouchingLowWall();
-        isTouchingWall = CheckIfTouchingWall();
-        isTouchingCeiling = CheckIfTouchingCeiling();
     }
-
 
     private void FixedUpdate()
     {
@@ -257,10 +230,8 @@ public class Player : MonoBehaviour
 
     public void CheckIfShouldFlip(int xInput)
     {
-        if (xInput != 0 && xInput != FacingDirection)
-        {
-            Flip();
-        }
+        if (xInput == 0 || xInput == FacingDirection) return;
+        Flip();
     }
     #endregion
 

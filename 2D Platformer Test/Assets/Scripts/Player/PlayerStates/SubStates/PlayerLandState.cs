@@ -18,23 +18,19 @@ public class PlayerLandState : PlayerGroundedState
     {
         base.LogicUpdate();
 
-        //player.SetVelocityX(playerData.movementVelocity, playerData.horizontalDamping);
-
-        if (!isExitingState)
+        if (isExitingState) return;
+        
+        if (xInput != 0)
         {
-            if (xInput != 0)
+            stateMachine.ChangeState(player.MoveState);
+        }
+        else
+        {
+            player.KillVelocityX();
+            if (isAnimationFinished)
             {
-                stateMachine.ChangeState(player.MoveState);
-            }
-            else 
-            {
-                player.KillVelocityX();
-                if (isAnimationFinished)
-                {
-                    stateMachine.ChangeState(player.IdleState);
-                }         
+                stateMachine.ChangeState(player.IdleState);
             }
         }
-
     }
 }

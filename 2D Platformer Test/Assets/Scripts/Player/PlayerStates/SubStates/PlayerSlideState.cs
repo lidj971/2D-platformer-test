@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerSlideState : PlayerGroundedState
 {
+    //Determine si l'animation de StartSliding est terminer
     private bool isStartAnimationFinished;
+    //Determine si l'on est encore sous un block
     private bool isTouchingCeiling;
 
     
@@ -12,11 +14,13 @@ public class PlayerSlideState : PlayerGroundedState
     {
     }
 
+    //on appelle cette fonction lorsque StopSliding est terminer
     public override void AnimationFinishTrigger()
     {
         base.AnimationFinishTrigger();
     }
 
+    //on appelle cette fonction lorsque l'animation StartSlide est finie
     public override void AnimationTrigger()
     {
         base.AnimationTrigger();
@@ -56,6 +60,7 @@ public class PlayerSlideState : PlayerGroundedState
 
         player.SetActiveCollider(player.slidingCollider);
         isStartAnimationFinished = false;
+        //On enleve l'abiliter de saut
         player.JumpState.SetCanJump(false);
     }
 
@@ -64,6 +69,7 @@ public class PlayerSlideState : PlayerGroundedState
         base.Exit();
         
         player.SetActiveCollider(player.standingCollider);
+        //On reactive l'abilite de saut
         player.JumpState.SetCanJump(true);
     }
 
@@ -71,11 +77,11 @@ public class PlayerSlideState : PlayerGroundedState
     {
         base.LogicUpdate();
 
+        if (!isStartAnimationFinished) return;
         player.SetVelocityX(playerData.slideVelocity);
 
-        if (!isTouchingCeiling && isAnimationFinished)
-        {
-            stateMachine.ChangeState(player.IdleState);
-        }
+        if (isTouchingCeiling || !isAnimationFinished) return;
+        stateMachine.ChangeState(player.IdleState);
+
     }
 }
