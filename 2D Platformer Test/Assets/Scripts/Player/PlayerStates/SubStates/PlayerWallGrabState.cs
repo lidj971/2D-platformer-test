@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerWallGrabState : PlayerTouchingWallState
 {
     private Vector2 holdPosition;
+    private bool slideInput;
     
     public PlayerWallGrabState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string stateName) : base(player, stateMachine, playerData, stateName)
     {
@@ -16,7 +17,6 @@ public class PlayerWallGrabState : PlayerTouchingWallState
         holdPosition = player.transform.position;
 
         HoldPosition();
-        
     }
 
     public override void Exit()
@@ -27,7 +27,7 @@ public class PlayerWallGrabState : PlayerTouchingWallState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
+        slideInput = player.InputHandler.SlideInput;
 
         if (isExitingState) return;
         
@@ -40,7 +40,7 @@ public class PlayerWallGrabState : PlayerTouchingWallState
         {
             stateMachine.ChangeState(player.WallSlideState);
         }
-        else if (isTouchingWall && !isTouchingLowWall && xInput != 0)
+        else if (isTouchingWall && !isTouchingLowWall && xInput != 0 && slideInput)
         {
             stateMachine.ChangeState(player.SlideState);
         }

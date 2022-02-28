@@ -59,7 +59,7 @@ public class PlayerGroundedState : PlayerState
         {
             if (!isTouchingLowWall)
             {
-                if (xInput != 0) return;
+                if (xInput != 0 && slideInput) return;
                 stateMachine.ChangeState(player.WallGrabState);
             }
             else

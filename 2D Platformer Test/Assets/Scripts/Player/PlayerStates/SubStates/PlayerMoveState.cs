@@ -35,7 +35,7 @@ public class PlayerMoveState : PlayerGroundedState
         {
             stateMachine.ChangeState(player.IdleState);
         }
-        else if (isTouchingWall && !isTouchingLowWall && xInput != 0)
+        else if (isTouchingWall && !isTouchingLowWall && xInput != 0 && slideInput)
         {
             stateMachine.ChangeState(player.SlideState);
         }
