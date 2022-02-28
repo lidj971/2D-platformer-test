@@ -34,6 +34,9 @@ public class PlayerMoveState : PlayerGroundedState
             if (player.CurrentVelocity.x <= 0.1 && player.CurrentVelocity.x >= -0.1 && !isExitingState && xInput == 0)
             {
                 stateMachine.ChangeState(player.IdleState);
+            }else if (isTouchingWall && !isTouchingLowWall && slideInput && xInput != 0)
+            {
+                stateMachine.ChangeState(player.SlideState);
             }
         }
     }
@@ -46,7 +49,7 @@ public class PlayerMoveState : PlayerGroundedState
         {
             if (!isAnimationFinished)
             {
-                player.SetAnimationState(player.PLAYER_RUNSTART);
+                player.SetAnimationState(player.PLAYER_RUN_START);
             }
             else 
             {
@@ -55,7 +58,7 @@ public class PlayerMoveState : PlayerGroundedState
         }
         else
         {
-            player.SetAnimationState(player.PLAYER_RUNSTOP);
+            player.SetAnimationState(player.PLAYER_RUN_STOP);
         }
     }
 

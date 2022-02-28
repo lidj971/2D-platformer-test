@@ -14,6 +14,9 @@ public class PlayerData : ScriptableObject
     public float jumpVelocity = 15f;
     public int amountOfJumps = 1;
 
+    [Header("Slide")]
+    public float slideVelocity = 10f;
+
     [Header("Wall Jump")]
     public float wallJumpVelocity = 20;
     public float wallJumpTime = 0.4f;

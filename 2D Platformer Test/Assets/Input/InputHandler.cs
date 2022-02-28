@@ -11,7 +11,9 @@ public class InputHandler : MonoBehaviour
     public int NormInputY;
     public bool JumpInput { get; private set; }
     public bool JumpInputStop { get; private set; }
-    
+
+    public bool SlideInput { get; private set; }
+
     public bool RunInput { get; private set; }
 
     public bool GrabInput { get; private set; }
@@ -79,6 +81,19 @@ public class InputHandler : MonoBehaviour
         if (context.canceled)
         {
             RunInput = false;
+        }
+    }
+
+    public void OnSlideInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            SlideInput = true;
+        }
+
+        if (context.canceled)
+        {
+            SlideInput = false;
         }
     }
 

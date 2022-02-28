@@ -38,12 +38,12 @@ public class PlayerWallJumpState : PlayerAbilityState
         if (player.CurrentVelocity.y < 0)
         {
             spaceBetweenFrames = Mathf.RoundToInt(playerData.jumpVelocity / 2);
-            player.SetAnimationFrame(player.PLAYER_FALL, 2, Mathf.Abs(Mathf.RoundToInt(player.CurrentVelocity.y) / spaceBetweenFrames));
+            player.SetAnimationState(player.PLAYER_FALL, 2, Mathf.Abs(Mathf.RoundToInt(player.CurrentVelocity.y) / spaceBetweenFrames));
         }
         else
         {
             spaceBetweenFrames = Mathf.RoundToInt(playerData.jumpVelocity / 3);
-            player.SetAnimationFrame(player.PLAYER_JUMP, 3, Mathf.RoundToInt(player.CurrentVelocity.y) / spaceBetweenFrames);
+            player.SetAnimationState(player.PLAYER_JUMP, 3, Mathf.RoundToInt(player.CurrentVelocity.y) / spaceBetweenFrames);
         }
     }
 

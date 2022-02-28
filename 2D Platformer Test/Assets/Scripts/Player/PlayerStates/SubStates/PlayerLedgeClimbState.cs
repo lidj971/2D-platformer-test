@@ -104,11 +104,11 @@ public class PlayerLedgeClimbState : PlayerState
         base.AnimationUpdate();
         if (xInput == player.FacingDirection)
         {
-            player.SetAnimationState(player.PLAYER_LEDGECLIMB);
+            player.SetAnimationState(player.PLAYER_LEDGE_CLIMB);
         }
-        else if (player.currentAnimationState != player.PLAYER_LEDGECLIMB && player.currentAnimationState != player.PLAYER_IDLE)
+        else if (player.currentAnimationState != player.PLAYER_LEDGE_CLIMB && player.currentAnimationState != player.PLAYER_IDLE)
         {
-            player.SetAnimationState(player.PLAYER_LEDGEHOLD);
+            player.SetAnimationState(player.PLAYER_LEDGE_HOLD);
         }
     }
 

@@ -47,7 +47,7 @@ public class PlayerWallGrabState : PlayerTouchingWallState
     public override void AnimationUpdate()
     {
         base.AnimationUpdate();
-        player.SetAnimationState(player.PLAYER_WALLGRAB);
+        player.SetAnimationState(player.PLAYER_WALL_GRAB);
     }
 
     private void HoldPosition()
