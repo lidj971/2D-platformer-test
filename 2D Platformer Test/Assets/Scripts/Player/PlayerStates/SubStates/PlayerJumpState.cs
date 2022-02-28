@@ -41,10 +41,7 @@ public class PlayerJumpState : PlayerAbilityState
         } 
     }
 
-    public void SetCanJump(bool value)
-    {
-        canJump = value;
-    }
+    public void SetCanJump(bool value) => canJump = value;
 
     public void ResetAmountOfJumps() => amountOfJumpsLeft = playerData.amountOfJumps;
 

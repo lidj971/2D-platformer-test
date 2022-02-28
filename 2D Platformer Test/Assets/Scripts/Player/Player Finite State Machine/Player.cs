@@ -28,8 +28,6 @@ public class Player : MonoBehaviour
     private PlayerData playerData;
     #endregion
 
-    public bool isGrounded;
-
     #region Components
     public Animator Anim { get; private set; }
     public InputHandler InputHandler { get; private set; }
@@ -95,8 +93,10 @@ public class Player : MonoBehaviour
     #region Unity Callback Functions 
     private void Awake()
     {
+        //Initialisation de la StateMachine
         StateMachine = new PlayerStateMachine();
 
+        //Initialisation des States
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
         MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
         JumpState = new PlayerJumpState(this, StateMachine, playerData, "jump");
@@ -112,40 +112,39 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        FacingDirection = 1;
-
+        //Initialisation des Composant au composant du personage
         Anim = GetComponent<Animator>();
-
         InputHandler = GetComponent<InputHandler>();
-
         RB = GetComponent<Rigidbody2D>();
-
-        StateMachine.Initialize(IdleState);
-
         SR = GetComponent<SpriteRenderer>();
-
         allColliders = GetComponentsInChildren<BoxCollider2D>();
 
+        //Initialison de la Statmachine au state Idle
+        StateMachine.Initialize(IdleState);
+
+        FacingDirection = 1;
     }
 
+    //Fonction Update appelee 1 fois par frame
     private void Update()
     {
         CurrentVelocity = RB.velocity;
+        //Appel des fonctions LogicUpdate et AnimationUpdate du state actuel
         StateMachine.CurrentState.LogicUpdate();
         StateMachine.CurrentState.AnimationUpdate();
-        isGrounded = CheckIfGrounded();
     }
-
+    
+    //Fonction FixedUpdate appelee 1 fois par frame a une frame-rate fixe
     private void FixedUpdate()
     {
+        //Appel de la fonction Physics Update du state actuel
         StateMachine.CurrentState.PhysicsUpdate();
     }
     #endregion
 
     #region Set Functions 
 
-    //set the velocity so that you walljump at an angle
-
+    //permet de modifier la velocite a un angle precis
     public void SetVelocity(float velocity, Vector2 angle, int direction)
     {
         angle.Normalize();
@@ -154,6 +153,7 @@ public class Player : MonoBehaviour
         CurrentVelocity = workspace;
     }
 
+    //permet d'augmenter la velocite horizontal jusqu'a une limite precise
     public void SetVelocityX(float velocity, float horizontalDamping)
     {
         workspace.Set(RB.velocity.x + velocity * InputHandler.NormInputX, CurrentVelocity.y);
@@ -163,6 +163,7 @@ public class Player : MonoBehaviour
         CurrentVelocity = workspace;
     }
 
+    //permet de modifier la velocite horizontal d'un coup
     public void SetVelocityX(float velocity)
     {
         workspace.Set(FacingDirection * velocity, CurrentVelocity.y);
@@ -170,6 +171,7 @@ public class Player : MonoBehaviour
         CurrentVelocity = workspace;
     }
 
+    //permet de modifier la velocite vertical d'un coup
     public void SetVelocityY(float velocity)
     {
         workspace.Set(CurrentVelocity.x, velocity);
@@ -177,18 +179,21 @@ public class Player : MonoBehaviour
         CurrentVelocity = workspace;
     }
 
+    //permet de changer l'animation joue par l'animateur
     public void SetAnimationState(string newState)
     {
         Anim.Play(newState);
         currentAnimationState = newState;
     }
 
+    //permet de changer l'animation joue par l'animateur a un frame precise
     public void SetAnimationState(string newState,int totalFrames,int frame)
     {
         Anim.Play(newState, 0, (1f / totalFrames) * frame);
         currentAnimationState = newState;
     }
 
+    //permet de changer la collision active
     public void SetActiveCollider(BoxCollider2D activeCollider)
     {
         foreach(BoxCollider2D collider in allColliders)
@@ -201,38 +206,46 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Check Functions
+    //Verifie si l'on est au sol
     public bool CheckIfGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, playerData.groundCheckRadius, playerData.whatIsGround);
     }
 
+    //Verifie si l'on Touche un mur
     public bool CheckIfTouchingWall()
     {
         return Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);
     }
 
+    //Verifie si l'on Touche un Bord
     public bool CheckIfTouchingLedge()
     {
         return Physics2D.Raycast(ledgeCheck.position, Vector2.right * FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);
     }
 
+    //Verifie si l'on est dos a un mur
     public bool CheckIfTouchingWallBack()
     {
         return Physics2D.Raycast(wallCheck.position, Vector2.right * -FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);
     }
 
+    //Verifie si le bas du personage touche un mur
     public bool CheckIfTouchingLowWall()
     {
         return Physics2D.Raycast(lowWallCheck.position, Vector2.right * FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);
     }
 
+    //Verifie si le personage touche le plafond pendant qu'il slide
     public bool CheckIfTouchingCeiling()
     {
         return Physics2D.OverlapCircle(ceilingCheck.position, playerData.groundCheckRadius, playerData.whatIsGround);
     }
 
+    //Verifie si le personage devrait se retourner
     public void CheckIfShouldFlip(int xInput)
     {
+        //Si la direction de l'input est differente de la direction du personnage on retourne le personage
         if (xInput == 0 || xInput == FacingDirection) return;
         Flip();
     }
@@ -243,12 +256,14 @@ public class Player : MonoBehaviour
 
     private void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
     
+    //retourne le personage de 180 degres sur l'axe y
     private void Flip()
     {
         FacingDirection *= -1;
         transform.Rotate(0.0f, 180.0f, 0.0f);
     }
     
+    //Met la velocite horizontale a 0
     public void KillVelocityX()
     {
         workspace.Set(0f, CurrentVelocity.y);
@@ -256,13 +271,14 @@ public class Player : MonoBehaviour
         CurrentVelocity = workspace;
     }
     
+    //Met la velocite a 0
     public void KillVelocity()
     {
         RB.velocity = Vector2.zero;
         CurrentVelocity = Vector2.zero;
     }
 
-    //determines the position of the corner of the ledge while ledgeholding
+    //Determine la position du coin du bord lorsqu'on ledgeHold
     public Vector2 DetermineCornerPosition()
     {
         RaycastHit2D xHit = Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);
