@@ -116,18 +116,27 @@ public class PlayerInAirState : PlayerState
     {
         base.AnimationUpdate();
 
-        int spaceBetweenFrames;
 
-        if (player.CurrentVelocity.y < 0)
+        if (player.CurrentVelocity.y > 4)
         {
-            spaceBetweenFrames = Mathf.RoundToInt(playerData.jumpVelocity / 2);
-            player.SetAnimationState(player.PLAYER_FALL, 2, Mathf.Abs(Mathf.RoundToInt(player.CurrentVelocity.y) / spaceBetweenFrames));
+            player.SetAnimationState(player.PLAYER_JUMP, 3, 0);
         }
-        else
+        else if (player.CurrentVelocity.y < 4 && player.CurrentVelocity.y > 2)
         {
-            spaceBetweenFrames = Mathf.RoundToInt(playerData.jumpVelocity / 3);
-            player.SetAnimationState(player.PLAYER_JUMP, 3, Mathf.RoundToInt(player.CurrentVelocity.y) / spaceBetweenFrames);
-        }        
+            player.SetAnimationState(player.PLAYER_JUMP, 3, 1);
+        }
+        else if (player.CurrentVelocity.y < 2 && player.CurrentVelocity.y > -2)
+        {
+            player.SetAnimationState(player.PLAYER_JUMP, 3, 2);
+        }
+        else if (player.CurrentVelocity.y < -2 && player.CurrentVelocity.y > -4)
+        {
+            player.SetAnimationState(player.PLAYER_FALL, 2, 0);
+        }
+        else if (player.CurrentVelocity.y < -4)
+        {
+            player.SetAnimationState(player.PLAYER_FALL, 2, 1);
+        }
     }
 
     private void CheckJumpMultiplier()
