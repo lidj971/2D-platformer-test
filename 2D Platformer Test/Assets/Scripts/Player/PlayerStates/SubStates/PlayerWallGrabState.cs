@@ -36,7 +36,7 @@ public class PlayerWallGrabState : PlayerTouchingWallState
         {
             stateMachine.ChangeState(player.WallClimbState);
         }
-        else if (yInput < 0 || !grabInput)
+        else if (!isGrounded && (yInput < 0 || !grabInput))
         {
             stateMachine.ChangeState(player.WallSlideState);
         }

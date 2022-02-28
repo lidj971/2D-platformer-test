@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     private PlayerData playerData;
     #endregion
 
+    public bool isGrounded;
+
     #region Components
     public Animator Anim { get; private set; }
     public InputHandler InputHandler { get; private set; }
@@ -131,6 +133,7 @@ public class Player : MonoBehaviour
         CurrentVelocity = RB.velocity;
         StateMachine.CurrentState.LogicUpdate();
         StateMachine.CurrentState.AnimationUpdate();
+        isGrounded = CheckIfGrounded();
     }
 
     private void FixedUpdate()
