@@ -31,4 +31,9 @@ public class PlayerWallSlideState : PlayerTouchingWallState
         base.AnimationUpdate();
         player.SetAnimationState(player.PLAYER_WALL_SLIDE);
     }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
 }

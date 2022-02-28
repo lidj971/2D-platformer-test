@@ -29,10 +29,13 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Components
-    public Animator Anim { get; private set; }
+    public Animator BodyAnim { get; private set; }
+    public Animator GloveAnim { get; private set; }
+    public Animator[] allAnimators { get; private set; }
     public InputHandler InputHandler { get; private set; }
     public Rigidbody2D RB { get; private set; }
     public SpriteRenderer SR { get; private set; }
+    public GameObject Glove;
     #endregion
 
     #region Colliders
@@ -113,11 +116,14 @@ public class Player : MonoBehaviour
     private void Start()
     {
         //Initialisation des Composant au composant du personage
-        Anim = GetComponent<Animator>();
+        BodyAnim = GetComponent<Animator>();
+        GloveAnim = Glove.GetComponent<Animator>();
         InputHandler = GetComponent<InputHandler>();
         RB = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
         allColliders = GetComponentsInChildren<BoxCollider2D>();
+        allAnimators = GetComponentsInChildren<Animator>();
+
 
         //Initialison de la Statmachine au state Idle
         StateMachine.Initialize(IdleState);
@@ -179,17 +185,37 @@ public class Player : MonoBehaviour
         CurrentVelocity = workspace;
     }
 
-    //permet de changer l'animation joue par l'animateur
+    //permet de changer l'animation joue par tout les animateurs du personage
     public void SetAnimationState(string newState)
     {
-        Anim.Play(newState);
+        foreach(Animator anim in allAnimators)
+        {
+            anim.Play(newState);
+        }
         currentAnimationState = newState;
     }
 
-    //permet de changer l'animation joue par l'animateur a un frame precise
+    //permet de changer l'animation joue par un animateur precis
+    public void SetAnimationState(string newState,Animator animator)
+    {
+        animator.Play(newState);
+        currentAnimationState = newState;
+    }
+
+    //permet de changer l'animation joue par tour les Animateurs du personage a une frame precise
     public void SetAnimationState(string newState,int totalFrames,int frame)
     {
-        Anim.Play(newState, 0, (1f / totalFrames) * frame);
+        foreach(Animator anim in allAnimators)
+        {
+            anim.Play(newState, 0, (1f / totalFrames) * frame);
+        }
+        currentAnimationState = newState;
+    }
+
+    //permet de changer l'animation joue par un animateur precis a une frame precise
+    public void SetAnimationState(string newState, int totalFrames, int frame,Animator animator)
+    {
+        animator.Play(newState, 0, (1f / totalFrames) * frame);
         currentAnimationState = newState;
     }
 
