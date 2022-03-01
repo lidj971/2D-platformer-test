@@ -74,6 +74,27 @@ TextureImporter:
   - first:
       213: -4284107018485801697
     second: gloves_23
+  - first:
+      213: 8925963203780685613
+    second: gloves_24
+  - first:
+      213: 307894967023136793
+    second: gloves_25
+  - first:
+      213: 7510192146026755042
+    second: gloves_26
+  - first:
+      213: -7948710402746872101
+    second: gloves_27
+  - first:
+      213: -7202043021316493183
+    second: gloves_28
+  - first:
+      213: 4723815816407847449
+    second: gloves_29
+  - first:
+      213: -8053963026928370203
+    second: gloves_30
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -203,7 +224,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 819.3334
+        y: 2048.3333
         width: 512
         height: 409.66666
       alignment: 0
@@ -224,7 +245,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 819.3334
+        y: 2048.3333
         width: 512
         height: 409.66666
       alignment: 0
@@ -245,7 +266,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1024
-        y: 819.3334
+        y: 2048.3333
         width: 512
         height: 409.66666
       alignment: 0
@@ -266,7 +287,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1536
-        y: 819.3334
+        y: 2048.3333
         width: 512
         height: 409.66666
       alignment: 0
@@ -287,7 +308,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2048
-        y: 819.3334
+        y: 2048.3333
         width: 512
         height: 409.66666
       alignment: 0
@@ -308,7 +329,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2560
-        y: 819.3334
+        y: 2048.3333
         width: 512
         height: 409.66666
       alignment: 0
@@ -329,7 +350,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3072
-        y: 819.3334
+        y: 2048.3333
         width: 512
         height: 409.66666
       alignment: 0
@@ -350,7 +371,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3584
-        y: 819.3334
+        y: 2048.3333
         width: 512
         height: 409.66666
       alignment: 0
@@ -371,7 +392,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 410.33334
+        y: 1639.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -392,7 +413,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 410.33334
+        y: 1639.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -413,7 +434,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1024
-        y: 410.33334
+        y: 1639.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -434,7 +455,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1536
-        y: 410.33334
+        y: 1639.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -455,7 +476,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2048
-        y: 410.33334
+        y: 1639.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -476,7 +497,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2560
-        y: 410.33334
+        y: 1639.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -497,7 +518,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3072
-        y: 410.33334
+        y: 1639.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -518,7 +539,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3584
-        y: 410.33334
+        y: 1639.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -539,7 +560,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1.3333435
+        y: 1230.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -560,7 +581,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 1.3333435
+        y: 1230.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -581,7 +602,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1024
-        y: 1.3333435
+        y: 1230.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -602,7 +623,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1536
-        y: 1.3333435
+        y: 1230.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -623,7 +644,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2048
-        y: 1.3333435
+        y: 1230.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -644,7 +665,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2560
-        y: 1.3333435
+        y: 1230.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -665,7 +686,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3072
-        y: 1.3333435
+        y: 1230.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -686,7 +707,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3584
-        y: 1.3333435
+        y: 1230.3334
         width: 512
         height: 409.66666
       alignment: 0
@@ -698,6 +719,132 @@ TextureImporter:
       bones: []
       spriteID: f1d55676d5bcb84c0800000000000000
       internalID: -4284107018485801697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 821.3334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2f2e87fd346fdb70800000000000000
+      internalID: 8925963203780685613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_25
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 821.3334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9107b8957dcd54400800000000000000
+      internalID: 307894967023136793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_26
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 821.3334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e37ad257ff893860800000000000000
+      internalID: 7510192146026755042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_27
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 821.3334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bde02d5b00280b190800000000000000
+      internalID: -7948710402746872101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_28
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 821.3334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1807959b7043d0c90800000000000000
+      internalID: -7202043021316493183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_29
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 821.3334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9129c59057d5e8140800000000000000
+      internalID: 4723815816407847449
       vertices: []
       indices: 
       edges: []
