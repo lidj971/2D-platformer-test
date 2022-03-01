@@ -12,6 +12,7 @@ public class PlayerData : ScriptableObject
 
     [Header("Jump")]
     public float jumpVelocity = 15f;
+    public float minJumpVelocity = 5f;
     public int amountOfJumps = 1;
 
     [Header("Slide")]

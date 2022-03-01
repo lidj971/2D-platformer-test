@@ -34,16 +34,16 @@ public class PlayerSlideState : PlayerGroundedState
         {
             if (!isStartAnimationFinished)
             {
-                player.SetAnimationState(player.PLAYER_START_SLIDING, player.BodyAnim);
+                player.SetAnimationState(player.PLAYER_START_SLIDING);
             }
             else
             {
-                player.SetAnimationState(player.PLAYER_SLIDING, player.BodyAnim);
+                player.SetAnimationState(player.PLAYER_SLIDING);
             }
         }
         else
         {
-            player.SetAnimationState(player.PLAYER_STOP_SLIDING, player.BodyAnim);
+            player.SetAnimationState(player.PLAYER_STOP_SLIDING);
         }
         
     }
@@ -60,7 +60,6 @@ public class PlayerSlideState : PlayerGroundedState
 
         player.SetActiveCollider(player.slidingCollider);
         isStartAnimationFinished = false;
-        player.Glove.SetActive(false);
         //On enleve l'abiliter de saut
         player.JumpState.SetCanJump(false);
     }
@@ -70,7 +69,6 @@ public class PlayerSlideState : PlayerGroundedState
         base.Exit();
         
         player.SetActiveCollider(player.standingCollider);
-        player.Glove.SetActive(true);
         //On reactive l'abilite de saut
         player.JumpState.SetCanJump(true);
     }

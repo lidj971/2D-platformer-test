@@ -84,7 +84,6 @@ public class PlayerInAirState : PlayerState
         else if(isTouchingWall && !isTouchingLedge)
         {
             stateMachine.ChangeState(player.LedgeClimbState);
-            Debug.Log("Idiot");
         }
         else if(jumpInput && (isTouchingWall || isTouchingWallBack || wallJumpCoyoteTime))
         {
