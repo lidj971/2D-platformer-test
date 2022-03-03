@@ -66,7 +66,10 @@ public class PlayerGroundedState : PlayerState
             {
                 stateMachine.ChangeState(player.WallGrabState);
             }
-        }
+        }/*else if(isTouchingWall && xInput == player.FacingDirection)
+        {
+            stateMachine.ChangeState(player.WallRunState);
+        }*/
     }
 
     public override void PhysicsUpdate()

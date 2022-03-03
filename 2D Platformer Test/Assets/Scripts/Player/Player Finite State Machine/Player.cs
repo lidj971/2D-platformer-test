@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     #region StateVariables
     public PlayerStateMachine StateMachine { get; private set; }
 
+    #region BaseMovements
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
     public PlayerSlideState SlideState { get; private set; }
@@ -22,7 +23,11 @@ public class Player : MonoBehaviour
     public PlayerWallJumpState WallJumpState { get; private set; }
 
     public PlayerLedgeClimbState LedgeClimbState { get; private set; }
+    #endregion
 
+    #region Skills
+    public PlayerWallRunState WallRunState { get; private set; }
+    #endregion
 
     [SerializeField]
     private PlayerData playerData;
@@ -99,7 +104,7 @@ public class Player : MonoBehaviour
         //Initialisation de la StateMachine
         StateMachine = new PlayerStateMachine();
 
-        //Initialisation des States
+        //Initialisation des States de base
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
         MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
         JumpState = new PlayerJumpState(this, StateMachine, playerData, "jump");
@@ -111,6 +116,9 @@ public class Player : MonoBehaviour
         WallClimbState = new PlayerWallClimbState(this, StateMachine, playerData, "WallClimb");
         WallJumpState = new PlayerWallJumpState(this, StateMachine, playerData, "WallJump");
         LedgeClimbState = new PlayerLedgeClimbState(this, StateMachine, playerData, "LedgeClimb");
+
+        //Initialisation des Skills
+        WallRunState = new PlayerWallRunState(this, StateMachine, playerData, "WallRun");
     }
 
     private void Start()
@@ -128,7 +136,9 @@ public class Player : MonoBehaviour
         //Initialison de la Statmachine au state Idle
         StateMachine.Initialize(IdleState);
 
+        SetActiveCollider(standingCollider);
         FacingDirection = 1;
+        RB.gravityScale = playerData.gravityScale;
     }
 
     //Fonction Update appelee 1 fois par frame
@@ -159,7 +169,7 @@ public class Player : MonoBehaviour
         CurrentVelocity = workspace;
     }
 
-    //permet d'augmenter la velocite horizontal jusqu'a une limite precise
+    //permet d'augmenter progressivement la velocite horizontal jusqu'a une limite precise
     public void SetVelocityX(float velocity, float horizontalDamping)
     {
         workspace.Set(RB.velocity.x + velocity * InputHandler.NormInputX, CurrentVelocity.y);
@@ -177,6 +187,15 @@ public class Player : MonoBehaviour
         CurrentVelocity = workspace;
     }
 
+    //permet d'augmenter la velocite vertical jusqu'a une limite precise
+    public void SetVelocityY(float velocity, float verticalDamping)
+    {
+        workspace.Set(RB.velocity.x, RB.velocity.y + velocity * InputHandler.NormInputY);
+        workspace.y += InputHandler.NormInputY;
+        workspace.y *= Mathf.Pow(1f - verticalDamping, Time.deltaTime * 10f);
+        RB.velocity = workspace;
+        CurrentVelocity = workspace;
+    }
     //permet de modifier la velocite vertical d'un coup
     public void SetVelocityY(float velocity)
     {
@@ -228,6 +247,11 @@ public class Player : MonoBehaviour
         }
 
         activeCollider.enabled = true;
+    }
+
+    public void SetGravityScale(float gravity)
+    {
+        RB.gravityScale = gravity;
     }
     #endregion
 

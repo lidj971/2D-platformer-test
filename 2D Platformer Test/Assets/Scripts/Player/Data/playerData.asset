@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2701e4aaef9601148931e739a70432c3, type: 3}
   m_Name: playerData
   m_EditorClassIdentifier: 
+  gravityScale: 6
   movementVelocity: 6
   horizontalDamping: 0.8
-  jumpVelocity: 18
+  jumpVelocity: 24
+  minJumpVelocity: 16
   amountOfJumps: 1
   slideVelocity: 20
   wallJumpVelocity: 30

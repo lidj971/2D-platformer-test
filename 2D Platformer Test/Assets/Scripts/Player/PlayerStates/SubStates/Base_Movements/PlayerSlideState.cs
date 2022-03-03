@@ -77,11 +77,14 @@ public class PlayerSlideState : PlayerGroundedState
     {
         base.LogicUpdate();
 
+        if (isTouchingCeiling || !isAnimationFinished || !isStartAnimationFinished) return;
+        stateMachine.ChangeState(player.IdleState);
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
         if (!isStartAnimationFinished) return;
         player.SetVelocityX(playerData.slideVelocity);
-
-        if (isTouchingCeiling || !isAnimationFinished) return;
-        stateMachine.ChangeState(player.IdleState);
-
     }
 }
