@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWallRunState : PlayerAbilityState
+public class PlayerWallRunState : PlayerTouchingWallState
 {
+    
     public PlayerWallRunState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
@@ -28,16 +29,23 @@ public class PlayerWallRunState : PlayerAbilityState
 
     public override void LogicUpdate()
     {
-        int xInput = player.InputHandler.NormInputX;
         base.LogicUpdate();
-        if (xInput == player.FacingDirection) return;
-        isAbilityDone = true;
+
+        if (isTouchingWall && !isTouchingLedge)
+        {
+            stateMachine.ChangeState(player.LedgeClimbState);
+        }else if (isTouchingWall && GrabInput)
+        {
+            stateMachine.ChangeState(player.WallGrabState);
+        }
     }
 
     public override void PhysicsUpdate()
     {
-        player.SetVelocityY(playerData.movementVelocity, playerData.horizontalDamping);
+        player.SetWallRunVelocity(playerData.movementVelocity, playerData.horizontalDamping);
         base.PhysicsUpdate();
     }
+
+    
 
 }

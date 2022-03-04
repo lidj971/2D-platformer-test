@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerTouchingWallState : PlayerState
 {
-    protected bool isGrounded;
+    public bool isGrounded;
     protected bool isTouchingWall;
     protected bool isTouchingLowWall;
-    protected bool jumpInput;
-    protected bool grabInput;
     protected bool isTouchingLedge;
+    protected bool isTouchingWallBack;
+
+    
+    protected bool JumpInput;
+    protected bool GrabInput;
     protected int xInput;
     protected int yInput;
     
@@ -35,6 +38,7 @@ public class PlayerTouchingWallState : PlayerState
         isTouchingWall = player.CheckIfTouchingWall();
         isTouchingLedge = player.CheckIfTouchingLedge();
         isTouchingLowWall = player.CheckIfTouchingLowWall();
+        isTouchingWallBack = player.CheckIfTouchingWallBack();
 
         if (isTouchingLedge || !isTouchingWall) return;
         player.LedgeClimbState.SetDetecetedPositon(player.transform.position);
@@ -56,27 +60,31 @@ public class PlayerTouchingWallState : PlayerState
 
         xInput = player.InputHandler.NormInputX;
         yInput = player.InputHandler.NormInputY;
-        grabInput = player.InputHandler.GrabInput;
-        jumpInput = player.InputHandler.JumpInput;
+        GrabInput = player.InputHandler.GrabInput;
+        JumpInput = player.InputHandler.JumpInput;
 
-        if (jumpInput)
+        if (JumpInput)
         {
             player.WallJumpState.DetermineWallJumpDirecton(isTouchingWall);
             stateMachine.ChangeState(player.WallJumpState);
         }
-        else if (isGrounded && !grabInput)
-        {
-            stateMachine.ChangeState(player.IdleState);
-        }
-        else if (!isTouchingWall || (xInput != player.FacingDirection && !grabInput))
+        else if (!isTouchingWall || (xInput != player.FacingDirection && !GrabInput))
         {
             stateMachine.ChangeState(player.InAirState);
         }
-        else if(isTouchingWall && !isTouchingLedge)
+        else if (isTouchingWall && !isTouchingLedge)
         {
             player.StateMachine.ChangeState(player.LedgeClimbState);
         }
-
+        else if (!isTouchingWallBack && xInput == player.FacingDirection && isGrounded)
+        {
+            player.StateMachine.ChangeState(player.WallRunState);
+        }
+        else if (isGrounded && !GrabInput)
+        {
+            stateMachine.ChangeState(player.IdleState);
+        }
+        
     }
 
     public override void PhysicsUpdate()

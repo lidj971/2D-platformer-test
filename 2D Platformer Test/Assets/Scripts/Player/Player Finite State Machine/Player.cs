@@ -98,6 +98,9 @@ public class Player : MonoBehaviour
     public string currentAnimationState;
     #endregion
 
+    public bool isTouchingWall;
+    public bool isTouchingWallBack;
+
     #region Unity Callback Functions 
     private void Awake()
     {
@@ -148,6 +151,8 @@ public class Player : MonoBehaviour
         //Appel des fonctions LogicUpdate et AnimationUpdate du state actuel
         StateMachine.CurrentState.LogicUpdate();
         StateMachine.CurrentState.AnimationUpdate();
+        isTouchingWall = CheckIfTouchingWall();
+        isTouchingWallBack = CheckIfTouchingWallBack();
     }
     
     //Fonction FixedUpdate appelee 1 fois par frame a une frame-rate fixe
@@ -187,15 +192,15 @@ public class Player : MonoBehaviour
         CurrentVelocity = workspace;
     }
 
-    //permet d'augmenter la velocite vertical jusqu'a une limite precise
-    public void SetVelocityY(float velocity, float verticalDamping)
+    public void SetWallRunVelocity(float velocity, float verticalDamping)
     {
-        workspace.Set(RB.velocity.x, RB.velocity.y + velocity * InputHandler.NormInputY);
-        workspace.y += InputHandler.NormInputY;
+        workspace.Set(RB.velocity.x, RB.velocity.y + velocity);
+        workspace.y += 1;
         workspace.y *= Mathf.Pow(1f - verticalDamping, Time.deltaTime * 10f);
         RB.velocity = workspace;
         CurrentVelocity = workspace;
     }
+
     //permet de modifier la velocite vertical d'un coup
     public void SetVelocityY(float velocity)
     {

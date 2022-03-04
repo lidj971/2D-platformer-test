@@ -19,7 +19,7 @@ public class PlayerWallSlideState : PlayerTouchingWallState
         if (isExitingState) return;
         player.SetVelocityY(-playerData.wallSlideVelocity);
 
-        if (isGrounded || (grabInput && yInput == 0))
+        if (isGrounded || (GrabInput && yInput == 0))
         {
             stateMachine.ChangeState(player.WallGrabState);
         }

@@ -10,11 +10,12 @@ public class PlayerGroundedState : PlayerState
     public bool slideInput { get; private set; }
 
     public bool isGrounded { get; private set; }
-    public bool isTouchingWall;
+    public bool isTouchingWall{ get; private set; }
     public bool isTouchingLowWall { get; private set; }
+    public bool isTouchingWallBack{ get; private set; }
 
 
-    public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
 
     }
@@ -25,6 +26,7 @@ public class PlayerGroundedState : PlayerState
         isGrounded = player.CheckIfGrounded();
         isTouchingWall = player.CheckIfTouchingWall();
         isTouchingLowWall = player.CheckIfTouchingLowWall();
+        isTouchingWallBack = player.CheckIfTouchingWallBack();
     }
 
     public override void Enter()
@@ -66,10 +68,10 @@ public class PlayerGroundedState : PlayerState
             {
                 stateMachine.ChangeState(player.WallGrabState);
             }
-        }/*else if(isTouchingWall && xInput == player.FacingDirection)
+        }else if(isTouchingWall && xInput == player.FacingDirection && !isTouchingWallBack)
         {
             stateMachine.ChangeState(player.WallRunState);
-        }*/
+        }
     }
 
     public override void PhysicsUpdate()
