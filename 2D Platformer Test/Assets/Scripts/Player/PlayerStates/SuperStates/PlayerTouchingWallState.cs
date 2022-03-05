@@ -72,7 +72,7 @@ public class PlayerTouchingWallState : PlayerState
         {
             player.StateMachine.ChangeState(player.LedgeClimbState);
         }
-        else if (player.WallRunState != null && !isTouchingWallBack && xInput == player.FacingDirection && isGrounded)
+        else if (player.WallRunState != null && !isTouchingWallBack && xInput == player.FacingDirection && isGrounded && !GrabInput)
         {
             player.StateMachine.ChangeState(player.WallRunState);
         }

@@ -203,6 +203,17 @@
                 },
                 {
                     "name": "",
+                    "id": "a6bae4ce-82fc-47d3-adc3-f073736a8b99",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "51f9c152-ac50-40bb-adda-4b4e7a0a0ed0",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
