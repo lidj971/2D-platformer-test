@@ -9,11 +9,6 @@ public class PlayerSlideState : PlayerGroundedState
     //Determine si l'on est encore sous un block
     private bool isTouchingCeiling;
 
-    
-    public PlayerSlideState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
-    {
-    }
-
     //on appelle cette fonction lorsque StopSliding est terminer
     public override void AnimationFinishTrigger()
     {

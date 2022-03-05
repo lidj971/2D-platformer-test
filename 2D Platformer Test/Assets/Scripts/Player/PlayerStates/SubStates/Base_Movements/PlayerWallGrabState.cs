@@ -6,10 +6,6 @@ public class PlayerWallGrabState : PlayerTouchingWallState
 {
     private Vector2 holdPosition;
     private bool slideInput;
-    
-    public PlayerWallGrabState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string stateName) : base(player, stateMachine, playerData, stateName)
-    {
-    }
 
     public override void Enter()
     {

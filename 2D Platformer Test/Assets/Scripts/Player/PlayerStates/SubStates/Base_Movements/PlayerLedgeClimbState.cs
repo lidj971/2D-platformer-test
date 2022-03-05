@@ -20,10 +20,6 @@ public class PlayerLedgeClimbState : PlayerState
     private int xInput;
     private int yInput;
 
-    public PlayerLedgeClimbState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string stateName) : base(player, stateMachine, playerData, stateName)
-    {
-    }
-
     public override void AnimationFinishTrigger()
     {
         base.AnimationFinishTrigger();

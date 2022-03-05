@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerWallRunState : PlayerTouchingWallState
 {
     
-    public PlayerWallRunState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    /*public PlayerWallRunState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
-    }
+    }*/
 
     public override void AnimationUpdate()
     {

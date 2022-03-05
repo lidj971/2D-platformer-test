@@ -15,11 +15,6 @@ public class PlayerGroundedState : PlayerState
     public bool isTouchingWallBack{ get; private set; }
 
 
-public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
-    {
-
-    }
-
     public override void DoChecks()
     {
         base.DoChecks();
@@ -55,9 +50,9 @@ public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, Playe
         }
         else if (!isGrounded)
         {
-            player.InAirState.StartCoyoteTime(); 
+            player.InAirState.StartCoyoteTime();
             stateMachine.ChangeState(player.InAirState);
-        }else if(isTouchingWall && grabInput && player.StateMachine.CurrentState != player.SlideState)
+        }else if (isTouchingWall && grabInput && player.StateMachine.CurrentState != player.SlideState)
         {
             if (!isTouchingLowWall)
             {
@@ -68,7 +63,7 @@ public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, Playe
             {
                 stateMachine.ChangeState(player.WallGrabState);
             }
-        }else if(isTouchingWall && xInput == player.FacingDirection && !isTouchingWallBack)
+        }else if (player.WallRunState != null &&  isTouchingWall && xInput == player.FacingDirection && !isTouchingWallBack)
         {
             stateMachine.ChangeState(player.WallRunState);
         }

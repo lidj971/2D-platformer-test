@@ -22,10 +22,6 @@ public class PlayerInAirState : PlayerState
 
     private float startWallJumpCoyoteTime;
 
-    public PlayerInAirState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
-    {
-    }
-
     public override void DoChecks()
     {
         base.DoChecks();

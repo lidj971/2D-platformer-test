@@ -2,29 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerState
+public class PlayerState : MonoBehaviour
 {
-    protected Player player;
-    protected PlayerStateMachine stateMachine;
-    protected PlayerData playerData;
+    [HideInInspector] public Player player;
+    [HideInInspector] public PlayerStateMachine stateMachine;
+    [HideInInspector] public PlayerData playerData;
 
-    private string stateName;
+    [HideInInspector] public string stateName;
 
     protected float startTime;
 
     protected bool isAnimationFinished;
     protected bool isExitingState;
     
-
-
-    public PlayerState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string stateName)
-    {
-        this.player = player;
-        this.stateMachine = stateMachine;
-        this.playerData = playerData;
-        this.stateName = stateName;
-    }
-
     //Fonction appelee lorsqu'on rentre dans un state
     public virtual void Enter()
     {

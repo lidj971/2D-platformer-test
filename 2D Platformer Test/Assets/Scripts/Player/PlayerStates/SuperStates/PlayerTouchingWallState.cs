@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerTouchingWallState : PlayerState
 {
-    public bool isGrounded;
+    protected bool isGrounded;
     protected bool isTouchingWall;
     protected bool isTouchingLowWall;
     protected bool isTouchingLedge;
@@ -14,11 +14,7 @@ public class PlayerTouchingWallState : PlayerState
     protected bool JumpInput;
     protected bool GrabInput;
     protected int xInput;
-    protected int yInput;
-    
-    public PlayerTouchingWallState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string stateName) : base(player, stateMachine, playerData, stateName)
-    {
-    }
+    protected int yInput;    
 
     public override void AnimationFinishTrigger()
     {
@@ -76,7 +72,7 @@ public class PlayerTouchingWallState : PlayerState
         {
             player.StateMachine.ChangeState(player.LedgeClimbState);
         }
-        else if (!isTouchingWallBack && xInput == player.FacingDirection && isGrounded)
+        else if (player.WallRunState != null && !isTouchingWallBack && xInput == player.FacingDirection && isGrounded)
         {
             player.StateMachine.ChangeState(player.WallRunState);
         }

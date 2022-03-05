@@ -98,8 +98,14 @@ public class Player : MonoBehaviour
     public string currentAnimationState;
     #endregion
 
-    public bool isTouchingWall;
-    public bool isTouchingWallBack;
+    #region Check Debug Variables
+    private bool isTouchingWall;
+    private bool isTouchingWallBack;
+    private bool isGrounded;
+    private bool isTouchingLedge;
+    private bool isTouchingLowWall;
+    private bool isTouchingCeiling;
+    #endregion
 
     #region Unity Callback Functions 
     private void Awake()
@@ -107,21 +113,34 @@ public class Player : MonoBehaviour
         //Initialisation de la StateMachine
         StateMachine = new PlayerStateMachine();
 
-        //Initialisation des States de base
-        IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
-        MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
-        JumpState = new PlayerJumpState(this, StateMachine, playerData, "jump");
-        SlideState = new PlayerSlideState(this, StateMachine, playerData, "slide");
-        InAirState = new PlayerInAirState(this, StateMachine, playerData, "inAir");
-        LandState = new PlayerLandState(this, StateMachine, playerData, "land");
-        WallSlideState = new PlayerWallSlideState(this, StateMachine, playerData, "WallSlide");
-        WallGrabState = new PlayerWallGrabState(this, StateMachine, playerData, "WallGrab");
-        WallClimbState = new PlayerWallClimbState(this, StateMachine, playerData, "WallClimb");
-        WallJumpState = new PlayerWallJumpState(this, StateMachine, playerData, "WallJump");
-        LedgeClimbState = new PlayerLedgeClimbState(this, StateMachine, playerData, "LedgeClimb");
+        //Initialisation des States de base       
+        IdleState = GetComponentInChildren<PlayerIdleState>();
+        MoveState = GetComponentInChildren<PlayerMoveState>();
+        JumpState = GetComponentInChildren<PlayerJumpState>();
+        SlideState = GetComponentInChildren<PlayerSlideState>();
+        InAirState = GetComponentInChildren<PlayerInAirState>();
+        LandState = GetComponentInChildren<PlayerLandState>();
+        WallSlideState = GetComponentInChildren<PlayerWallSlideState>();
+        WallGrabState = GetComponentInChildren<PlayerWallGrabState>();
+        WallClimbState = GetComponentInChildren<PlayerWallClimbState>();
+        WallJumpState = GetComponentInChildren <PlayerWallJumpState>();
+        LedgeClimbState = GetComponentInChildren<PlayerLedgeClimbState>();
 
         //Initialisation des Skills
-        WallRunState = new PlayerWallRunState(this, StateMachine, playerData, "WallRun");
+        WallRunState = GetComponentInChildren<PlayerWallRunState>();
+
+        //Intialisation des donnes de tout les States
+        PlayerState[] AllStates = GetComponentsInChildren<PlayerState>();
+        foreach(PlayerState state in AllStates)
+        {
+            state.player = this;
+            state.stateMachine = StateMachine;
+            state.playerData = playerData;
+            state.stateName = state.ToString();
+            state.stateName = state.stateName.Replace(state.name,"");
+            state.stateName = state.stateName.Replace("(Player", "");
+            state.stateName = state.stateName.Replace(")", "");
+        }
     }
 
     private void Start()
@@ -129,7 +148,7 @@ public class Player : MonoBehaviour
         //Initialisation des Composant au composant du personage
         BodyAnim = GetComponent<Animator>();
         GloveAnim = Glove.GetComponent<Animator>();
-        InputHandler = GetComponent<InputHandler>();
+        InputHandler = GetComponentInChildren<InputHandler>();
         RB = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
         allColliders = GetComponentsInChildren<BoxCollider2D>();
@@ -151,8 +170,15 @@ public class Player : MonoBehaviour
         //Appel des fonctions LogicUpdate et AnimationUpdate du state actuel
         StateMachine.CurrentState.LogicUpdate();
         StateMachine.CurrentState.AnimationUpdate();
+        
+        //On assigne au varibales de check les fonctions correspondante
         isTouchingWall = CheckIfTouchingWall();
         isTouchingWallBack = CheckIfTouchingWallBack();
+        isGrounded = CheckIfGrounded();
+        isTouchingLedge = CheckIfTouchingLedge();
+        isTouchingLowWall = CheckIfTouchingLowWall();
+        isTouchingCeiling = CheckIfTouchingCeiling();
+
     }
     
     //Fonction FixedUpdate appelee 1 fois par frame a une frame-rate fixe
