@@ -35,8 +35,10 @@ public class PlayerMoveState : PlayerGroundedState
         {
             stateMachine.ChangeState(player.SlideState);
         }
-        else if (player.WallRunState != null && isTouchingWall && isTouchingLowWall && xInput == player.FacingDirection && !isTouchingWallBack)
+        else if ( !isTouchingWallBack && player.WallRunState != null && isTouchingWall && isTouchingLowWall && xInput == player.FacingDirection && player.CurrentVelocity[0]>0)
+
         {
+            Debug.Log("not touching wall back");
             stateMachine.ChangeState(player.WallRunState);
         }
     }

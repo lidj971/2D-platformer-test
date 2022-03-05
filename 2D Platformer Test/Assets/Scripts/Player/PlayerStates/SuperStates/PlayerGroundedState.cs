@@ -49,7 +49,7 @@ public class PlayerGroundedState : PlayerState
         {
             stateMachine.ChangeState(player.JumpState);
         }
-        else if (!isGrounded && stateMachine.CurrentState != player.WallRunState)
+        else if (!isGrounded && stateMachine.CurrentState != player.WallRunState && !isTouchingWall)
         {
             player.InAirState.StartCoyoteTime();
             stateMachine.ChangeState(player.InAirState);
