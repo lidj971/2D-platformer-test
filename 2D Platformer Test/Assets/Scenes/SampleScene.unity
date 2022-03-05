@@ -224,18 +224,52 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 242846280}
     m_ColliderPaths:
-    - - X: 360000041
-        Y: -19999900
-      - X: 360000100
-        Y: -19999900
-      - X: 360000100
-        Y: 60000041
-      - X: 360000041
-        Y: 60000100
-      - X: 349999959
-        Y: 60000100
+    - - X: 270000100
+        Y: -50000041
+      - X: 270000100
+        Y: -50000000
+      - X: 309999900
+        Y: -50000000
+      - X: 309999900
+        Y: -50000041
+      - X: 309999959
+        Y: -50000100
+      - X: 320000041
+        Y: -50000100
+      - X: 320000100
+        Y: -50000041
+      - X: 320000100
+        Y: -50000000
       - X: 349999900
-        Y: 60000041
+        Y: -50000000
+      - X: 349999900
+        Y: -50000041
+      - X: 349999959
+        Y: -50000100
+      - X: 360000041
+        Y: -50000100
+      - X: 360000100
+        Y: -50000041
+      - X: 360000100
+        Y: -50000000
+      - X: 610000000
+        Y: -50000000
+      - X: 610000000
+        Y: 160000000
+      - X: 600000000
+        Y: 160000000
+      - X: 600000000
+        Y: -40000000
+      - X: 360000100
+        Y: -40000000
+      - X: 360000100
+        Y: -40000041
+      - X: 360000041
+        Y: -40000100
+      - X: 349999959
+        Y: -40000100
+      - X: 349999900
+        Y: -40000041
       - X: 349999900
         Y: -40000100
       - X: 320000100
@@ -294,56 +328,34 @@ CompositeCollider2D:
         Y: -50000100
       - X: 270000041
         Y: -50000100
-      - X: 270000100
-        Y: -50000041
-      - X: 270000100
-        Y: -50000000
-      - X: 309999900
-        Y: -50000000
-      - X: 309999900
-        Y: -50000041
-      - X: 309999959
-        Y: -50000100
-      - X: 320000041
-        Y: -50000100
-      - X: 320000100
-        Y: -50000041
-      - X: 320000100
-        Y: -50000000
-      - X: 349999900
-        Y: -50000000
-      - X: 349999900
-        Y: -50000041
-      - X: 349999959
-        Y: -50000100
-      - X: 360000041
-        Y: -50000100
-      - X: 360000100
-        Y: -50000041
-      - X: 360000100
-        Y: -50000000
-      - X: 610000000
-        Y: -50000000
-      - X: 610000000
-        Y: 160000000
-      - X: 600000000
-        Y: 160000000
-      - X: 600000000
-        Y: -40000000
-      - X: 360000100
-        Y: -40000000
-      - X: 360000100
+    - - X: 360000100
         Y: -19999959
+      - X: 360000041
+        Y: -19999900
+      - X: 360000100
+        Y: -19999900
+      - X: 360000100
+        Y: 60000041
+      - X: 360000041
+        Y: 60000100
+      - X: 349999959
+        Y: 60000100
+      - X: 349999900
+        Y: 60000041
+      - X: 349999900
+        Y: -29999959
+      - X: 349999959
+        Y: -29999900
+      - X: 360000041
+        Y: -29999900
+      - X: 360000100
+        Y: -29999959
   m_CompositePaths:
     m_Paths:
     - - {x: 60.99997, y: -5}
       - {x: 60.99997, y: 16}
       - {x: 60, y: 15.999971}
       - {x: 59.99997, y: -4}
-      - {x: 36.00001, y: -3.9999704}
-      - {x: 35.999973, y: 6.00001}
-      - {x: 34.999992, y: 5.9999747}
-      - {x: 34.99996, y: -4.00001}
       - {x: -1, y: -3.9999704}
       - {x: -1.0000293, y: -1}
       - {x: -4, y: -1.0000293}
@@ -356,6 +368,10 @@ CompositeCollider2D:
       - {x: -25.000029, y: 9}
       - {x: -26, y: 8.99997}
       - {x: -25.999971, y: -5}
+    - - {x: 35.999973, y: -2.99999}
+      - {x: 35.999973, y: 6.00001}
+      - {x: 34.999992, y: 5.9999747}
+      - {x: 35.000027, y: -2.99999}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &242846279
@@ -1382,16 +1398,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 35, y: -4, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 4
-      m_TileSpriteIndex: 4
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 60, y: -4, z: 0}
     second:
       serializedVersion: 2
@@ -1892,7 +1898,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 5497b401e5368e8469b1d779659d01ab, type: 2}
   - m_RefCount: 80
     m_Data: {fileID: 11400000, guid: 7f3688d6ff8e5514a8179d21fb37d682, type: 2}
-  - m_RefCount: 42
+  - m_RefCount: 41
     m_Data: {fileID: 11400000, guid: 6e6e002b763ea7548a0bbfff73495be1, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 89e0d7bad9a67604cb1cd8ff0de061b4, type: 2}
@@ -1917,7 +1923,7 @@ Tilemap:
     m_Data: {fileID: -2937144478730036158, guid: 59c80865a40c8b54b880a12341f816ae, type: 3}
   - m_RefCount: 80
     m_Data: {fileID: -8950261317167421448, guid: 59c80865a40c8b54b880a12341f816ae, type: 3}
-  - m_RefCount: 42
+  - m_RefCount: 41
     m_Data: {fileID: 5282493549053284395, guid: 59c80865a40c8b54b880a12341f816ae, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -3477158960362492199, guid: 59c80865a40c8b54b880a12341f816ae, type: 3}
@@ -1934,7 +1940,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 5599536627002417143, guid: 59c80865a40c8b54b880a12341f816ae, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 143
+  - m_RefCount: 142
     m_Data:
       e00: 1
       e01: 0
@@ -1953,7 +1959,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 143
+  - m_RefCount: 142
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -2628,7 +2634,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1001477011}
         m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
-        m_MethodName: OnRunInput
+        m_MethodName: OnGrabInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3174,8 +3180,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5762439561596439572}
   - component: {fileID: 8273404920382140901}
-  - component: {fileID: 5762439561596439573}
   - component: {fileID: 5762439561596439578}
+  - component: {fileID: 5762439561596439573}
   - component: {fileID: 5762439561596439583}
   m_Layer: 0
   m_Name: Player
