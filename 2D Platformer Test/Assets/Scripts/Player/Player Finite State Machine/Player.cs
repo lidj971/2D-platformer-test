@@ -89,6 +89,8 @@ public class Player : MonoBehaviour
     public string PLAYER_LEDGE_CLIMB { get; private set; } = "Player_LedgeClimb";
     public string PLAYER_LEDGE_GRAB { get; private set; } = "Player_LedgeGrab";
     public string PLAYER_LEDGE_HOLD { get; private set; } = "Player_LedgeHold";
+
+    public string PLAYER_WALL_RUN { get; private set; } = "Player_WallRun";
     #endregion
 
     #region Other Variables
@@ -330,8 +332,13 @@ public class Player : MonoBehaviour
         if (xInput == 0 || xInput == FacingDirection) return;
         Flip();
     }
-    #endregion
+    /*
+    public bool CheckIfIsOnCooltimes()
+    {
 
+    }
+    #endregion
+    */
     #region Other Functions
     private void AnimationTriggerFunction() => StateMachine.CurrentState.AnimationTrigger();
 
@@ -372,3 +379,4 @@ public class Player : MonoBehaviour
     }
     #endregion
 }
+#endregion

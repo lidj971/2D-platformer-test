@@ -95,6 +95,27 @@ TextureImporter:
   - first:
       213: -8053963026928370203
     second: gloves_30
+  - first:
+      213: 3513352888494825844
+    second: gloves_31
+  - first:
+      213: 4323798307065549025
+    second: gloves_32
+  - first:
+      213: -5762530965085238258
+    second: gloves_33
+  - first:
+      213: -98726380562401698
+    second: gloves_34
+  - first:
+      213: 7650057503527439311
+    second: gloves_35
+  - first:
+      213: -8860186900444135118
+    second: gloves_36
+  - first:
+      213: -4251100101826007658
+    second: gloves_37
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -845,6 +866,174 @@ TextureImporter:
       bones: []
       spriteID: 9129c59057d5e8140800000000000000
       internalID: 4723815816407847449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5edfdc97c439a3090800000000000000
+      internalID: -8053963026928370203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_31
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 471a35966dfe1c030800000000000000
+      internalID: 3513352888494825844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_32
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e0d31dd6a7310c30800000000000000
+      internalID: 4323798307065549025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_33
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0cc7e25e906700b0800000000000000
+      internalID: -5762530965085238258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_34
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e563e9441e041aef0800000000000000
+      internalID: -98726380562401698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_35
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcb801984c67a2a60800000000000000
+      internalID: 7650057503527439311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_36
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 231457315fa4a0580800000000000000
+      internalID: -8860186900444135118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gloves_37
+      rect:
+        serializedVersion: 2
+        x: 3584
+        y: 412.33334
+        width: 512
+        height: 409.66666
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69da80e0bfe0105c0800000000000000
+      internalID: -4251100101826007658
       vertices: []
       indices: 
       edges: []

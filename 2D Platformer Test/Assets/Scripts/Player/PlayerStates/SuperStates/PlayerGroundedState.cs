@@ -12,6 +12,7 @@ public class PlayerGroundedState : PlayerState
     public bool isGrounded { get; private set; }
     public bool isTouchingWall{ get; private set; }
     public bool isTouchingLowWall { get; private set; }
+
     public bool isTouchingWallBack{ get; private set; }
 
 
@@ -48,11 +49,12 @@ public class PlayerGroundedState : PlayerState
         {
             stateMachine.ChangeState(player.JumpState);
         }
-        else if (!isGrounded)
+        else if (!isGrounded && stateMachine.CurrentState != player.WallRunState)
         {
             player.InAirState.StartCoyoteTime();
             stateMachine.ChangeState(player.InAirState);
-        }else if (isTouchingWall && grabInput && player.StateMachine.CurrentState != player.SlideState)
+        }
+        else if (isTouchingWall && grabInput && player.StateMachine.CurrentState != player.SlideState)
         {
             if (!isTouchingLowWall)
             {
@@ -63,12 +65,8 @@ public class PlayerGroundedState : PlayerState
             {
                 stateMachine.ChangeState(player.WallGrabState);
             }
-        }else if (player.WallRunState != null &&  isTouchingWall && xInput == player.FacingDirection && !isTouchingWallBack)
-        {
-            stateMachine.ChangeState(player.WallRunState);
         }
-    }
-
+    }   
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();

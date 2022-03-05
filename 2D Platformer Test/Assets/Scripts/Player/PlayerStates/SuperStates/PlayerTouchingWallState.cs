@@ -64,7 +64,7 @@ public class PlayerTouchingWallState : PlayerState
             player.WallJumpState.DetermineWallJumpDirecton(isTouchingWall);
             stateMachine.ChangeState(player.WallJumpState);
         }
-        else if (!isTouchingWall || (xInput != player.FacingDirection && !GrabInput))
+        else if ((!isTouchingWall && !isGrounded) || (xInput != player.FacingDirection && !GrabInput && !isGrounded))
         {
             stateMachine.ChangeState(player.InAirState);
         }
@@ -72,7 +72,8 @@ public class PlayerTouchingWallState : PlayerState
         {
             player.StateMachine.ChangeState(player.LedgeClimbState);
         }
-        else if (player.WallRunState != null && !isTouchingWallBack && xInput == player.FacingDirection && isGrounded)
+        
+        else if (player.WallRunState != null && !isTouchingWallBack && xInput == player.FacingDirection && isGrounded && !GrabInput)
         {
             player.StateMachine.ChangeState(player.WallRunState);
         }

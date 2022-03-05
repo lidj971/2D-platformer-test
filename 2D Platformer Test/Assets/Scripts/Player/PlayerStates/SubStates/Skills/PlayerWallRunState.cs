@@ -12,6 +12,8 @@ public class PlayerWallRunState : PlayerTouchingWallState
     public override void AnimationUpdate()
     {
         base.AnimationUpdate();
+        //wallrun state ajouté
+        player.SetAnimationState(player.PLAYER_WALL_RUN);
     }
 
     public override void Enter()

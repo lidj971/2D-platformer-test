@@ -31,11 +31,28 @@ public class PlayerMoveState : PlayerGroundedState
         {
             stateMachine.ChangeState(player.IdleState);
         }
-        else if (isTouchingWall && !isTouchingLowWall && xInput != 0 && slideInput)
+        else if (isTouchingWall && !isTouchingLowWall && stateMachine.CurrentState != player.WallRunState)
         {
-            stateMachine.ChangeState(player.SlideState);
+            //si le joueur cours vers un mur on passe au state idle 
+            if (xInput != 0 && slideInput)
+            {
+                stateMachine.ChangeState(player.SlideState);
+
+            }
+            else
+            {
+                stateMachine.ChangeState(player.IdleState);
+            }
+
         }
+
+        else if (player.WallRunState != null && isTouchingLowWall && xInput == player.FacingDirection && !isTouchingWallBack && player.CurrentVelocity !=  new Vector2(0,0))
+        {
+            stateMachine.ChangeState(player.WallRunState);
+        }
+
     }
+
 
     public override void AnimationUpdate()
     {

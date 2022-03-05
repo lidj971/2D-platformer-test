@@ -38,7 +38,19 @@ public class PlayerIdleState : PlayerGroundedState
         }
         else if (xInput != 0 && !isExitingState)
         {
-            stateMachine.ChangeState(player.MoveState);
+            //pour que le joueur ne passe pas en movestate alors qu'il va face a un mur-
+            if (!isTouchingWall)
+            {
+
+                stateMachine.ChangeState(player.MoveState);
+            }
+            else
+            {
+                if (xInput != player.FacingDirection)
+                {
+                    stateMachine.ChangeState(player.MoveState);
+                }
+            }
         }
     }
 
