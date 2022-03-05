@@ -51,7 +51,6 @@ public class PlayerWallGrabState : PlayerTouchingWallState
     private void HoldPosition()
     {
         player.transform.position = holdPosition;
-        player.KillVelocityX();
-        player.SetVelocityY(0f);
+        player.KillVelocity();
     }
 }
