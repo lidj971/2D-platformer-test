@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWallRunState : PlayerTouchingWallState
+//le wallrun ne depend plus de goundedState
+public class PlayerWallRunState : PlayerAbilityState
 {
+    protected int xInput;
+    protected bool GrabInput;
+    protected bool JumpInput;
+    protected bool isTouchingLedge;
     
-    /*public PlayerWallRunState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
-    {
-    }*/
-
     public override void AnimationUpdate()
     {
         base.AnimationUpdate();
@@ -19,8 +20,7 @@ public class PlayerWallRunState : PlayerTouchingWallState
     public override void Enter()
     {
         base.Enter();
-        player.SetGravityScale(0f);
-        
+        player.SetGravityScale(0f); 
     }
 
     public override void Exit()
@@ -32,14 +32,15 @@ public class PlayerWallRunState : PlayerTouchingWallState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        xInput = player.InputHandler.NormInputX;
+        GrabInput = player.InputHandler.GrabInput;
+        JumpInput = player.InputHandler.JumpInput;
+        isTouchingLedge = player.CheckIfTouchingLedge();
 
-        if (isTouchingWall && !isTouchingLedge)
-        {
-            stateMachine.ChangeState(player.LedgeClimbState);
-        }else if (isTouchingWall && GrabInput)
-        {
-            stateMachine.ChangeState(player.WallGrabState);
-        }
+        //si l'on grab jump ou se retourne
+        if (xInput == player.FacingDirection && !GrabInput && !JumpInput && isTouchingLedge) return;
+        //on quitte le wallRun State
+        isAbilityDone = true;
     }
 
     public override void PhysicsUpdate()
