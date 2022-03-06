@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2701e4aaef9601148931e739a70432c3, type: 3}
   m_Name: playerData
   m_EditorClassIdentifier: 
-  gravityScale: 6
+  gravityScale: 4.7
   movementVelocity: 6
   horizontalDamping: 0.8
-  jumpVelocity: 24
-  minJumpVelocity: 16
+  jumpVelocity: 20
+  minJumpVelocity: 20
   amountOfJumps: 1
   slideVelocity: 20
   wallJumpVelocity: 30
@@ -29,7 +29,7 @@ MonoBehaviour:
   startOffset: {x: 0.3, y: 0}
   stopOffset: {x: 0.7, y: 2.2}
   groundCheckRadius: 0.2
-  wallCheckDistance: 0.5
+  wallCheckDistance: 0.2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256

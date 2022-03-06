@@ -27,6 +27,7 @@ public class PlayerWallRunState : PlayerAbilityState
     {
         base.Exit();
         player.SetGravityScale(playerData.gravityScale);
+        player.KillVelocity();
     }
 
     public override void LogicUpdate()

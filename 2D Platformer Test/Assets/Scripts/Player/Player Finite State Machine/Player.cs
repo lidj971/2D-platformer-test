@@ -176,11 +176,9 @@ public class Player : MonoBehaviour
         //On assigne au varibales de check les fonctions correspondante
         isTouchingWall = CheckIfTouchingWall();
         isTouchingWallBack = CheckIfTouchingWallBack();
-        isGrounded = CheckIfGrounded();
         isTouchingLedge = CheckIfTouchingLedge();
         isTouchingLowWall = CheckIfTouchingLowWall();
         isTouchingCeiling = CheckIfTouchingCeiling();
-
     }
     
     //Fonction FixedUpdate appelee 1 fois par frame a une frame-rate fixe
@@ -188,6 +186,7 @@ public class Player : MonoBehaviour
     {
         //Appel de la fonction Physics Update du state actuel
         StateMachine.CurrentState.PhysicsUpdate();
+        isGrounded = CheckIfGrounded();
     }
     #endregion
 
@@ -336,9 +335,9 @@ public class Player : MonoBehaviour
     public bool CheckIfIsOnCooltimes()
     {
 
-    }
+    }*/
     #endregion
-    */
+    
     #region Other Functions
     private void AnimationTriggerFunction() => StateMachine.CurrentState.AnimationTrigger();
 
@@ -377,6 +376,10 @@ public class Player : MonoBehaviour
         workspace.Set(wallCheck.position.x + (xDist * FacingDirection), ledgeCheck.position.y - yDist);
         return workspace;
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(groundCheck.position, playerData.groundCheckRadius);
+    }
     #endregion
 }
-#endregion
