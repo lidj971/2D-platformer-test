@@ -16,11 +16,11 @@ MonoBehaviour:
   movementVelocity: 6
   horizontalDamping: 0.8
   jumpVelocity: 20
-  minJumpVelocity: 20
+  minJumpVelocity: 16
   amountOfJumps: 1
   slideVelocity: 20
   wallJumpVelocity: 30
-  wallJumpTime: 0.325
+  wallJumpTime: 0.45
   wallJumpAngle: {x: 1.2, y: 1.5}
   coyoteTime: 0.1
   variableJumpHeightMultiplier: 0.441
@@ -28,7 +28,7 @@ MonoBehaviour:
   wallClimbVelocity: 8
   startOffset: {x: 0.3, y: 0}
   stopOffset: {x: 0.7, y: 2.2}
-  groundCheckRadius: 0.2
+  groundCheckExtraHeight: 0.3
   wallCheckDistance: 0.2
   whatIsGround:
     serializedVersion: 2

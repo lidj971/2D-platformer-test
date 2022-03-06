@@ -23,6 +23,7 @@ public class PlayerWallRunState : PlayerAbilityState
         base.Enter();
         player.SetGravityScale(0f);
         direction = player.FacingDirection;
+        player.SetActiveCollider(player.wallRunCollider);
     }
 
     public override void Exit()
@@ -30,6 +31,7 @@ public class PlayerWallRunState : PlayerAbilityState
         base.Exit();
         player.SetGravityScale(playerData.gravityScale);
         player.KillVelocity();
+        player.SetActiveCollider(player.standingCollider);
     }
 
     public override void LogicUpdate()
@@ -51,7 +53,4 @@ public class PlayerWallRunState : PlayerAbilityState
         player.SetWallRunVelocity(playerData.movementVelocity, playerData.horizontalDamping);
         base.PhysicsUpdate();
     }
-
-    
-
 }
