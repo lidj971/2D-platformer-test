@@ -27,7 +27,7 @@ public class PlayerMoveState : PlayerGroundedState
 
         if (isExitingState) return;
 
-        if (player.CurrentVelocity.x <= 0.1 && player.CurrentVelocity.x >= -0.1 && !isExitingState && xInput == 0)
+        if ((player.CurrentVelocity.x <= 0.1 && player.CurrentVelocity.x >= -0.1 && !isExitingState && xInput == 0))
         {
             stateMachine.ChangeState(player.IdleState);
         }

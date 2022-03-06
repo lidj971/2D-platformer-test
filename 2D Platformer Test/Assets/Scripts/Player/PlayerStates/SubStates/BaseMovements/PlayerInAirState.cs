@@ -25,8 +25,6 @@ public class PlayerInAirState : PlayerState
     public override void DoChecks()
     {
         base.DoChecks();
-
-
         oldIsTouchingWall = isTouchingWall;
         oldIsTouchingWallBack = isTouchingWallBack;
         isGrounded = player.CheckIfGrounded();
@@ -70,7 +68,7 @@ public class PlayerInAirState : PlayerState
         jumpInput = player.InputHandler.JumpInput;
         jumpInputStop = player.InputHandler.JumpInputStop;
         grabInput = player.InputHandler.GrabInput;
-
+        
         CheckJumpMultiplier();
         //state change
         if (isGrounded && player.CurrentVelocity.y < 0.01f)
