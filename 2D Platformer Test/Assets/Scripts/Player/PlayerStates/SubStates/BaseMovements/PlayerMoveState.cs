@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMoveState : PlayerGroundedState
 {
 
+
     public override void DoChecks()
     {
         base.DoChecks();
@@ -25,6 +26,8 @@ public class PlayerMoveState : PlayerGroundedState
         base.LogicUpdate();
         player.CheckIfShouldFlip(xInput);
 
+        
+
         if (isExitingState) return;
 
         if ((player.CurrentVelocity.x <= 0.1 && player.CurrentVelocity.x >= -0.1 && !isExitingState && xInput == 0))
@@ -35,8 +38,7 @@ public class PlayerMoveState : PlayerGroundedState
         {
             stateMachine.ChangeState(player.SlideState);
         }
-        else if (!isTouchingWallBack && player.WallRunState != null && isTouchingWall && isTouchingLowWall && xInput == player.FacingDirection)
-
+        else if (!isTouchingWallBack && player.WallRunState != null && isTouchingWall && isTouchingLowWall && xInput == player.lastTouchedWallDir)
         {
             Debug.Log("not touching wall back");
             stateMachine.ChangeState(player.WallRunState);

@@ -98,6 +98,7 @@ public class Player : MonoBehaviour
     private Vector2 workspace;
     public int FacingDirection { get; private set; }
     public string currentAnimationState;
+    public int lastTouchedWallDir { get; private set; }
     #endregion
 
     #region Check Debug Variables
@@ -297,6 +298,8 @@ public class Player : MonoBehaviour
     //Verifie si l'on Touche un mur
     public bool CheckIfTouchingWall()
     {
+        if (Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround))
+            lastTouchedWallDir = FacingDirection;
         return Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDirection, playerData.wallCheckDistance, playerData.whatIsGround);
     }
 
@@ -346,8 +349,8 @@ public class Player : MonoBehaviour
     //retourne le personage de 180 degres sur l'axe y
     private void Flip()
     {
-        FacingDirection *= -1;
         transform.Rotate(0.0f, 180.0f, 0.0f);
+        FacingDirection *= -1;
     }
     
     //Met la velocite horizontale a 0

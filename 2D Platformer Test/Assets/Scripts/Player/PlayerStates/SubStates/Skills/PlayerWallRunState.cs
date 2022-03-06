@@ -9,6 +9,7 @@ public class PlayerWallRunState : PlayerAbilityState
     protected bool GrabInput;
     protected bool JumpInput;
     protected bool isTouchingLedge;
+    private int direction;
     
     public override void AnimationUpdate()
     {
@@ -20,7 +21,8 @@ public class PlayerWallRunState : PlayerAbilityState
     public override void Enter()
     {
         base.Enter();
-        player.SetGravityScale(0f); 
+        player.SetGravityScale(0f);
+        direction = player.FacingDirection;
     }
 
     public override void Exit()
@@ -39,7 +41,7 @@ public class PlayerWallRunState : PlayerAbilityState
         isTouchingLedge = player.CheckIfTouchingLedge();
 
         //si l'on grab jump ou se retourne
-        if (xInput == player.FacingDirection && !GrabInput && !JumpInput && isTouchingLedge) return;
+        if (direction == player.FacingDirection && xInput == player.FacingDirection && !GrabInput && !JumpInput && isTouchingLedge) return;
         //on quitte le wallRun State
         isAbilityDone = true;
     }
