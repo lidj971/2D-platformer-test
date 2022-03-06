@@ -61,7 +61,7 @@ public class PlayerGroundedState : PlayerState
         }
         else if (isTouchingWall && grabInput && player.StateMachine.CurrentState != player.SlideState && isTouchingLowWall)
         {
-            stateMachine.ChangeState(player.WallGrabState);            
+            stateMachine.ChangeState(player.WallGrabState);
         }
     }   
     public override void PhysicsUpdate()

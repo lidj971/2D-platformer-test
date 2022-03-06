@@ -169,6 +169,7 @@ public class Player : MonoBehaviour
     //Fonction Update appelee 1 fois par frame
     private void Update()
     {
+        
         CurrentVelocity = RB.velocity;
         //Appel des fonctions LogicUpdate et AnimationUpdate du state actuel
         StateMachine.CurrentState.LogicUpdate();
@@ -180,6 +181,7 @@ public class Player : MonoBehaviour
         isTouchingLedge = CheckIfTouchingLedge();
         isTouchingLowWall = CheckIfTouchingLowWall();
         isTouchingCeiling = CheckIfTouchingCeiling();
+        isGrounded = CheckIfGrounded();
     }
     
     //Fonction FixedUpdate appelee 1 fois par frame a une frame-rate fixe
@@ -187,7 +189,6 @@ public class Player : MonoBehaviour
     {
         //Appel de la fonction Physics Update du state actuel
         StateMachine.CurrentState.PhysicsUpdate();
-        isGrounded = CheckIfGrounded();
     }
     #endregion
 
@@ -292,7 +293,8 @@ public class Player : MonoBehaviour
     //Verifie si l'on est au sol
     public bool CheckIfGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, playerData.groundCheckRadius, playerData.whatIsGround);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(standingCollider.bounds.center, standingCollider.bounds.size - new Vector3(0.1f, 0f, 0f), 0f, Vector2.down, playerData.groundCheckRadius, playerData.whatIsGround);
+        return raycastHit.collider != null;
     }
 
     //Verifie si l'on Touche un mur
@@ -324,7 +326,8 @@ public class Player : MonoBehaviour
     //Verifie si le personage touche le plafond pendant qu'il slide
     public bool CheckIfTouchingCeiling()
     {
-        return Physics2D.OverlapCircle(ceilingCheck.position, playerData.groundCheckRadius, playerData.whatIsGround);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(slidingCollider.bounds.center, slidingCollider.bounds.size, 0f, Vector2.up, playerData.groundCheckRadius, playerData.whatIsGround);
+        return raycastHit.collider != null;
     }
 
     //Verifie si le personage devrait se retourner
@@ -380,9 +383,5 @@ public class Player : MonoBehaviour
         return workspace;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(groundCheck.position, playerData.groundCheckRadius);
-    }
     #endregion
 }

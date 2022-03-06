@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSlideState : PlayerGroundedState
+public class PlayerSlideState : PlayerAbilityState
 {
     //Determine si l'animation de StartSliding est terminer
     private bool isStartAnimationFinished;
@@ -54,9 +54,7 @@ public class PlayerSlideState : PlayerGroundedState
         base.Enter();
 
         player.SetActiveCollider(player.slidingCollider);
-        isStartAnimationFinished = false;
-        //On enleve l'abiliter de saut
-        player.JumpState.SetCanJump(false);
+        isStartAnimationFinished = false;       
     }
 
     public override void Exit()
@@ -64,8 +62,6 @@ public class PlayerSlideState : PlayerGroundedState
         base.Exit();
         
         player.SetActiveCollider(player.standingCollider);
-        //On reactive l'abilite de saut
-        player.JumpState.SetCanJump(true);
     }
 
     public override void LogicUpdate()
@@ -73,7 +69,7 @@ public class PlayerSlideState : PlayerGroundedState
         base.LogicUpdate();
 
         if (isTouchingCeiling || !isAnimationFinished || !isStartAnimationFinished) return;
-        stateMachine.ChangeState(player.IdleState);
+        isAbilityDone = true;
     }
 
     public override void PhysicsUpdate()
