@@ -42,7 +42,7 @@ public class PlayerData : ScriptableObject
     public Vector2 stopOffset;
 
     [Header("Check Variables")]
-    public float groundCheckRadius = 0.3f;
+    public float groundCheckExtraHeight = 0.3f;
     public float wallCheckDistance = 0.5f;
     public LayerMask whatIsGround;
 

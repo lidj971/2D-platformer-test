@@ -46,22 +46,17 @@ public class Player : MonoBehaviour
     #region Colliders
     public BoxCollider2D standingCollider;
     public BoxCollider2D slidingCollider;
+    public BoxCollider2D wallRunCollider;
 
     public BoxCollider2D[] allColliders { get; private set; }
     #endregion
 
     #region Check Transforms
     [SerializeField]
-    private Transform groundCheck;
-
-    [SerializeField]
     private Transform wallCheck;
 
     [SerializeField]
     private Transform ledgeCheck;
-
-    [SerializeField]
-    private Transform ceilingCheck;
 
     [SerializeField]
     private Transform lowWallCheck;
@@ -293,7 +288,7 @@ public class Player : MonoBehaviour
     //Verifie si l'on est au sol
     public bool CheckIfGrounded()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(standingCollider.bounds.center, standingCollider.bounds.size - new Vector3(0.1f, 0f, 0f), 0f, Vector2.down, playerData.groundCheckRadius, playerData.whatIsGround);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(standingCollider.bounds.center, standingCollider.bounds.size - new Vector3(0.1f, 0f, 0f), 0f, Vector2.down, playerData.groundCheckExtraHeight, playerData.whatIsGround);
         return raycastHit.collider != null;
     }
 
@@ -326,7 +321,7 @@ public class Player : MonoBehaviour
     //Verifie si le personage touche le plafond pendant qu'il slide
     public bool CheckIfTouchingCeiling()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(slidingCollider.bounds.center, slidingCollider.bounds.size, 0f, Vector2.up, playerData.groundCheckRadius, playerData.whatIsGround);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(slidingCollider.bounds.center, slidingCollider.bounds.size, 0f, Vector2.up, playerData.groundCheckExtraHeight, playerData.whatIsGround);
         return raycastHit.collider != null;
     }
 
