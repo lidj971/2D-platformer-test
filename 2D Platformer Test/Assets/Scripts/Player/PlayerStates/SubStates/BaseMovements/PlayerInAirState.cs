@@ -156,7 +156,7 @@ public class PlayerInAirState : PlayerState
 
     private void CheckCoyoteTime()
     {
-        if (!coyoteTime && Time.time <= startTime + playerData.coyoteTime) return;
+        if (!coyoteTime || Time.time <= startTime + playerData.coyoteTime) return;
         
         coyoteTime = false;
         player.JumpState.DecreaseAmountOfJumpsLeft();
@@ -164,7 +164,7 @@ public class PlayerInAirState : PlayerState
 
     private void CheckWallJumpCoyoteTime()
     {
-        if (!wallJumpCoyoteTime && Time.time <= startWallJumpCoyoteTime + playerData.coyoteTime) return;
+        if (!wallJumpCoyoteTime || Time.time <= startWallJumpCoyoteTime + playerData.coyoteTime) return;
         wallJumpCoyoteTime = false;
         player.JumpState.DecreaseAmountOfJumpsLeft();
     }
