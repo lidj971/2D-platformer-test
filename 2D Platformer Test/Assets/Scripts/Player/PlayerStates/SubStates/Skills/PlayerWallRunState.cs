@@ -38,6 +38,7 @@ public class PlayerWallRunState : PlayerAbilityState
     {
         base.LogicUpdate();
         xInput = player.InputHandler.NormInputX;
+        
         GrabInput = player.InputHandler.GrabInput;
         JumpInput = player.InputHandler.JumpInput;
         isTouchingLedge = player.CheckIfTouchingLedge();
