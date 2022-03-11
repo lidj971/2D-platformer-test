@@ -5,6 +5,11 @@ using Cinemachine;
 
 public class Player : MonoBehaviour
 {
+    private PlayerConfiguration playerConfig;
+    public InputHandler InputHandler { get; private set; }
+    private PlayerState[] Skills;
+    public GameObject skillObject;
+
     #region StateVariables
     public PlayerStateMachine StateMachine { get; private set; }
 
@@ -26,7 +31,7 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Skills
-    public PlayerWallRunState WallRunState { get; private set; }
+    public PlayerWallRunState WallRunState;
     #endregion
 
     [SerializeField]
@@ -37,7 +42,6 @@ public class Player : MonoBehaviour
     public Animator BodyAnim { get; private set; }
     public Animator GloveAnim { get; private set; }
     public Animator[] allAnimators { get; private set; }
-    public InputHandler InputHandler { get; private set; }
     public Rigidbody2D RB { get; private set; }
     public SpriteRenderer SR { get; private set; }
     public GameObject Glove;
@@ -105,12 +109,19 @@ public class Player : MonoBehaviour
     private bool isTouchingCeiling;
     #endregion
 
+    public void InitializePlayer(PlayerConfiguration pc)
+    {
+        playerConfig = pc;
+        InputHandler = pc.Input.GetComponent<InputHandler>();
+        Skills = pc.Input.GetComponentsInChildren<PlayerState>();
+    } 
+
     #region Unity Callback Functions 
     private void Awake()
     {
         //Initialisation de la StateMachine
         StateMachine = new PlayerStateMachine();
-
+        
         //Initialisation des States de base       
         IdleState = GetComponentInChildren<PlayerIdleState>();
         MoveState = GetComponentInChildren<PlayerMoveState>();
@@ -123,35 +134,44 @@ public class Player : MonoBehaviour
         WallClimbState = GetComponentInChildren<PlayerWallClimbState>();
         WallJumpState = GetComponentInChildren <PlayerWallJumpState>();
         LedgeClimbState = GetComponentInChildren<PlayerLedgeClimbState>();
+    }
 
-        //Initialisation des Skills
+    private void Start()
+    {
+        #region Skills
+        //Ajout des skills choisies a l'objet skill du Joueur
+        foreach (PlayerState skill in Skills)
+        {
+            skillObject.AddComponent(skill.GetType());
+        }
+
+        //Initilisation des skills
         WallRunState = GetComponentInChildren<PlayerWallRunState>();
 
         //Intialisation des donnes de tout les States
         PlayerState[] AllStates = GetComponentsInChildren<PlayerState>();
-        foreach(PlayerState state in AllStates)
+        foreach (PlayerState state in AllStates)
         {
             state.player = this;
             state.stateMachine = StateMachine;
             state.playerData = playerData;
             state.stateName = state.ToString();
-            state.stateName = state.stateName.Replace(state.name,"");
+            state.stateName = state.stateName.Replace(state.name, "");
             state.stateName = state.stateName.Replace("(Player", "");
             state.stateName = state.stateName.Replace(")", "");
         }
-    }
+        #endregion
 
-    private void Start()
-    {
+        #region Composants
         //Initialisation des Composant au composant du personage
         BodyAnim = GetComponent<Animator>();
         GloveAnim = Glove.GetComponent<Animator>();
-        InputHandler = GetComponentInChildren<InputHandler>();
+        //InputHandler = GetComponentInChildren<InputHandler>();
         RB = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
         allColliders = GetComponentsInChildren<BoxCollider2D>();
         allAnimators = GetComponentsInChildren<Animator>();
-
+        #endregion
 
         //Initialison de la Statmachine au state Idle
         StateMachine.Initialize(IdleState);
