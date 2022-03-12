@@ -16,6 +16,7 @@ public class PlayerStateMachine
     //Change le state actuel
     public void ChangeState(PlayerState newState)
     {
+        if (newState == null) return;
         CurrentState.Exit();
         CurrentState = newState;
         CurrentState.Enter();

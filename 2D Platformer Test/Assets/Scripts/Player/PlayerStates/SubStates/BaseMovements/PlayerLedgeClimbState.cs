@@ -15,6 +15,7 @@ public class PlayerLedgeClimbState : PlayerState
 
     protected bool jumpInput;
     protected bool isTouchingWall;
+    protected bool isGrounded;
 
 
     private int xInput;
@@ -60,11 +61,20 @@ public class PlayerLedgeClimbState : PlayerState
     {
         base.LogicUpdate();
 
+        isGrounded = player.CheckIfGrounded();
         jumpInput = player.InputHandler.JumpInput;
 
         if (isAnimationFinished)
         {
-            stateMachine.ChangeState(player.IdleState);
+            if (isGrounded)
+            {
+                stateMachine.ChangeState(player.IdleState);
+            }
+            else
+            {
+                stateMachine.ChangeState(player.InAirState);
+            }
+            
         }
         else
         {

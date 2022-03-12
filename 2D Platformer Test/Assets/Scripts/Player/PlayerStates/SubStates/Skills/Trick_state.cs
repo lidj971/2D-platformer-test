@@ -10,8 +10,7 @@ public class Trick_state : PlayerAbilityState
     // Start is called before the first frame update
     void Start()
     {
-        direction = player.FacingDirection
-        player.SetVelocityY(playerdata.jumpVelocity)
+
     }
 
     // Update is called once per frame
