@@ -2084,8 +2084,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99b1d7c6da6c3a45a617de5c4935a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: -1}
+  offset: {x: 0, y: 0, z: -14.17}
   smoothTime: 0.1
+  minZoom: 40
+  maxZoom: 120
+  zoomLimiter: 50
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
