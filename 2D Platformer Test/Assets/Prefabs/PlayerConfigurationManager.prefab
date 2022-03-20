@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxPlayers: 2
+  basePlayerData: {fileID: 11400000, guid: 890e23e8277c702459e20e73a747bc7c, type: 2}
 --- !u!114 &5365114353525788066
 MonoBehaviour:
   m_ObjectHideFlags: 0

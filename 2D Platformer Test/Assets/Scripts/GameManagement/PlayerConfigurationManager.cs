@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class PlayerConfigurationManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     [SerializeField]
     private int MaxPlayers = 2;
+
+    //public PlayerData basePlayerData;
 
     public static PlayerConfigurationManager Instance { get; private set; }
 
@@ -41,6 +44,11 @@ public class PlayerConfigurationManager : MonoBehaviour
         }
     }
 
+    /*public void SetPlayerData(int index,PlayerData playerData)
+    {
+        playerConfigs[index].playerData = playerData;
+    }*/
+
     public void ReadyPlayer(int index)
     {
         playerConfigs[index].IsReady = true;
@@ -57,7 +65,7 @@ public class PlayerConfigurationManager : MonoBehaviour
         if(!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex))
         {
             pi.transform.SetParent(transform);
-            playerConfigs.Add(new PlayerConfiguration(pi));
+            playerConfigs.Add(new PlayerConfiguration(pi/*,basePlayerData*/));
         }
     }
 
@@ -65,13 +73,16 @@ public class PlayerConfigurationManager : MonoBehaviour
 
 public class PlayerConfiguration
 {
-    public PlayerConfiguration(PlayerInput pi)
+    public PlayerConfiguration(PlayerInput pi/*,PlayerData basePlayerData*/)
     {
         PlayerIndex = pi.playerIndex;
         Input = pi;
+        //var dataName = AssetDatabase.GenerateUniqueAssetPath("Assets/Scripts/Player/Data/Player" + PlayerIndex.ToString() + ".asset");
+        //AssetDatabase.CopyAsset(AssetDatabase.GetAssetPath(basePlayerData), dataName);
     }
     public PlayerInput Input { get; set; }
     public int PlayerIndex { get; set; }
     public bool IsReady { get; set; }
     public List<PlayerState> Skills;
+    //public PlayerData playerData;
 }

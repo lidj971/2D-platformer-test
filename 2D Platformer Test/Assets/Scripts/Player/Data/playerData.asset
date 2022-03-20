@@ -17,7 +17,7 @@ MonoBehaviour:
   horizontalDamping: 0.8
   jumpVelocity: 20
   minJumpVelocity: 16
-  amountOfJumps: 1
+  amountOfJumps: 2
   slideVelocity: 20
   wallJumpVelocity: 30
   wallJumpTime: 0.45

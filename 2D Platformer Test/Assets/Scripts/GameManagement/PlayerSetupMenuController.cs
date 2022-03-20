@@ -21,6 +21,8 @@ public class PlayerSetupMenuController : MonoBehaviour
 
     public List<PlayerState> currentPlayerSkills;
 
+    //public PlayerData currentPlayerData;
+
     private float ignoreInputTime = 1.5f;
     private bool inputEnabled;
 
@@ -29,6 +31,11 @@ public class PlayerSetupMenuController : MonoBehaviour
         PlayerIndex = pi;
         titleText.SetText("Player " + (pi + 1).ToString());
         ignoreInputTime = Time.time + ignoreInputTime;
+    }
+
+    public void Awake()
+    {
+        //currentPlayerData = PlayerConfigurationManager.Instance.basePlayerData;
     }
 
     // Update is called once per frame
@@ -52,11 +59,24 @@ public class PlayerSetupMenuController : MonoBehaviour
         }
     }
 
-    public void SetSkills()
+    /*public void SetNbJump(int nbJump)
+    {
+        if(currentPlayerData.amountOfJumps == nbJump)
+        {
+            currentPlayerData.amountOfJumps = PlayerConfigurationManager.Instance.basePlayerData.amountOfJumps;
+        }
+        else
+        {
+            currentPlayerData.amountOfJumps = nbJump;
+        }
+    }*/
+
+    public void SetPlayer()
     {
         if (!inputEnabled) return;
 
         PlayerConfigurationManager.Instance.SetPlayerSkills(PlayerIndex, currentPlayerSkills);
+        //PlayerConfigurationManager.Instance.SetPlayerData(PlayerIndex, currentPlayerData);
         readyPanel.SetActive(true);
         readyButton.Select();
         menuPanel.SetActive(false);

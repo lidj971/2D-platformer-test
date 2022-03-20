@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class MultipleTargetCamera : MonoBehaviour
 {
-    List<Transform> targets;
+    public List<Transform> targets;
 
     public Vector3 offset;
 

@@ -31,10 +31,11 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Skills
-    public PlayerWallRunState WallRunState;
-    #endregion
 
-    [SerializeField]
+    public PlayerWallRunState WallRunState { get; private set; }
+#endregion
+
+[SerializeField]
     private PlayerData playerData;
     #endregion
 
@@ -140,9 +141,16 @@ public class Player : MonoBehaviour
     {
         #region Skills
         //Ajout des skills choisies a l'objet skill du Joueur
-        foreach (PlayerState skill in Skills)
+        if(playerConfig != null)
         {
-            skillObject.AddComponent(skill.GetType());
+            foreach (PlayerState skill in Skills)
+            {
+                skillObject.AddComponent(skill.GetType());
+            }
+        }
+        else
+        {
+            InputHandler = GetComponentInChildren<InputHandler>();
         }
 
         //Initilisation des skills

@@ -845,7 +845,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 51795194299516975}
     m_SelectOnDown: {fileID: 51795194299516975}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -1163,7 +1163,6 @@ MonoBehaviour:
   menuPanel: {fileID: 2960657762323728986}
   readyButton: {fileID: 7153613355408456030}
   currentPlayerSkills: []
-  multiplayerEventSystem: {fileID: 0}
 --- !u!1 &7639388421421841337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1332,7 +1331,7 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 8489238868243798280}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 8489238868243798280}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -1362,7 +1361,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 726966555486339380}
         m_TargetAssemblyTypeName: PlayerSetupMenuController, Assembly-CSharp
-        m_MethodName: SetSkills
+        m_MethodName: SetPlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
