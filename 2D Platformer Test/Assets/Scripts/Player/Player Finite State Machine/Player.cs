@@ -100,7 +100,6 @@ public class Player : MonoBehaviour
     public string currentAnimationState;
     public int lastTouchedWallDir { get; private set; }
     public bool isHunter;
-    public int ID;
     public int score = 0;
     public bool canMove { get; private set; } = true;
     [HideInInspector]
@@ -192,7 +191,6 @@ public class Player : MonoBehaviour
 
         SetActiveCollider(standingCollider);
         FacingDirection = 1;
-        ID = playerConfig.PlayerIndex;
         RB.gravityScale = playerData.gravityScale;
     }
 

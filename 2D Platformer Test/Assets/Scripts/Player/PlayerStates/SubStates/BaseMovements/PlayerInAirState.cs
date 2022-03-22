@@ -152,6 +152,14 @@ public class PlayerInAirState : PlayerState
         base.PhysicsUpdate();
         if (!canRun) return;
         player.SetVelocityX(playerData.movementVelocity, playerData.horizontalDamping);
+        if(player.CurrentVelocity.y > 0)
+        {
+            player.SetGravityScale(playerData.gravityScale * playerData.fallGravityMultiplier);
+        }
+        else
+        {
+            player.SetGravityScale(playerData.gravityScale);
+        }
     }
 
     private void CheckCoyoteTime()

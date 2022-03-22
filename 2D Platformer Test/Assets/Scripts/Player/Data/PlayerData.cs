@@ -7,6 +7,7 @@ public class PlayerData : ScriptableObject
 {
     [Header("Physics")]
     public float gravityScale = 3f;
+    public float fallGravityMultiplier = 1.3f;
     
     [Header("Move")]
     public float movementVelocity = 10f;
