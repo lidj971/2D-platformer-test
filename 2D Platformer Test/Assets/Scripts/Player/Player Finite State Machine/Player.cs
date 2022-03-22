@@ -99,6 +99,12 @@ public class Player : MonoBehaviour
     public int FacingDirection { get; private set; }
     public string currentAnimationState;
     public int lastTouchedWallDir { get; private set; }
+    public bool isHunter;
+    public int ID;
+    public int score = 0;
+    public bool canMove { get; private set; } = true;
+    [HideInInspector]
+    public MatchManagement matchManager;
     #endregion
 
     #region Check Debug Variables
@@ -186,6 +192,7 @@ public class Player : MonoBehaviour
 
         SetActiveCollider(standingCollider);
         FacingDirection = 1;
+        ID = playerConfig.PlayerIndex;
         RB.gravityScale = playerData.gravityScale;
     }
 
@@ -303,6 +310,7 @@ public class Player : MonoBehaviour
             collider.enabled = false;
         }
 
+        if (activeCollider == null) return;
         activeCollider.enabled = true;
     }
 
@@ -404,6 +412,45 @@ public class Player : MonoBehaviour
         float yDist = yHit.distance;
         workspace.Set(wallCheck.position.x + (xDist * FacingDirection), ledgeCheck.position.y - yDist);
         return workspace;
+    }
+
+    public void DeactivatePlayer()
+    {
+        SetActiveCollider(null);
+        SR.enabled = false;
+    }
+
+    public void ActivatePlayer()
+    {
+        SetActiveCollider(standingCollider);
+        SR.enabled = true;
+    }
+
+    public void CanMove(bool canMove)
+    {
+        this.canMove = canMove;
+        if (canMove)
+        {
+            RB.isKinematic = false;
+        }
+        else
+        {
+            StateMachine.ChangeState(IdleState);
+
+            RB.isKinematic = true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!isHunter) return;
+        Player hitPlayer = collision.gameObject.GetComponent<Player>();
+        if(hitPlayer != null && hitPlayer != this)
+        {
+            matchManager.EndRound();
+            score++;
+            matchManager.hunterHasWon = true;
+        }
     }
 
     #endregion

@@ -75,7 +75,6 @@ public class PlayerSlideState : PlayerAbilityState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        if (!isStartAnimationFinished) return;
         player.SetVelocityX(playerData.slideVelocity);
     }
 }
