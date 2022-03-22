@@ -8,18 +8,30 @@ public class MatchManagement : MonoBehaviour
 {
     List<Player> Players;
     public float maxRoundTime;
+    public float currentRoundTime;
+
+    public float maxCountDownTime;
+    public float currentCountDownTime;
+
     public int rounds;
     public int currentRound = 0;
-    public float currentRoundTime;
+
+    public GameObject Hud;
     public Text timeText;
-    public Text CountDown;
-    public bool isPlaying;
-    public float countDownTime;
+    public Text roundCounter;
+    public Text player1score;
+    public Text player2score;
+
+    public GameObject countDownPanel;
+    public Text countDownText;
+
     public Transform[] hunterSpawns;
     public Transform[] praySpawns;
+
     private Player hunter;
     private Player pray;
-    public bool hunterHasWon;
+
+    public bool isPlaying {get; private set;}
 
     public void GetPlayers(List<Player> playerList)
     {
@@ -30,12 +42,16 @@ public class MatchManagement : MonoBehaviour
     {
         Players[0].isHunter = true;
         Players[1].isHunter = false;
-        Players[1].transform.position = praySpawns[Random.Range(0, praySpawns.Length)].position;
         Players[0].transform.position = hunterSpawns[Random.Range(0, hunterSpawns.Length)].position;
+        Players[1].transform.position = praySpawns[Random.Range(0, praySpawns.Length)].position;
         currentRound++;
         currentRoundTime = maxRoundTime;
-
+        roundCounter.text = currentRound.ToString();
+        player1score.text = Players[0].score.ToString();
+        player2score.text = Players[1].score.ToString();
         isPlaying = true;
+        Hud.SetActive(true);
+        countDownPanel.SetActive(false);
     }
 
     void Update()
@@ -48,7 +64,7 @@ public class MatchManagement : MonoBehaviour
             }
             else if(currentRound < rounds)
             {
-                EndRound();
+                EndRound(pray);
             }
             else
             {
@@ -56,26 +72,41 @@ public class MatchManagement : MonoBehaviour
             }
             DisplayTime(currentRoundTime,timeText);
         }
+        else
+        {
+            currentCountDownTime -= Time.deltaTime;
+            countDownText.text = currentCountDownTime.ToString();
+            if (currentCountDownTime <= 0)
+            {
+                Players[0].ActivatePlayer();
+                Players[1].ActivatePlayer();
+                Players[0].CanMove(true);
+                Players[1].CanMove(true);
+
+                countDownPanel.SetActive(false);
+                Hud.gameObject.SetActive(true);
+                isPlaying = true;
+            }
+        }
     }
 
-    public void EndRound()
+    public void EndRound(Player winner)
     {
         isPlaying = false;
         foreach (Player player in Players)
         {
             player.KillVelocity();
             player.DeactivatePlayer();
-            player.CanMove(false);
-            if (!player.isHunter && !hunterHasWon)
-            {
-                player.score++;
-            }
+            player.CanMove(false);            
         }
-        timeText.gameObject.SetActive(false);
-        StartCoroutine(StartRound());
+        winner.score++;
+        player1score.text = Players[0].score.ToString();
+        player2score.text = Players[1].score.ToString();
+        Hud.SetActive(false);
+        StartRound();
     }
 
-    IEnumerator StartRound()
+    void StartRound()
     {
         foreach(Player player in Players)
         {     
@@ -91,21 +122,14 @@ public class MatchManagement : MonoBehaviour
                 hunter = player;
                 player.transform.position = hunterSpawns[Random.Range(0, hunterSpawns.Length)].position;
             }
-            player.ActivatePlayer();
         }
 
 
         currentRound++;
+        roundCounter.text = currentRound.ToString();
         currentRoundTime = maxRoundTime;
-
-        yield return new WaitForSeconds(countDownTime);
-
-        Players[0].CanMove(true);
-        Players[1].CanMove(true);
-
-        hunterHasWon = false;
-
-        isPlaying = true;
+        currentCountDownTime = maxCountDownTime;
+        countDownPanel.SetActive(true);
     }
 
     void EndGame()

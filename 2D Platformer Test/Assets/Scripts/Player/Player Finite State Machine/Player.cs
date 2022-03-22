@@ -227,6 +227,7 @@ public class Player : MonoBehaviour
     //permet de modifier la velocite a un angle precis
     public void SetVelocity(float velocity, Vector2 angle, int direction)
     {
+        if (!canMove) return;
         angle.Normalize();
         workspace.Set(angle.x * velocity * direction, angle.y * velocity);
         RB.velocity = workspace;
@@ -236,6 +237,8 @@ public class Player : MonoBehaviour
     //permet d'augmenter progressivement la velocite horizontal jusqu'a une limite precise
     public void SetVelocityX(float velocity, float horizontalDamping)
     {
+        if (!canMove) return;
+
         workspace.Set(RB.velocity.x + velocity * InputHandler.NormInputX, CurrentVelocity.y);
         workspace.x += InputHandler.NormInputX;
         workspace.x *= Mathf.Pow(1f - horizontalDamping, Time.deltaTime * 10f);
@@ -246,6 +249,8 @@ public class Player : MonoBehaviour
     //permet de modifier la velocite horizontal d'un coup
     public void SetVelocityX(float velocity)
     {
+        if (!canMove) return;
+
         workspace.Set(FacingDirection * velocity, CurrentVelocity.y);
         RB.velocity = workspace;
         CurrentVelocity = workspace;
@@ -253,6 +258,8 @@ public class Player : MonoBehaviour
 
     public void SetWallRunVelocity(float velocity, float verticalDamping)
     {
+        if (!canMove) return;
+
         workspace.Set(RB.velocity.x, RB.velocity.y + velocity);
         workspace.y += 1;
         workspace.y *= Mathf.Pow(1f - verticalDamping, Time.deltaTime * 10f);
@@ -263,6 +270,8 @@ public class Player : MonoBehaviour
     //permet de modifier la velocite vertical d'un coup
     public void SetVelocityY(float velocity)
     {
+        if (!canMove) return;
+
         workspace.Set(CurrentVelocity.x, velocity);
         RB.velocity = workspace;
         CurrentVelocity = workspace;
@@ -365,7 +374,7 @@ public class Player : MonoBehaviour
     public void CheckIfShouldFlip(int xInput)
     {
         //Si la direction de l'input est differente de la direction du personnage on retourne le personage
-        if (xInput == 0 || xInput == FacingDirection) return;
+        if (xInput == 0 || xInput == FacingDirection || !canMove) return;
         Flip();
     }
     /*
@@ -418,12 +427,14 @@ public class Player : MonoBehaviour
     {
         SetActiveCollider(null);
         SR.enabled = false;
+        Glove.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void ActivatePlayer()
     {
         SetActiveCollider(standingCollider);
         SR.enabled = true;
+        Glove.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public void CanMove(bool canMove)
@@ -435,8 +446,6 @@ public class Player : MonoBehaviour
         }
         else
         {
-            StateMachine.ChangeState(IdleState);
-
             RB.isKinematic = true;
         }
     }
@@ -447,9 +456,7 @@ public class Player : MonoBehaviour
         Player hitPlayer = collision.gameObject.GetComponent<Player>();
         if(hitPlayer != null && hitPlayer != this)
         {
-            matchManager.EndRound();
-            score++;
-            matchManager.hunterHasWon = true;
+            matchManager.EndRound(this);
         }
     }
 
