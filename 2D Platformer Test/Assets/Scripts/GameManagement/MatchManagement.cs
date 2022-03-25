@@ -21,6 +21,7 @@ public class MatchManagement : MonoBehaviour
     public Text roundCounter;
     public Text player1score;
     public Text player2score;
+    public Text hunterName;
 
     public GameObject countDownPanel;
     public Text countDownText;
@@ -40,18 +41,29 @@ public class MatchManagement : MonoBehaviour
     
     public void StartGame()
     {
+        foreach (Player player in Players)
+        {
+            player.KillVelocity();
+            player.DeactivatePlayer();
+            player.CanMove(false);
+        }
+
         Players[0].isHunter = true;
         Players[1].isHunter = false;
         Players[0].transform.position = hunterSpawns[Random.Range(0, hunterSpawns.Length)].position;
         Players[1].transform.position = praySpawns[Random.Range(0, praySpawns.Length)].position;
+        pray = Players[1];
+        hunter = Players[0];
         currentRound++;
         currentRoundTime = maxRoundTime;
+        currentCountDownTime = maxCountDownTime;
         roundCounter.text = currentRound.ToString();
         player1score.text = Players[0].score.ToString();
         player2score.text = Players[1].score.ToString();
-        isPlaying = true;
-        Hud.SetActive(true);
-        countDownPanel.SetActive(false);
+        Hud.SetActive(false);
+        countDownPanel.SetActive(true);
+        int ajustedHunterIndex = hunter.playerConfig.PlayerIndex + 1;
+        hunterName.text = "Player " + ajustedHunterIndex.ToString();
     }
 
     void Update()
@@ -62,7 +74,7 @@ public class MatchManagement : MonoBehaviour
             {
                 currentRoundTime -= Time.deltaTime;
             }
-            else if(currentRound < rounds)
+            else if(currentRound < rounds && currentRoundTime <= 0)
             {
                 EndRound(pray);
             }
@@ -108,28 +120,22 @@ public class MatchManagement : MonoBehaviour
 
     void StartRound()
     {
-        foreach(Player player in Players)
-        {     
-            if (player.isHunter)
-            {
-                player.isHunter = false;
-                pray = player;
-                player.transform.position = praySpawns[Random.Range(0, praySpawns.Length)].position;
-            }
-            else
-            {
-                player.isHunter = true;
-                hunter = player;
-                player.transform.position = hunterSpawns[Random.Range(0, hunterSpawns.Length)].position;
-            }
-        }
+        pray.isHunter = true;
+        hunter.isHunter = false;
+        var temp = hunter;
+        hunter = pray;
+        pray = temp;
+        pray.transform.position = praySpawns[Random.Range(0, praySpawns.Length)].position;
+        hunter.transform.position = hunterSpawns[Random.Range(0, hunterSpawns.Length)].position;
 
+        currentRoundTime = maxRoundTime;
+        currentCountDownTime = maxCountDownTime;
 
         currentRound++;
         roundCounter.text = currentRound.ToString();
-        currentRoundTime = maxRoundTime;
-        currentCountDownTime = maxCountDownTime;
         countDownPanel.SetActive(true);
+        int ajustedHunterIndex = hunter.playerConfig.PlayerIndex + 1;
+        hunterName.text = "Player " + ajustedHunterIndex.ToString();
     }
 
     void EndGame()

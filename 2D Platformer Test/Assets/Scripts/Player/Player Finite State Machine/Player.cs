@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class Player : MonoBehaviour
 {
-    private PlayerConfiguration playerConfig;
+    public PlayerConfiguration playerConfig { get; private set; }
     public InputHandler InputHandler { get; private set; }
     private PlayerState[] Skills;
     public GameObject skillObject;
@@ -140,6 +140,17 @@ public class Player : MonoBehaviour
         WallClimbState = GetComponentInChildren<PlayerWallClimbState>();
         WallJumpState = GetComponentInChildren <PlayerWallJumpState>();
         LedgeClimbState = GetComponentInChildren<PlayerLedgeClimbState>();
+
+        #region Composants
+        //Initialisation des Composant au composant du personage
+        BodyAnim = GetComponent<Animator>();
+        GloveAnim = Glove.GetComponent<Animator>();
+        //InputHandler = GetComponentInChildren<InputHandler>();
+        RB = GetComponent<Rigidbody2D>();
+        SR = GetComponent<SpriteRenderer>();
+        allColliders = GetComponentsInChildren<BoxCollider2D>();
+        allAnimators = GetComponentsInChildren<Animator>();
+        #endregion
     }
 
     private void Start()
@@ -175,16 +186,6 @@ public class Player : MonoBehaviour
         }
         #endregion
 
-        #region Composants
-        //Initialisation des Composant au composant du personage
-        BodyAnim = GetComponent<Animator>();
-        GloveAnim = Glove.GetComponent<Animator>();
-        //InputHandler = GetComponentInChildren<InputHandler>();
-        RB = GetComponent<Rigidbody2D>();
-        SR = GetComponent<SpriteRenderer>();
-        allColliders = GetComponentsInChildren<BoxCollider2D>();
-        allAnimators = GetComponentsInChildren<Animator>();
-        #endregion
 
         //Initialison de la Statmachine au state Idle
         StateMachine.Initialize(IdleState);
@@ -450,7 +451,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!isHunter) return;
+        if (!isHunter || !matchManager.isPlaying) return;
         Player hitPlayer = collision.gameObject.GetComponent<Player>();
         if(hitPlayer != null && hitPlayer != this)
         {
