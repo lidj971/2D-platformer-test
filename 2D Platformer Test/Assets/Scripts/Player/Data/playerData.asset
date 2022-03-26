@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: playerData
   m_EditorClassIdentifier: 
   gravityScale: 4.7
+  fallGravityMultiplier: 1.3
   movementVelocity: 6
   horizontalDamping: 0.8
-  jumpVelocity: 20
+  jumpVelocity: 22
   minJumpVelocity: 16
   amountOfJumps: 1
   slideVelocity: 20
-  wallJumpVelocity: 28
-  wallJumpTime: 0.48
+  wallJumpVelocity: 30
+  wallJumpTime: 0.46
   wallJumpAngle: {x: 1, y: 1.5}
   coyoteTime: 0.1
   variableJumpHeightMultiplier: 0.441
