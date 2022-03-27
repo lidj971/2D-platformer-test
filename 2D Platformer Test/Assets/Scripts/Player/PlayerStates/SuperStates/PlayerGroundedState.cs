@@ -16,10 +16,6 @@ public class PlayerGroundedState : PlayerState
     public bool isTouchingWallBack{ get; private set; }
 
 
-
-
-
-
     public override void DoChecks()
     {
         base.DoChecks();

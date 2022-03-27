@@ -33,9 +33,10 @@ public class Player : MonoBehaviour
     #region Skills
 
     public PlayerWallRunState WallRunState { get; private set; }
-#endregion
+    public PlayerDashState DashState { get; private set; }
+    #endregion
 
-[SerializeField]
+    [SerializeField]
     private PlayerData playerData;
     #endregion
 
@@ -46,6 +47,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D RB { get; private set; }
     public SpriteRenderer SR { get; private set; }
     public GameObject Glove;
+    public GameObject HunterIcon;
     #endregion
 
     #region Colliders
@@ -171,7 +173,9 @@ public class Player : MonoBehaviour
 
         //Initilisation des skills
         WallRunState = GetComponentInChildren<PlayerWallRunState>();
+        DashState = GetComponentInChildren<PlayerDashState>();
 
+        #endregion
         //Intialisation des donnes de tout les States
         PlayerState[] AllStates = GetComponentsInChildren<PlayerState>();
         foreach (PlayerState state in AllStates)
@@ -184,8 +188,6 @@ public class Player : MonoBehaviour
             state.stateName = state.stateName.Replace("(Player", "");
             state.stateName = state.stateName.Replace(")", "");
         }
-        #endregion
-
 
         //Initialison de la Statmachine au state Idle
         StateMachine.Initialize(IdleState);
@@ -326,6 +328,16 @@ public class Player : MonoBehaviour
     {
         RB.gravityScale = gravity;
     }
+
+
+    public void SetPlayerActive(bool isActive)
+    {
+        SR.enabled = isActive;
+        Glove.GetComponent<SpriteRenderer>().enabled = isActive;
+        HunterIcon.GetComponent<SpriteRenderer>().enabled = isActive;
+    }
+
+    public void SetCanMove(bool canMove) => this.canMove = canMove;
     #endregion
 
     #region Check Functions
@@ -420,33 +432,6 @@ public class Player : MonoBehaviour
         float yDist = yHit.distance;
         workspace.Set(wallCheck.position.x + (xDist * FacingDirection), ledgeCheck.position.y - yDist);
         return workspace;
-    }
-
-    public void DeactivatePlayer()
-    {
-        SetActiveCollider(null);
-        SR.enabled = false;
-        Glove.GetComponent<SpriteRenderer>().enabled = false;
-    }
-
-    public void ActivatePlayer()
-    {
-        SetActiveCollider(standingCollider);
-        SR.enabled = true;
-        Glove.GetComponent<SpriteRenderer>().enabled = true;
-    }
-
-    public void CanMove(bool canMove)
-    {
-        this.canMove = canMove;
-        if (canMove)
-        {
-            RB.isKinematic = false;
-        }
-        else
-        {
-            RB.isKinematic = true;
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

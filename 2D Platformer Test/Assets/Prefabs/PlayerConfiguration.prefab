@@ -153,6 +153,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a2df010e-f905-4c4f-b3b2-bed8e0c1fb24
     m_ActionName: GamePlay/WallGrab[/Keyboard/ctrl,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8596980203818388329}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: OnDashInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 83fdec1d-c983-4cca-8456-0c4f15f4e015
+    m_ActionName: GamePlay/Dash[/Keyboard/shift,/XInputControllerWindows/buttonNorth,/XInputControllerWindows/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: GamePlay

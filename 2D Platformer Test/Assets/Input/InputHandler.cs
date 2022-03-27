@@ -18,6 +18,8 @@ public class InputHandler : MonoBehaviour
 
     public bool GrabInput { get; private set; }
 
+    public bool DashInput { get; private set; }
+
     [SerializeField]
     private float inputHoldTime = 0.2f;
 
@@ -94,6 +96,19 @@ public class InputHandler : MonoBehaviour
         if (context.canceled)
         {
             SlideInput = false;
+        }
+    }
+
+    public void OnDashInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            DashInput = true;
+        }
+
+        if (context.canceled)
+        {
+            DashInput = false;
         }
     }
 

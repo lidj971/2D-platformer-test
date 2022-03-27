@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class MatchManagement : MonoBehaviour
@@ -41,29 +42,17 @@ public class MatchManagement : MonoBehaviour
     
     public void StartGame()
     {
-        foreach (Player player in Players)
-        {
-            player.KillVelocity();
-            player.DeactivatePlayer();
-            player.CanMove(false);
-        }
+        SetPlayersCanMove(false);
+        SetHunter(Players[0]);        
+        SetPlayersPositions();
 
-        Players[0].isHunter = true;
-        Players[1].isHunter = false;
-        Players[0].transform.position = hunterSpawns[Random.Range(0, hunterSpawns.Length)].position;
-        Players[1].transform.position = praySpawns[Random.Range(0, praySpawns.Length)].position;
-        pray = Players[1];
-        hunter = Players[0];
         currentRound++;
         currentRoundTime = maxRoundTime;
         currentCountDownTime = maxCountDownTime;
-        roundCounter.text = currentRound.ToString();
-        player1score.text = Players[0].score.ToString();
-        player2score.text = Players[1].score.ToString();
+
         Hud.SetActive(false);
+        UpdateCountDownPanel();
         countDownPanel.SetActive(true);
-        int ajustedHunterIndex = hunter.playerConfig.PlayerIndex + 1;
-        hunterName.text = "Player " + ajustedHunterIndex.ToString();
     }
 
     void Update()
@@ -78,26 +67,22 @@ public class MatchManagement : MonoBehaviour
             {
                 EndRound(pray);
             }
-            else
-            {
-                EndGame();
-            }
             DisplayTime(currentRoundTime,timeText);
         }
         else
         {
-            currentCountDownTime -= Time.deltaTime;
-            countDownText.text = currentCountDownTime.ToString();
-            if (currentCountDownTime <= 0)
+            if (currentRound > rounds)
             {
-                Players[0].ActivatePlayer();
-                Players[1].ActivatePlayer();
-                Players[0].CanMove(true);
-                Players[1].CanMove(true);
-
-                countDownPanel.SetActive(false);
-                Hud.gameObject.SetActive(true);
-                isPlaying = true;
+                EndGame();
+            }
+            else
+            {
+                currentCountDownTime -= Time.deltaTime;
+                countDownText.text = currentCountDownTime.ToString();
+                if (currentCountDownTime <= 0)
+                {
+                    StartRound();
+                }
             }
         }
     }
@@ -105,56 +90,91 @@ public class MatchManagement : MonoBehaviour
     public void EndRound(Player winner)
     {
         isPlaying = false;
-        foreach (Player player in Players)
-        {
-            player.KillVelocity();
-            player.DeactivatePlayer();
-            player.CanMove(false);            
-        }
-        winner.score++;
-        player1score.text = Players[0].score.ToString();
-        player2score.text = Players[1].score.ToString();
-        Hud.SetActive(false);
-        StartRound();
-    }
-
-    void StartRound()
-    {
-        pray.isHunter = true;
-        hunter.isHunter = false;
-        var temp = hunter;
-        hunter = pray;
-        pray = temp;
-        pray.transform.position = praySpawns[Random.Range(0, praySpawns.Length)].position;
-        hunter.transform.position = hunterSpawns[Random.Range(0, hunterSpawns.Length)].position;
+        SetPlayersCanMove(false);
+        SetHunter(pray);
+        SetPlayersPositions();
 
         currentRoundTime = maxRoundTime;
         currentCountDownTime = maxCountDownTime;
-
         currentRound++;
-        roundCounter.text = currentRound.ToString();
+        winner.score++;
+
+        Hud.SetActive(false);
+        UpdateCountDownPanel();
         countDownPanel.SetActive(true);
-        int ajustedHunterIndex = hunter.playerConfig.PlayerIndex + 1;
-        hunterName.text = "Player " + ajustedHunterIndex.ToString();
+    }
+
+    private void StartRound()
+    {
+        SetPlayersCanMove(true);
+        hunter.HunterIcon.SetActive(true);
+        pray.HunterIcon.SetActive(false);
+        countDownPanel.SetActive(false);
+        UpdateHud();
+        Hud.gameObject.SetActive(true);
+        isPlaying = true;
     }
 
     void EndGame()
     {
-
-        Player winner = new Player();
-        if(Players[0].score > Players[1].score)
+        if (Players[0].score > Players[1].score)
         {
-            winner = Players[0];
-        }else if (Players[0].score < Players[1].score)
+            int ajustedWinnerIndex = Players[0].playerConfig.PlayerIndex + 1;
+            Debug.Log("Player " + ajustedWinnerIndex.ToString() + " Has Won");
+        }
+        else if (Players[0].score < Players[1].score)
         {
-            winner = Players[1];
+            int ajustedWinnerIndex = Players[1].playerConfig.PlayerIndex + 1;
+            Debug.Log("Player " + ajustedWinnerIndex.ToString() + " Has Won");
         }
         else
         {
-            winner.name = "noOne";
+            Debug.Log("Its A Draw");
         }
-        
-        Debug.Log(winner.name + "hasWon");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void SetHunter(Player hunter)
+    {
+        hunter.isHunter = true;
+        this.hunter = hunter;
+        foreach(Player player in Players)
+        {
+            if(player != hunter)
+            {
+                player.isHunter = false;
+                pray = player;
+            }
+        }
+        hunter.HunterIcon.SetActive(true);
+        pray.HunterIcon.SetActive(false);
+    }
+
+    private void SetPlayersPositions()
+    {
+        hunter.transform.position = hunterSpawns[Random.Range(0, hunterSpawns.Length)].position;
+        pray.transform.position = praySpawns[Random.Range(0, praySpawns.Length)].position;
+    }
+
+    private void SetPlayersCanMove(bool canMove)
+    {
+        foreach (Player player in Players)
+        {
+            player.SetCanMove(canMove);
+        }
+    }
+
+    private void UpdateHud()
+    {
+        roundCounter.text = currentRound.ToString();
+        player1score.text = Players[0].score.ToString();
+        player2score.text = Players[1].score.ToString();
+    }
+
+    private void UpdateCountDownPanel()
+    {
+        int ajustedHunterIndex = hunter.playerConfig.PlayerIndex + 1;
+        hunterName.text = "Player " + ajustedHunterIndex.ToString();
     }
 
     void DisplayTime(float timeToDisplay,Text textObject)
