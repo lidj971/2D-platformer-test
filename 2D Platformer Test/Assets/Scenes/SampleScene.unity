@@ -3722,11 +3722,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7e6f093c91f08429018f06bd059d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRoundTime: 10
+  maxRoundTime: 20
   currentRoundTime: 0
   maxCountDownTime: 5
   currentCountDownTime: 0
-  rounds: 4
+  rounds: 6
   currentRound: 0
   Hud: {fileID: 1754492517}
   timeText: {fileID: 566119084}
