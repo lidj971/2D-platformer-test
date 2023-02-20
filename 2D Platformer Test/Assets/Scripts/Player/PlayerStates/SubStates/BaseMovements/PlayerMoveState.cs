@@ -19,6 +19,7 @@ public class PlayerMoveState : PlayerGroundedState
     public override void Exit()
     {
         base.Exit();
+        player.time = 0f;
     }
 
     public override void LogicUpdate()
@@ -26,15 +27,13 @@ public class PlayerMoveState : PlayerGroundedState
         base.LogicUpdate();
         player.CheckIfShouldFlip(xInput);
 
-        
-
         if (isExitingState) return;
 
         if ((player.CurrentVelocity.x <= 0.1 && player.CurrentVelocity.x >= -0.1 && !isExitingState && xInput == 0))
         {
             stateMachine.ChangeState(player.IdleState);
         }
-        else if (isTouchingWall && !isTouchingLowWall && xInput != 0 && slideInput)
+        else if (xInput != 0 && slideInput && (player.SlideState.CheckIfCanSlide() || (isTouchingWall && !isTouchingLowWall)))
         {
             stateMachine.ChangeState(player.SlideState);
         }

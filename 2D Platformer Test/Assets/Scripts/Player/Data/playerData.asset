@@ -19,7 +19,15 @@ MonoBehaviour:
   jumpVelocity: 20
   minJumpVelocity: 16
   amountOfJumps: 1
-  slideVelocity: 18
+  minVelocity: 1
+  slideVelocity: 100
+  slideTime: 0.5
+  dashVelocity: 10
+  dashTime: 0.5
+  dashCoolDown: 0.5
+  drag: 10
+  dashEndYMultiplier: 0.2
+  distBetweenAfterImages: 0.5
   wallJumpVelocity: 20
   wallJumpTime: 0.46
   wallJumpAngle: {x: 1, y: 1.2}

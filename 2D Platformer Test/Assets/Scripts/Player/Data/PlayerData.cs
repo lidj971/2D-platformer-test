@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "newPlayerData", menuName = "Data/Player Data/Base Data")]
 public class PlayerData : ScriptableObject
 {
+    
     [Header("Physics")]
     public float gravityScale = 3f;
     public float fallGravityMultiplier = 1.3f;
@@ -20,7 +21,18 @@ public class PlayerData : ScriptableObject
     public int amountOfJumps = 1;
 
     [Header("Slide")]
+    public float minVelocity = 3f;
     public float slideVelocity = 10f;
+    public float slideTime = 0.5f;
+
+
+    [Header("Dash")]
+    public float dashVelocity = 10f;
+    public float dashTime = 0.5f;
+    public float dashCoolDown = 0.5f;
+    public float drag = 10f;
+    public float dashEndYMultiplier = 0.2f;
+    public float distBetweenAfterImages = 0.5f;
 
     [Header("Wall Jump")]
     public float wallJumpVelocity = 20;

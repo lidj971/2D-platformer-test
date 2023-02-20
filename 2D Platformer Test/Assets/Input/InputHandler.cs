@@ -9,6 +9,8 @@ public class InputHandler : MonoBehaviour
     public Vector2 RawMovementInput { get; private set; }
     public int NormInputX;
     public int NormInputY;
+
+    private float jumpInputStartTime;
     public bool JumpInput { get; private set; }
     public bool JumpInputStop { get; private set; }
 
@@ -18,16 +20,18 @@ public class InputHandler : MonoBehaviour
 
     public bool GrabInput { get; private set; }
 
+    private float dashInputStartTime;
     public bool DashInput { get; private set; }
+    public bool DashInputStop { get; private set; }
 
     [SerializeField]
     private float inputHoldTime = 0.2f;
 
-    private float jumpInputStartTime;
 
     private void Update()
     {
         CheckJumpInputHoldTime();
+        CheckDashInputHoldTime();
     }
 
 
@@ -73,6 +77,20 @@ public class InputHandler : MonoBehaviour
         }
     }
 
+    public void OnDashInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            DashInput = true;
+            DashInputStop = false;
+            dashInputStartTime = Time.time;
+        }
+        else if (context.canceled)
+        {
+            DashInputStop = true;
+        }
+    }
+
     public void OnRunInput(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -99,18 +117,7 @@ public class InputHandler : MonoBehaviour
         }
     }
 
-    public void OnDashInput(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            DashInput = true;
-        }
-
-        if (context.canceled)
-        {
-            DashInput = false;
-        }
-    }
+    
 
     public void OnGrabInput(InputAction.CallbackContext context)
     {
@@ -127,11 +134,21 @@ public class InputHandler : MonoBehaviour
 
     public void UseJumpInput() => JumpInput = false;
 
+    public void UseDashInput() => DashInput = false;
+
     private void CheckJumpInputHoldTime()
     {
         if (Time.time >= jumpInputStartTime + inputHoldTime)
         {
             JumpInput = false;
+        }
+    }
+
+    private void CheckDashInputHoldTime()
+    {
+        if(Time.time >= dashInputStartTime + inputHoldTime)
+        {
+            DashInput = false;
         }
     }
 }

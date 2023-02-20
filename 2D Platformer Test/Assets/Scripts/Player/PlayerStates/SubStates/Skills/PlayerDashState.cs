@@ -4,24 +4,20 @@ using UnityEngine;
 
 public class PlayerDashState : PlayerAbilityState
 {
-    public override void AnimationFinishTrigger()
-    {
-        base.AnimationFinishTrigger();
-    }
+    public bool CanDash { get; private set; }
 
-    public override void AnimationUpdate()
-    {
-        base.AnimationUpdate();
-    }
+    private float lastDashTime;
 
-    public override void DoChecks()
-    {
-        base.DoChecks();
-    }
+    private Vector2 dashDirection;
 
     public override void Enter()
     {
         base.Enter();
+
+        CanDash = false;
+        player.InputHandler.UseDashInput();
+
+        dashDirection = Vector2.right * player.FacingDirection;
     }
 
     public override void Exit()
@@ -32,10 +28,17 @@ public class PlayerDashState : PlayerAbilityState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        if (!isExitingState)
+        {
+
+        }
+    }   
+
+    public bool CheckIfCanDash()
+    {
+        return CanDash && Time.time >= lastDashTime + playerData.dashCoolDown;
     }
 
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-    }
+    public void ResetCanDash() => CanDash = true;
 }

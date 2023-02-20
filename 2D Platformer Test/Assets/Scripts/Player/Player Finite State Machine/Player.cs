@@ -103,6 +103,7 @@ public class Player : MonoBehaviour
     public int lastTouchedWallDir { get; private set; }
     public bool isHunter;
     public int score = 0;
+    public float time;
     public bool canMove { get; private set; } = true;
     [HideInInspector]
     public MatchManagement matchManager;

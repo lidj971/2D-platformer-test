@@ -287,7 +287,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2795584582207084080}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -866,6 +866,7 @@ MonoBehaviour:
   currentAnimationState: 
   isHunter: 0
   score: 0
+  time: 0
   matchManager: {fileID: 0}
 --- !u!50 &7580584145708457186
 Rigidbody2D:
@@ -983,7 +984,7 @@ MonoBehaviour:
   - {x: -0.016031146, y: 0.017605841, z: 0}
   m_ShapePathHash: -459721043
   m_Mesh: {fileID: 0}
-  m_InstanceId: -59028
+  m_InstanceId: 21118
 --- !u!1 &7580584145906603335
 GameObject:
   m_ObjectHideFlags: 0

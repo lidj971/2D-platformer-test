@@ -9,10 +9,18 @@ public class PlayerSlideState : PlayerAbilityState
     //Determine si l'on est encore sous un block
     private bool isTouchingCeiling;
 
+    private float currentSlideVelocity;
+    private float currentSlideTime;
+    private int startFacingDirection;
+    public float time;
+
+    private int xInput;
+
     //on appelle cette fonction lorsque StopSliding est terminer
     public override void AnimationFinishTrigger()
     {
         base.AnimationFinishTrigger();
+       
     }
 
     //on appelle cette fonction lorsque l'animation StartSlide est finie
@@ -25,7 +33,7 @@ public class PlayerSlideState : PlayerAbilityState
     public override void AnimationUpdate()
     {
         base.AnimationUpdate();
-        if (isTouchingCeiling)
+        /*if (isTouchingCeiling)
         {
             if (!isStartAnimationFinished)
             {
@@ -39,7 +47,8 @@ public class PlayerSlideState : PlayerAbilityState
         else
         {
             player.SetAnimationState(player.PLAYER_STOP_SLIDING);
-        }
+        }*/
+        player.SetAnimationState(player.PLAYER_SLIDING);
         
     }
 
@@ -54,27 +63,43 @@ public class PlayerSlideState : PlayerAbilityState
         base.Enter();
 
         player.SetActiveCollider(player.slidingCollider);
+        currentSlideTime = playerData.slideTime;
+        startFacingDirection = player.FacingDirection;
+        currentSlideVelocity = playerData.slideVelocity;
+        Debug.Log("lol");
         isStartAnimationFinished = false;       
     }
 
     public override void Exit()
     {
         base.Exit();
-        
+
+        player.KillVelocityX();
         player.SetActiveCollider(player.standingCollider);
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        //currentSlideVelocity = Mathf.Lerp(currentSlideVelocity,0f,currentSlideTime) ;
 
-        if (isTouchingCeiling || !isAnimationFinished || !isStartAnimationFinished) return;
+        xInput = player.InputHandler.NormInputX;
+        currentSlideTime -= Time.deltaTime;
+
+        if (currentSlideTime > 0 && (startFacingDirection == xInput || xInput == 0)) return;
+        if (isTouchingCeiling) return;
         isAbilityDone = true;
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        player.SetVelocityX(playerData.slideVelocity);
+        //player.SetVelocityX(playerData.slideVelocity);
+        
+    }
+
+    public bool CheckIfCanSlide()
+    {
+        return (player.RB.velocity.x > playerData.minVelocity || player.RB.velocity.x < -playerData.minVelocity);
     }
 }
